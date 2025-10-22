@@ -1,10 +1,5 @@
-1. Fix Barbarian Village 3500, 4000, 4500 shop purchases being bugged
-2. Fix Hitpoints Master & Grandmaster Regen Interval (-1ms -> -1000ms)
-3. Fix Slayer Master & Grandmaster Monster Respawn Interval (-.1ms -> -100ms)
-4. Fix Amulet of Occults Summoning Attack Interval (+5% -> -5%) and Book + Amulet Synergy Interval (+10% -> -10%)
-5. Add Amulet of Occults Item Synergy Tooltip
-6. Fix Yeemik Dodge chance (0.0025% -> 1%)
-7. Fix 1 Zombie not being removed from Undead Graveyard as intended
-8. Fix Dragonbane Mead/(m) incorrectly "increasing" received Dragonbreath Damage
-9. Change Dragonbane Mead/(m): +10%/15% Max Hit/Accuracy against Dragonkin, but +20%/40% Burn DOT Damage taken
-10. 
+1. Adjust several Sigil values (many are too weak, a couple too strong)
+2. Fix Sigil Dust Crafting reqs (some cost 100 -> fix to 200)
+3. Reduce crafting reqs. of some Sigils
+4. Add Hoof to Pegasus drop table
+5. 

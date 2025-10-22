@@ -138,6 +138,93 @@
     ],
     "combatEffects": [
       {
+        "id": "ResistanceIncrease5",
+        "templateID": "melvorD:StaticSelfCountingModifier",
+        "name": "+5% Damage Reduction",
+        "media": "assets/status/evasion_increase.png",
+        "target": "Self",
+        "parameters": [
+          {
+            "name": "turns",
+            "initialValue": 3
+          }
+        ],
+        "statGroups": [
+          {
+            "name": "stacks",
+            "modifiers": {
+              "flatResistance": [
+                {
+                  "damageTypeID": "melvorD:Normal",
+                  "value": 5
+                }
+              ]
+            }
+          }
+        ],
+        "effectGroups": [
+          "melvorD:Buff"
+        ]
+      },
+      {
+        "id": "ResistanceIncrease10",
+        "templateID": "melvorD:StaticSelfCountingModifier",
+        "name": "+10% Damage Reduction",
+        "media": "assets/status/evasion_increase.png",
+        "target": "Self",
+        "parameters": [
+          {
+            "name": "turns",
+            "initialValue": 3
+          }
+        ],
+        "statGroups": [
+          {
+            "name": "stacks",
+            "modifiers": {
+              "flatResistance": [
+                {
+                  "damageTypeID": "melvorD:Normal",
+                  "value": 10
+                }
+              ]
+            }
+          }
+        ],
+        "effectGroups": [
+          "melvorD:Buff"
+        ]
+      },
+      {
+        "id": "ResistanceIncrease15",
+        "templateID": "melvorD:StaticSelfCountingModifier",
+        "name": "+15% Damage Reduction",
+        "media": "assets/status/evasion_increase.png",
+        "target": "Self",
+        "parameters": [
+          {
+            "name": "turns",
+            "initialValue": 3
+          }
+        ],
+        "statGroups": [
+          {
+            "name": "stacks",
+            "modifiers": {
+              "flatResistance": [
+                {
+                  "damageTypeID": "melvorD:Normal",
+                  "value": 15
+                }
+              ]
+            }
+          }
+        ],
+        "effectGroups": [
+          "melvorD:Buff"
+        ]
+      },
+      {
         "id": "Wither",
         "templateID": "expandedAreas:WitherDOT",
         "parameters": [
@@ -836,14 +923,15 @@
             "combatEffects": [
               {
                 "appliesWhen": "StartOfFight",
-                "chance": 20,
+                "chance": 25,
                 "effectID": "melvorD:Fear",
                 "initialParams": [
                   {
                     "name": "turns",
                     "value": 2
                   }
-                ]
+                ],
+                "targetOverride": "Target"
               }
             ]
           }
@@ -2320,7 +2408,7 @@
             "effectID": "expandedAreas:Lesser_Sigil_of_Perception",
             "appliesWhen": "PostAttack",
             "applyEffectWhenMerged": true,
-            "customDescription": "+10% Global Accuracy Rating and +10% more for each time you Miss (stacks up to 5 times)."
+            "customDescription": "+10% Global Accuracy for each time you Miss (stacks up to 5 times)."
           }
         ]
       },
@@ -2375,7 +2463,7 @@
             "effectID": "expandedAreas:Greater_Sigil_of_Perception",
             "appliesWhen": "PostAttack",
             "applyEffectWhenMerged": true,
-            "customDescription": "+15% Global Accuracy Rating and +15% for each time you Miss (stacks up to 5 times)."
+            "customDescription": "+15% Global Accuracy for each time you Miss (stacks up to 5 times)."
           }
         ]
       },
@@ -2431,7 +2519,7 @@
             "effectID": "expandedAreas:Superior_Sigil_of_Perception",
             "appliesWhen": "PostAttack",
             "applyEffectWhenMerged": true,
-            "customDescription": "+20% Global Accuracy Rating and +20% for each time you Miss (stacks up to 5 times)."
+            "customDescription": "+20% Global Accuracy for each time you Miss (stacks up to 5 times)."
           }
         ]
       },
@@ -2642,7 +2730,6 @@
             "effectID": "melvorD:Heal0",
             "appliesWhen": "CritWithAttack",
             "applyEffectWhenMerged": true,
-            "chance": 100,
             "initialParams": [
               {
                 "name": "procs",
@@ -2705,7 +2792,6 @@
             "effectID": "melvorD:Heal0",
             "appliesWhen": "CritWithAttack",
             "applyEffectWhenMerged": true,
-            "chance": 100,
             "initialParams": [
               {
                 "name": "procs",
@@ -2769,7 +2855,6 @@
             "effectID": "melvorD:Heal0",
             "appliesWhen": "CritWithAttack",
             "applyEffectWhenMerged": true,
-            "chance": 100,
             "initialParams": [
               {
                 "name": "procs",
@@ -2823,16 +2908,8 @@
           }
         ],
         "equipmentStats": [],
+        
         "combatEffects": [
-          {
-            "appliesWhen": "PostAttack",
-            "effectID": "melvorF:WeakeningI",
-            "condition": {
-              "character": "Enemy",
-              "effectID": "melvorD:Burn",
-              "type": "CombatEffect"
-            }
-          },
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Burn"
@@ -2882,16 +2959,11 @@
         "cantEquipWith": [
           "expandedAreas:Lesser_Sigil_of_Fire"
         ],
+        "enemyModifiers": {
+          "burnDOTDamageTaken": 15
+        },
         "combatEffects": [
-          {
-            "appliesWhen": "PostAttack",
-            "effectID": "melvorF:WeakeningII",
-            "condition": {
-              "character": "Enemy",
-              "effectID": "melvorD:Burn",
-              "type": "CombatEffect"
-            }
-          },
+          
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Burn"
@@ -2942,16 +3014,11 @@
           "expandedAreas:Lesser_Sigil_of_Fire",
           "expandedAreas:Greater_Sigil_of_Fire"
         ],
+        "enemyModifiers": {
+          "burnDOTDamageTaken": 30
+        },
         "combatEffects": [
-          {
-            "appliesWhen": "PostAttack",
-            "effectID": "melvorF:WeakeningIII",
-            "condition": {
-              "character": "Enemy",
-              "effectID": "melvorD:Burn",
-              "type": "CombatEffect"
-            }
-          },
+          
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Burn"
@@ -2965,7 +3032,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Lesser_Sigil_of_Earth.png",
-        "customDescription": "25% Chance on a Critical Hit to gain 20% Damage Reduction for 3 turns",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3002,14 +3068,7 @@
         "combatEffects": [
           {
             "appliesWhen": "CritWithAttack",
-            "effectID": "melvorD:StoneBarrier0",
-            "initialParams": [
-              {
-                "name": "turns",
-                "value": 1
-              }
-            ],
-            "chance": 50
+            "effectID": "expandedAreas:ResistanceIncrease5"
           }
         ]
       },
@@ -3020,7 +3079,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Greater_Sigil_of_Earth.png",
-        "customDescription": "50% Chance on a Critical Hit to gain 20% Damage Reduction for 3 turns",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3060,14 +3118,7 @@
         "combatEffects": [
           {
             "appliesWhen": "CritWithAttack",
-            "effectID": "melvorD:StoneBarrier0",
-            "initialParams": [
-              {
-                "name": "turns",
-                "value": 3
-              }
-            ],
-            "chance": 50
+            "effectID": "expandedAreas:ResistanceIncrease10"
           }
         ]
       },
@@ -3078,7 +3129,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Superior_Sigil_of_Earth.png",
-        "customDescription": "75% Chance on a Critical Hit to gain 20% Damage Reduction for 3 turns",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3119,14 +3169,7 @@
         "combatEffects": [
           {
             "appliesWhen": "CritWithAttack",
-            "effectID": "melvorD:StoneBarrier0",
-            "initialParams": [
-              {
-                "name": "turns",
-                "value": 3
-              }
-            ],
-            "chance": 75
+            "effectID": "expandedAreas:ResistanceIncrease15"
           }
         ]
       },
@@ -3137,7 +3180,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Lesser_Sigil_of_Doom.png",
-        "customDescription": "50% Chance on First Hit to inflict the Enemy with Fear for 2 turns. While an Enemy is afflicted by Fear, you have +10% Reflect Damage.",
+        "customDescription": "50% Chance on First Hit to inflict the Enemy with Fear for 2 turns.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3171,18 +3214,7 @@
           }
         ],
         "equipmentStats": [],
-        "conditionalModifiers": [
-          {
-            "condition": {
-              "effectID": "melvorD:Fear",
-              "character": "Enemy",
-              "type": "CombatEffect"
-            },
-            "modifiers": {
-              "reflectDamage": 10
-            }
-          }
-        ],
+        
         "combatEffects": [
           {
             "appliesWhen": "HitWithFirstAttack",
@@ -3204,7 +3236,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Greater_Sigil_of_Doom.png",
-        "customDescription": "75% Chance on First Hit to inflict the Enemy with Fear for 2 turns. While an Enemy is afflicted by Fear, you have +20% Reflect Damage.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3241,22 +3272,11 @@
         "cantEquipWith": [
           "expandedAreas:Lesser_Sigil_of_Doom"
         ],
-        "conditionalModifiers": [
-          {
-            "condition": {
-              "effectID": "melvorD:Fear",
-              "character": "Enemy",
-              "type": "CombatEffect"
-            },
-            "modifiers": {
-              "reflectDamage": 20
-            }
-          }
-        ],
+        
         "combatEffects": [
           {
             "appliesWhen": "HitWithFirstAttack",
-            "chance": 50,
+            "chance": 75,
             "effectID": "melvorD:Fear",
             "initialParams": [
               {
@@ -3274,7 +3294,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Superior_Sigil_of_Doom.png",
-        "customDescription": "100% Chance on First Hit to inflict the Enemy with Fear for 2 turns. While an Enemy is afflicted by Fear, you have +30% Reflect Damage.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3318,9 +3337,6 @@
               "effectID": "melvorD:Fear",
               "character": "Enemy",
               "type": "CombatEffect"
-            },
-            "modifiers": {
-              "reflectDamage": 30
             }
           }
         ],
@@ -3345,7 +3361,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Lesser_Sigil_of_Chilling.png",
-        "customDescription": "10% Chance on Hit to inflict the Enemy with a 20% Slow for 2 turns.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3404,7 +3419,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Greater_Sigil_of_Chilling.png",
-        "customDescription": "10% Chance on Hit to inflict the Enemy with a 25% Slow for 3 turns.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3466,7 +3480,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Superior_Sigil_of_Chilling.png",
-        "customDescription": "10% Chance on Hit to inflict the Enemy with a 30% Slow for 4 turns.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3563,7 +3576,7 @@
         ],
         "equipmentStats": [],
         "enemyModifiers": {
-          "dotDamageTaken": 3
+          "dotDamageTaken": 5
         }
       },
       {
@@ -3610,7 +3623,7 @@
           "expandedAreas:Lesser_Sigil_of_Bursting"
         ],
         "enemyModifiers": {
-          "dotDamageTaken": 5
+          "dotDamageTaken": 10
         }
       },
       {
@@ -3658,7 +3671,7 @@
           "expandedAreas:Greater_Sigil_of_Bursting"
         ],
         "enemyModifiers": {
-          "dotDamageTaken": 7
+          "dotDamageTaken": 15
         }
       },
       {
@@ -3668,7 +3681,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Lesser_Sigil_of_Blood.png",
-        "customDescription": "+10% Lifesteal when the Enemy is afflicted by Bleed",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3702,16 +3714,11 @@
           }
         ],
         "equipmentStats": [],
-        "conditionalModifiers": [
+        "combatEffects": [
           {
-            "condition": {
-              "character": "Enemy",
-              "groupID": "melvorD:BleedDOT",
-              "type": "CombatEffectGroup"
-            },
-            "modifiers": {
-              "lifesteal": 10
-            }
+            "appliesWhen": "HitWithAttack",
+            "chance": 100,
+            "effectID": "melvorD:Bleed100"
           }
         ]
       },
@@ -3722,7 +3729,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Greater_Sigil_of_Blood.png",
-        "customDescription": "+20% Lifesteal when the Enemy is afflicted by Bleed",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3759,16 +3765,14 @@
         "cantEquipWith": [
           "expandedAreas:Lesser_Sigil_of_Blood"
         ],
-        "conditionalModifiers": [
+        "enemyModifiers": {
+          "bleedDOTDamageTaken": 10
+        },
+        "combatEffects": [
           {
-            "condition": {
-              "character": "Enemy",
-              "groupID": "melvorD:BleedDOT",
-              "type": "CombatEffectGroup"
-            },
-            "modifiers": {
-              "lifesteal": 20
-            }
+            "appliesWhen": "HitWithAttack",
+            "chance": 100,
+            "effectID": "melvorD:Bleed100"
           }
         ]
       },
@@ -3817,16 +3821,14 @@
           "expandedAreas:Lesser_Sigil_of_Blood",
           "expandedAreas:Greater_Sigil_of_Blood"
         ],
-        "conditionalModifiers": [
+        "enemyModifiers": {
+          "bleedDOTDamageTaken": 20
+        },
+        "combatEffects": [
           {
-            "condition": {
-              "character": "Enemy",
-              "groupID": "melvorD:BleedDOT",
-              "type": "CombatEffectGroup"
-            },
-            "modifiers": {
-              "lifesteal": 30
-            }
+            "appliesWhen": "HitWithAttack",
+            "chance": 100,
+            "effectID": "melvorD:Bleed100"
           }
         ]
       },
@@ -3837,7 +3839,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Lesser_Sigil_of_Blight.png",
-        "customDescription": "+25% Chance on Hit to apply Poison to the Enemy. While the Enemy is afflicted by Poison, it has -10% Global Evasion (stacks up to 3 times).",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3896,7 +3897,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Greater_Sigil_of_Blight.png",
-        "customDescription": "+50% Chance on Hit to apply Poison to the Enemy. While the Enemy is afflicted by Poison, it has -10% Global Evasion (stacks up to 3 times).",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3958,7 +3958,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Superior_Sigil_of_Blight.png",
-        "customDescription": "+75% Chance on Hit to apply Poison to the Enemy. While the Enemy is afflicted by Poison, it has -10% Global Evasion (stacks up to 3 times).",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -4377,7 +4376,13 @@
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
-            "chance": 15
+            "chance": 100,
+            "initialParams": [
+              {
+                "name": "turns",
+                "value": 1
+              }
+            ]
           }
         ]
       },
@@ -4428,13 +4433,13 @@
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
+            "chance": 100,
             "initialParams": [
               {
                 "name": "turns",
                 "value": 2
               }
-            ],
-            "chance": 20
+            ]
           }
         ]
       },
@@ -4483,16 +4488,16 @@
           "expandedAreas:Greater_Sigil_of_Air"
         ],
         "combatEffects": [
-          {
+        {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
+            "chance": 100,
             "initialParams": [
               {
                 "name": "turns",
                 "value": 3
               }
-            ],
-            "chance": 25
+            ]
           }
         ]
       },
@@ -4503,7 +4508,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Lesser_Sigil_of_Agony.png",
-        "customDescription": "25% chance at the Start of the Fight to apply a random Curse to the Enemy",
+        "customDescription": "50% chance at the Start of the Fight to apply a random Curse to the Enemy",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -4540,7 +4545,7 @@
         "combatEffects": [
           {
             "appliesWhen": "StartOfFight",
-            "chance": 25,
+            "chance": 50,
             "tableID": "melvorF:RandomCurse"
           }
         ]
@@ -4552,7 +4557,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Greater_Sigil_of_Agony.png",
-        "customDescription": "25% chance at the Start of the Fight to apply up to 3 random Curses to the Enemy",
+        "customDescription": "75% chance at the Start of the Fight to apply a random Curse to the Enemy",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -4592,17 +4597,7 @@
         "combatEffects": [
           {
             "appliesWhen": "StartOfFight",
-            "chance": 8,
-            "tableID": "melvorF:RandomCurse"
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "chance": 8,
-            "tableID": "melvorF:RandomCurse"
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "chance": 8,
+            "chance": 75,
             "tableID": "melvorF:RandomCurse"
           }
         ]
@@ -4614,7 +4609,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Superior_Sigil_of_Agony.png",
-        "customDescription": "25% chance at the Start of the Fight to apply up to 5 random Curses to the Enemy",
+        "customDescription": "100% chance at the Start of the Fight to apply a Curse to the Enemy",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -4655,27 +4650,7 @@
         "combatEffects": [
           {
             "appliesWhen": "StartOfFight",
-            "chance": 5,
-            "tableID": "melvorF:RandomCurse"
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "chance": 5,
-            "tableID": "melvorF:RandomCurse"
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "chance": 5,
-            "tableID": "melvorF:RandomCurse"
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "chance": 5,
-            "tableID": "melvorF:RandomCurse"
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "chance": 5,
+            "chance": 100,
             "tableID": "melvorF:RandomCurse"
           }
         ]
@@ -4778,7 +4753,7 @@
         ],
         "equipmentStats": [],
         "modifiers": {
-          "flatAttackInterval": -200
+          "flatAttackInterval": -150
         }
       },
       {
@@ -4831,7 +4806,7 @@
         ],
         "equipmentStats": [],
         "modifiers": {
-          "flatAttackInterval": -300
+          "flatAttackInterval": -200
         }
       },
       {
@@ -43652,7 +43627,7 @@
           "items": [],
           "modifiers": {
             "damageDealtToSlayerTasks": 0.1,
-            "flatMonsterRespawnInterval": -0.001
+            "flatMonsterRespawnInterval": -10
           }
         },
         "cost": {
@@ -43670,7 +43645,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Slayer Training",
-        "customDescription": "Gain +0.1% Damage Dealt to Slayer Tasks and -0.001s Monster Respawn Interval"
+        "customDescription": "Gain +0.1% Damage Dealt to Slayer Tasks and -.01s Monster Respawn Interval"
       },
       {
         "id": "Slayer_Mastery_Cape",
@@ -52715,7 +52690,7 @@
                 },
                 {
                   "id": "expandedAreas:Enchanted_Diamond_Dust",
-                  "quantity": 100
+                  "quantity": 200
                 },
                 {
                   "id": "expandedAreas:Masterful_Amulet_of_Accuracy",
@@ -52737,7 +52712,7 @@
                 },
                 {
                   "id": "expandedAreas:Enchanted_Diamond_Dust",
-                  "quantity": 100
+                  "quantity": 200
                 },
                 {
                   "id": "melvorF:Tormented_Ring",
@@ -52789,15 +52764,15 @@
                 },
                 {
                   "id": "melvorD:Ancient_Sword",
-                  "quantity": 2
+                  "quantity": 1
                 },
                 {
                   "id": "melvorF:Ancient_2H_Sword",
-                  "quantity": 2
+                  "quantity": 1
                 },
                 {
                   "id": "melvorF:Ancient_Claw",
-                  "quantity": 2
+                  "quantity": 1
                 }
               ]
             },
@@ -52987,7 +52962,7 @@
                 },
                 {
                   "id": "expandedAreas:Enchanted_Diamond_Dust",
-                  "quantity": 100
+                  "quantity": 200
                 },
                 {
                   "id": "expandedAreas:Massive_Fang",
@@ -53014,10 +52989,6 @@
                 {
                   "id": "melvorF:Fire_Shard",
                   "quantity": 500
-                },
-                {
-                  "id": "melvorF:Burning_Essence",
-                  "quantity": 100
                 }
               ]
             },
@@ -53039,11 +53010,11 @@
                 },
                 {
                   "id": "melvorD:Ancient_Longbow",
-                  "quantity": 5
+                  "quantity": 1
                 },
                 {
                   "id": "melvorF:Ancient_Crossbow",
-                  "quantity": 5
+                  "quantity": 1
                 },
                 {
                   "id": "melvorF:Ranged_Assistance_Potion_IV",
@@ -56164,10 +56135,16 @@
         "lootTable": {
           "add": [
             {
+              "itemID": "expandedAreas:Hoof",
+              "minQuantity": 1,
+              "maxQuantity": 4,
+              "weight": 22
+            },
+            {
               "itemID": "expandedAreas:Celestial_Feather",
               "minQuantity": 1,
               "maxQuantity": 3,
-              "weight": 33
+              "weight": 11
             }
           ]
         }
