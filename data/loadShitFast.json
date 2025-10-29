@@ -1,684 +1,540 @@
 {
     "$schema": "https://melvoridle.com/assets/schema/gameData.json",
     "namespace": "expandedAreas",
-    "data": {
-    },
-    "modifications": {
-
-    },
-    "dependentData": [
-      {
-        "namespace": "melvorAoD",
-        "data": {
-          "items": [
+"data": {
+    "items": [
             {
-              "itemType": "Equipment",
-              "id": "Crystal_Javelin_Ammo",
-              "name": "Crystal Javelin (Ammo)",
-              "category": "Combat",
-              "type": "Ammo",
-              "media": "assets/items/Equipment/Crystal_Javelin_Ammo.png",
-              "customDescription": "For use with the <strong>Heavy Hand Ballista</strong>",
-              "ignoreCompletion": false,
-              "obtainFromItemLog": false,
-              "golbinRaidExclusive": false,
-              "sellsFor": 156,
-              "tier": "Crystal",
-              "validSlots": [
-                "Quiver"
-              ],
-              "occupiesSlots": [],
-              "equipRequirements": [
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Strength",
+                "name": "Masterful Amulet of Strength",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Strength.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 10000000,
+                "tier": "combat",
+                "validSlots": [
+                    "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                    {
+                        "key": "meleeStrengthBonus",
+                        "value": 40
+                    }
+                ]
+            },
+            {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Accuracy",
+                "name": "Masterful Amulet of Accuracy",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Accuracy.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 10000000,
+                "tier": "combat",
+                "validSlots": [
+                    "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                    {
+                        "key": "stabAttackBonus",
+                        "value": 16
+                    },
+                    {
+                        "key": "slashAttackBonus",
+                        "value": 16
+                    },
+                    {
+                        "key": "blockAttackBonus",
+                        "value": 16
+                    }
+                ]
+            },
+            {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Defence",
+                "name": "Masterful Amulet of Defence",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Defence.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 10000000,
+                "tier": "combat",
+                "validSlots": [
+                    "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                    {
+                        "key": "meleeDefenceBonus",
+                        "value": 28
+                    },
+                    {
+                        "key": "damageReduction",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Glory",
+                "name": "Masterful Amulet of Glory",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Glory.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 25000000,
+                "tier": "combat",
+                "validSlots": [
+                    "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                    {
+                        "key": "stabAttackBonus",
+                        "value": 40
+                    },
+                    {
+                        "key": "slashAttackBonus",
+                        "value": 40
+                    },
+                    {
+                        "key": "blockAttackBonus",
+                        "value": 40
+                    },
+                    {
+                        "key": "meleeStrengthBonus",
+                        "value": 24
+                    },
+                    {
+                        "key": "meleeDefenceBonus",
+                        "value": 12
+                    }
+                ]
+            },
                 {
-                  "type": "SkillLevel",
-                  "skillID": "melvorD:Ranged",
-                  "level": 20
-                }
-              ],
-              "equipmentStats": [
-                {
-                  "key": "rangedAttackBonus",
-                  "value": 7
+                    "itemType": "Equipment",
+                    "id": "Masterful_Amulet_of_Magic",
+                    "name": "Masterful Amulet of Magic",
+                    "category": "Combat",
+                    "type": "Amulet",
+                    "media": "assets/item/Equipment/Masterful_Amulet_of_Magic.png",
+                    "ignoreCompletion": false,
+                    "obtainFromItemLog": false,
+                    "golbinRaidExclusive": false,
+                    "sellsFor": 10000000,
+                    "tier": "combat",
+                    "validSlots": [
+                        "Amulet"
+                    ],
+                    "occupiesSlots": [],
+                    "equipRequirements": [],
+                    "equipmentStats": [
+                        {
+                            "key": "magicAttackBonus",
+                            "value": 36
+                        },
+                        {
+                            "key": "magicDamageBonus",
+                            "value": 6
+                        },
+                        {
+                            "key": "meleeDefenceBonus",
+                            "value": -20
+                        },
+                        {
+                            "key": "rangedDefenceBonus",
+                            "value": -20
+                        },
+                        {
+                            "key": "magicDefenceBonus",
+                            "value": 36
+                        },
+                        {
+                            "key": "damageReduction",
+                            "value": 2
+                        }
+                    ]
                 },
                 {
-                  "key": "rangedStrengthBonus",
-                  "value": 66
-                }
-              ],
-              "specialAttacks": [
-                "melvorAoD:CrystalShot"
-              ],
-              "overrideSpecialChances": [
-                5
-              ],
-              "ammoType": "Javelins"
-            },
-            {
-              "itemType": "Equipment",
-              "id": "Pure_Crystal_Javelin_Ammo",
-              "name": "Pure Crystal Javelin (Ammo)",
-              "category": "Combat",
-              "type": "Ammo",
-              "media": "assets/items/Equipment/Pure_Crystal_Javelin_Ammo.png",
-              "customDescription": "For use with the <strong>Heavy Hand Ballista</strong>",
-              "ignoreCompletion": false,
-              "obtainFromItemLog": false,
-              "golbinRaidExclusive": false,
-              "sellsFor": 650,
-              "tier": "Dragon",
-              "validSlots": [
-                "Quiver"
-              ],
-              "occupiesSlots": [],
-              "equipRequirements": [
+                        "itemType": "Equipment",
+                        "id": "Masterful_Amulet_of_Ranged",
+                        "name": "Masterful Amulet of Ranged",
+                        "category": "Combat",
+                        "type": "Amulet",
+                        "media": "assets/item/Equipment/Masterful_Amulet_of_Ranged",
+                        "ignoreCompletion": false,
+                        "obtainFromItemLog": false,
+                        "golbinRaidExclusive": false,
+                        "sellsFor": 18000000,
+                        "tier": "Special",
+                        "validSlots": [
+                            "Amulet"
+                        ],
+                        "occupiesSlots": [],
+                        "equipRequirements": [],
+                        "equipmentStats": [
+                            {
+                                "key": "rangedAttackBonus",
+                                "value": 60
+                            },
+                            {
+                                "key": "rangedStrengthBonus",
+                                "value": 20
+                            },
+                            {
+                                "key": "rangedDefenceBonus",
+                                "value": 20
+                            },
+                            {
+                                "key": "magicDefenceBonus",
+                                "value": 10
+                            },
+                            {
+                                "key": "damageReduction",
+                                "value": 2
+                            }
+                        ]
+                    },
+                    {
+                            "itemType": "Equipment",
+                            "id": "M_E_L_V_O_R",
+                            "name": "(M)agnificently (E)nchanted (L)aurel (V)anguard (O)f (R)eckoning",
+                            "category": "Combat",
+                            "type": "Armour",
+                            "media": "assets/items/Equipment/M_E_L_V_O_R.png",
+                            "ignoreCompletion": false,
+                            "obtainFromItemLog": false,
+                            "golbinRaidExclusive": false,
+                            "sellsFor": 1000000000,
+                            "tier": "none",
+                            "validSlots": [
+                                "Amulet"
+                            ],
+                            "occupiesSlots": [],
+                            "equipRequirements": [],
+                            "equipmentStats": [
+                                {
+                                    "key": "stabAttackBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "slashAttackBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "blockAttackBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "rangedAttackBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "magicAttackBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "meleeStrengthBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "rangedStrengthBonus",
+                                    "value": 30
+                                },
+                                {
+                                    "key": "magicDamageBonus",
+                                    "value": 20
+                                },
+                                {
+                                    "key": "meleeDefenceBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "rangedDefenceBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "magicDefenceBonus",
+                                    "value": 69
+                                },
+                                {
+                                    "key": "damageReduction",
+                                    "value": 10
+                                }
+                            ]
+                        },
+                        {
+                                "itemType": "Equipment",
+                                "id": "Amulet_of_Rage",
+                                "name": "Amulet of Rage",
+                                "category": "Combat",
+                                "type": "Amulet",
+                                "media": "assets/items/Equipment/Amulet_of_Rage.png",
+                                "ignoreCompletion": false,
+                                "obtainFromItemLog": false,
+                                "golbinRaidExclusive": false,
+                                "sellsFor": 1500000,
+                                "tier": "Special",
+                                "validSlots": [
+                                    "Amulet"
+                                ],
+                                "occupiesSlots": [],
+                                "equipRequirements": [],
+                                "equipmentStats": [
+                                    {
+                                        "key": "stabAttackBonus",
+                                        "value": 20
+                                    },
+                                    {
+                                        "key": "slashAttackBonus",
+                                        "value": 20
+                                    },
+                                    {
+                                        "key": "blockAttackBonus",
+                                        "value": 20
+                                    },
+                                    {
+                                        "key": "rangedAttackBonus",
+                                        "value": 20
+                                    },
+                                    {
+                                        "key": "magicAttackBonus",
+                                        "value": 20
+                                    },
+                                    {
+                                        "key": "meleeStrengthBonus",
+                                        "value": 16
+                                    },
+                                    {
+                                        "key": "meleeDefenceBonus",
+                                        "value": 30
+                                    },
+                                    {
+                                        "key": "rangedDefenceBonus",
+                                        "value": 30
+                                    },
+                                    {
+                                        "key": "magicDefenceBonus",
+                                        "value": 30
+                                    }
+                                ]
+                            },
+                            {
+                                "itemType": "Equipment",
+                                "id": "Amulet_of_Anguish",
+                                "name": "Amulet of Anguish",
+                                "category": "Combat",
+                                "type": "Amulet",
+                                "media": "assets/items/Equipment/Amulet_of_Anguish.png",
+                                "ignoreCompletion": false,
+                                "obtainFromItemLog": false,
+                                "golbinRaidExclusive": false,
+                                "sellsFor": 1000000,
+                                "tier": "Special",
+                                "validSlots": [
+                                    "Amulet"
+                                ],
+                                "occupiesSlots": [],
+                                "equipRequirements": [],
+                                "equipmentStats": [
+                                    {
+                                        "key": "stabAttackBonus",
+                                        "value": 30
+                                    },
+                                    {
+                                        "key": "slashAttackBonus",
+                                        "value": 30
+                                    },
+                                    {
+                                        "key": "blockAttackBonus",
+                                        "value": 30
+                                    },
+                                    {
+                                        "key": "meleeStrengthBonus",
+                                        "value": 20
+                                    }
+                                ]
+                            }
+                    ],
+                    "itemUpgrades": [
+                        {
+            "upgradedItemID": "expandedAreas:Amulet_of_Rage",
+            "itemCosts": [
                 {
-                  "type": "SkillLevel",
-                  "skillID": "melvorD:Ranged",
-                  "level": 60
+                    "id": "melvorD:Amulet_of_Fury",
+                    "quantity": 10
                 }
-              ],
-              "equipmentStats": [
+            ],
+            "rootItemIDs": [
+                "melvorD:Amulet_of_Fury"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+        },
+        {
+            "upgradedItemID": "expandedAreas:Amulet_of_Anguish",
+            "itemCosts": [
                 {
-                  "key": "rangedAttackBonus",
-                  "value": 13
+                    "id": "melvorD:Amulet_of_Torture",
+                    "quantity": 10
+                }
+            ],
+            "rootItemIDs": [
+                "melvorD:Amulet_of_Torture"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+        },
+        {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Strength",
+            "itemCosts": [
+                {
+                    "id": "melvorD:Elite_of_Strength",
+                    "quantity": 100
+                }
+            ],
+            "rootItemIDs": [
+                "melvorD:Elite_Amulet_of_Strength"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+        },
+        {
+                    "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Accuracy",
+                    "itemCosts": [
+                        {
+                            "id": "melvorD:Elite_of_Accuracy",
+                            "quantity": 100
+                        }
+                    ],
+                    "rootItemIDs": [
+                        "melvorD:Elite_Amulet_of_Accuracy"
+                    ],
+                    "isDowngrade": false,
+                    "currencyCosts": []
                 },
                 {
-                  "key": "rangedStrengthBonus",
-                  "value": 93
-                }
-              ],
-              "specialAttacks": [
-                "melvorAoD:CrystalShot"
-              ],
-              "overrideSpecialChances": [
-                10
-              ],
-              "ammoType": "Javelins"
-            }
-          ],
-          "itemUpgrades": [
-            {
-              "rootItemIDs": [
-                "melvorAoD:Crystal_Javelin"
-              ],
-              "itemCosts": [
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Defence",
+            "itemCosts": [
                 {
-                  "id": "melvorAoD:Crystal_Javelin",
-                  "quantity": 1
+                    "id": "melvorD:Elite_of_Defence",
+                    "quantity": 100
                 }
-              ],
-              "upgradedItemID": "expandedAreas:Crystal_Javelin_Ammo",
-              "isDowngrade": false
-            },
-            {
-              "rootItemIDs": [
-                "melvorAoD:Pure_Crystal_Javelin"
-              ],
-              "itemCosts": [
-                {
-                  "id": "melvorAoD:Pure_Crystal_Javelin",
-                  "quantity": 1
-                }
-              ],
-              "upgradedItemID": "expandedAreas:Pure_Crystal_Javelin_Ammo",
-              "isDowngrade": false
-            }
-          ]
+            ],
+            "rootItemIDs": [
+                "melvorD:Elite_Amulet_of_Defence"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
         },
-        "modifications": {
-          "items": [
-            {
-              "id": "melvorAoD:Ghostly_Parrot",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Sailors_Compass",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Cursed_Arcana",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ancient_Arcana",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ancient_Scythe",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Old_Wooden_Ladle",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Mining_Lantern",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Blacksmith_Tongs",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Chisel",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Fishing_Net",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Archaeologists_Whip",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Golden_Trowel",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Captains_Logbook",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Old_Spyglass",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Enhanced_Spyglass",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Old_Fancy_Quill",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Sturdy_Fancy_Quill",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Bottle_of_Mystic_Water",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Summoning",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Barrier_Eroding_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Barrier_Hunter_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Bone_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Bronze_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Cleansing_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Cursed_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Haunted_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Barrier_Touch",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Deception",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Faith",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Malice",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Silver_Magic_Band",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Summoners_Blessed_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Unholy_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            }
-          ],
-          "dungeons": [
-            {
-              "id": "melvorAoD:Unholy_Forest",
-              "difficulty": [
-                3
-              ]
-            }
-          ],
-          "monsters": [
-            {
-              "id": "melvorAoD:Nagaia",
-              "levels": {
-                "Hitpoints": 1125,
-                "Attack": 1,
-                "Strength": 1,
-                "Defence": 575,
-                "Ranged": 750,
-                "Magic": 500
-              }
-            }
-          ]
-        }
-      },
-      {
-        "namespace": "melvorTotH",
-        "data": {
-          "itemUpgrades": [
-            {
-              "rootItemIDs": [
-                "melvorTotH:Corundum_Javelin"
-              ],
-              "itemCosts": [
+        {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Glory",
+            "itemCosts": [
                 {
-                  "id": "melvorTotH:Corundum_Javelin",
-                  "quantity": 1
+                    "id": "melvorD:Elite_of_Glory",
+                    "quantity": 100
                 }
-              ],
-              "upgradedItemID": "expandedAreas:Corundum_Javelin_Ammo",
-              "isDowngrade": false
-            },
-            {
-              "rootItemIDs": [
-                "melvorTotH:Augite_Javelin"
-              ],
-              "itemCosts": [
-                {
-                  "id": "melvorTotH:Augite_Javelin",
-                  "quantity": 1
-                }
-              ],
-              "upgradedItemID": "expandedAreas:Augite_Javelin_Ammo",
-              "isDowngrade": false
-            },
-            {
-              "rootItemIDs": [
-                "melvorTotH:Divine_Javelin"
-              ],
-              "itemCosts": [
-                {
-                  "id": "melvorTotH:Divine_Javelin",
-                  "quantity": 1
-                }
-              ],
-              "upgradedItemID": "expandedAreas:Divine_Javelin_Ammo",
-              "isDowngrade": false
-            },
-            {
-              "rootItemIDs": [
-                "melvorTotH:Meteorite_Javelin"
-              ],
-              "itemCosts": [
-                {
-                  "id": "melvorTotH:Meteorite_Javelin",
-                  "quantity": 1
-                }
-              ],
-              "upgradedItemID": "expandedAreas:Meteorite_Javelin_Ammo",
-              "isDowngrade": false
-            }
-          ]
+            ],
+            "rootItemIDs": [
+                "melvorD:Elite_Amulet_of_Glory"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
         },
-        "modifications": {
-          "items": [
-            {
-              "id": "melvorTotH:Voodoo_Trinket",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Book_of_the_Ancients",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Hunters_Journal",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Mortar_and_Pestle",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Grappling_Hook",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Potion_Stirrer",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Burning_Embers_Book",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Onyx_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Onyx_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Cerulean_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Cerulean_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Oricha_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Oricha_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Runestone_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Zephyte_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Zephyte_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Runestone_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Meteorite_Warrior_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Meteorite_Marksman_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Meteorite_Spellcaster_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Meteorite_Woodcutting_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Blood_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Ring_of_Curse_Protection",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Ring_of_Phantom_Summon",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            }
-          ]
-        }
-      }
-    ]
+        {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Magic",
+            "itemCosts": [
+                {
+                    "id": "melvorD:Elite_of_Magic",
+                    "quantity": 100
+                }
+            ],
+            "rootItemIDs": [
+                "melvorD:Elite_Amulet_of_Magic"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+        },
+        {
+                    "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Ranged",
+                    "itemCosts": [
+                        {
+                            "id": "melvorD:Elite_of_Ranged",
+                            "quantity": 100
+                        }
+                    ],
+                    "rootItemIDs": [
+                        "melvorD:Elite_Amulet_of_Ranged"
+                    ],
+                    "isDowngrade": false,
+                    "currencyCosts": []
+                },
+                {
+                    "upgradedItemID": "expandedAreas:M_E_L_V_O_R",
+                    "itemCosts": [
+                        {
+                            "id": "expandedAreas:Masterful_Amulet_of_Accuracy",
+                            "quantity": 2
+                        },
+                        {
+                            "id": "expandedAreas:Masterful_Amulet_of_Strength",
+                            "quantity": 2
+                        },
+                        {
+                            "id": "expandedAreas:Masterful_Amulet_of_Defence",
+                            "quantity": 2
+                        },
+                        {
+                            "id": "expandedAreas:Masterful_Amulet_of_Magic",
+                            "quantity": 2
+                        },
+                        {
+                            "id": "expandedAreas:Masterful_Amulet_of_Ranged",
+                            "quantity": 2
+                        },
+                        {
+                            "id": "expandedAreas:Masterful_Amulet_of_Glory",
+                            "quantity": 2
+                        },
+                        {
+                            "id": "expandedAreas:Amulet_of_Rage",
+                            "quantity": 10
+                        },
+                        {
+                            "id": "expandedAreas:Amulet_of_Anguish",
+                            "quantity": 10
+                        }
+                    ],
+                    "rootItemIDs": [
+                        "expandedAreas:Masterful_Amulet_of_Strength",
+                        "expandedAreas:Masterful_Amulet_of_Accuracy",
+                        "expandedAreas:Masterful_Amulet_of_Defence",
+                        "expandedAreas:Masterful_Amulet_of_Glory",
+                        "expandedAreas:Masterful_Amulet_of_Ranged",
+                        "expandedAreas:Masterful_Amulet_of_Magic",
+                        "expandedAreas:Amulet_of_Rage",
+                        "expandedAreas:Amulet_of_Anguish"
+                    ],
+                    "isDowngrade": false,
+                    "currencyCosts": []
+                }
+                        ]
+    },
+    "modifications": {}
 }

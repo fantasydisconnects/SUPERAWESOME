@@ -846,7 +846,7 @@
         "templateID": "melvorD:StaticNonCountingModifier",
         "name": "Elemental",
         "media": "assets/status/elemental.png",
-        "target": "Target",
+        "target": "Self",
         "parameters": [],
         "statGroups": [
           {
@@ -1009,7 +1009,17 @@
       }
     ],
     "combatPassives": [
-      {
+              {
+          "id": "AfflictingTouch",
+          "name": "Afflicting Touch",
+          "combatEffects": [
+            {
+              "appliesWhen": "HitWithAttack",
+              "effectID": "melvorD:Affliction"
+            }
+          ]
+        },
+        {
         "id": "AirVulnerability",
         "name": "Air Vulnerability",
         "customDescription": "The Enemy takes 50% more damage from Air Spells and takes 10% more damage while affected by Frostburn.",
@@ -1464,7 +1474,375 @@
       }
     ],
     "items": [
-      {
+                  {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Strength",
+                "name": "Masterful Amulet of Strength",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Strength.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 10000000,
+                "tier": "combat",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "meleeStrengthBonus",
+                    "value": 40
+                  }
+                ]
+              },
+              {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Accuracy",
+                "name": "Masterful Amulet of Accuracy",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Accuracy.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 10000000,
+                "tier": "combat",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "stabAttackBonus",
+                    "value": 16
+                  },
+                  {
+                    "key": "slashAttackBonus",
+                    "value": 16
+                  },
+                  {
+                    "key": "blockAttackBonus",
+                    "value": 16
+                  }
+                ]
+              },
+              {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Defence",
+                "name": "Masterful Amulet of Defence",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Defence.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 10000000,
+                "tier": "combat",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "meleeDefenceBonus",
+                    "value": 28
+                  },
+                  {
+                    "key": "damageReduction",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Glory",
+                "name": "Masterful Amulet of Glory",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Glory.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 25000000,
+                "tier": "combat",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "stabAttackBonus",
+                    "value": 40
+                  },
+                  {
+                    "key": "slashAttackBonus",
+                    "value": 40
+                  },
+                  {
+                    "key": "blockAttackBonus",
+                    "value": 40
+                  },
+                  {
+                    "key": "meleeStrengthBonus",
+                    "value": 24
+                  },
+                  {
+                    "key": "meleeDefenceBonus",
+                    "value": 12
+                  }
+                ]
+              },
+              {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Magic",
+                "name": "Masterful Amulet of Magic",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Magic.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 10000000,
+                "tier": "combat",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "magicAttackBonus",
+                    "value": 36
+                  },
+                  {
+                    "key": "magicDamageBonus",
+                    "value": 6
+                  },
+                  {
+                    "key": "meleeDefenceBonus",
+                    "value": -20
+                  },
+                  {
+                    "key": "rangedDefenceBonus",
+                    "value": -20
+                  },
+                  {
+                    "key": "magicDefenceBonus",
+                    "value": 36
+                  },
+                  {
+                    "key": "damageReduction",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "itemType": "Equipment",
+                "id": "Masterful_Amulet_of_Ranged",
+                "name": "Masterful Amulet of Ranged",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/item/Equipment/Masterful_Amulet_of_Ranged",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 18000000,
+                "tier": "Special",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "rangedAttackBonus",
+                    "value": 60
+                  },
+                  {
+                    "key": "rangedStrengthBonus",
+                    "value": 20
+                  },
+                  {
+                    "key": "rangedDefenceBonus",
+                    "value": 20
+                  },
+                  {
+                    "key": "magicDefenceBonus",
+                    "value": 10
+                  },
+                  {
+                    "key": "damageReduction",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "itemType": "Equipment",
+                "id": "M_E_L_V_O_R",
+                "name": "(M)agnificently (E)nchanted (L)aurel (V)anguard (O)f (R)eckoning",
+                "category": "Combat",
+                "type": "Armour",
+                "media": "assets/items/Equipment/M_E_L_V_O_R.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 1000000000,
+                "tier": "none",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "stabAttackBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "slashAttackBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "blockAttackBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "rangedAttackBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "magicAttackBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "meleeStrengthBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "rangedStrengthBonus",
+                    "value": 30
+                  },
+                  {
+                    "key": "magicDamageBonus",
+                    "value": 20
+                  },
+                  {
+                    "key": "meleeDefenceBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "rangedDefenceBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "magicDefenceBonus",
+                    "value": 69
+                  },
+                  {
+                    "key": "damageReduction",
+                    "value": 10
+                  }
+                ]
+              },
+              {
+                "itemType": "Equipment",
+                "id": "Amulet_of_Rage",
+                "name": "Amulet of Rage",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/items/Equipment/Amulet_of_Rage.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 1500000,
+                "tier": "Special",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "stabAttackBonus",
+                    "value": 20
+                  },
+                  {
+                    "key": "slashAttackBonus",
+                    "value": 20
+                  },
+                  {
+                    "key": "blockAttackBonus",
+                    "value": 20
+                  },
+                  {
+                    "key": "rangedAttackBonus",
+                    "value": 20
+                  },
+                  {
+                    "key": "magicAttackBonus",
+                    "value": 20
+                  },
+                  {
+                    "key": "meleeStrengthBonus",
+                    "value": 16
+                  },
+                  {
+                    "key": "meleeDefenceBonus",
+                    "value": 30
+                  },
+                  {
+                    "key": "rangedDefenceBonus",
+                    "value": 30
+                  },
+                  {
+                    "key": "magicDefenceBonus",
+                    "value": 30
+                  }
+                ]
+              },
+              {
+                "itemType": "Equipment",
+                "id": "Amulet_of_Anguish",
+                "name": "Amulet of Anguish",
+                "category": "Combat",
+                "type": "Amulet",
+                "media": "assets/items/Equipment/Amulet_of_Anguish.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 1000000,
+                "tier": "Special",
+                "validSlots": [
+                  "Amulet"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [],
+                "equipmentStats": [
+                  {
+                    "key": "stabAttackBonus",
+                    "value": 30
+                  },
+                  {
+                    "key": "slashAttackBonus",
+                    "value": 30
+                  },
+                  {
+                    "key": "blockAttackBonus",
+                    "value": 30
+                  },
+                  {
+                    "key": "meleeStrengthBonus",
+                    "value": 20
+                  }
+                ]
+              },
+              {
         "id": "Mastery_Token_Combat",
         "name": "Mastery Token (Combat)",
         "category": "Mastery",
@@ -1474,7 +1852,7 @@
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 1500,
-        "customDescription": "Obtained by completing Combat Achievment tasks. Used to purchase Combat Mastery Upgrades in the Shop.",
+        "customDescription": "Obtained by completing Combat Achievement tasks. Used to purchase Combat Mastery Upgrades in the Shop.",
         "itemType": "Item"
       },
       {
@@ -2187,38 +2565,7 @@
         "golbinRaidExclusive": false,
         "sellsFor": 5000000
       },
-      {
-        "itemType": "Equipment",
-        "id": "Masterful_Amulet_of_Accuracy",
-        "name": "Masterful Amulet of Accuracy",
-        "category": "Combat",
-        "type": "Amulet",
-        "media": "assets/items/Equipment/Masterful_Amulet_of_Accuracy.png",
-        "ignoreCompletion": false,
-        "obtainFromItemLog": false,
-        "golbinRaidExclusive": false,
-        "sellsFor": 1000000,
-        "tier": "combat",
-        "validSlots": [
-          "Amulet"
-        ],
-        "occupiesSlots": [],
-        "equipRequirements": [],
-        "equipmentStats": [
-          {
-            "key": "stabAttackBonus",
-            "value": 40
-          },
-          {
-            "key": "slashAttackBonus",
-            "value": 40
-          },
-          {
-            "key": "blockAttackBonus",
-            "value": 40
-          }
-        ]
-      },
+    
       {
         "itemType": "Item",
         "id": "Phoenix_Feather",
@@ -3361,6 +3708,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Lesser_Sigil_of_Chilling.png",
+        "customDescription": "+10% chance on hit to apply 20% Slowed for 3 turns",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3419,6 +3767,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Greater_Sigil_of_Chilling.png",
+        "customDescription": "+10% chance on hit to apply 25% Slowed for 3 turns, and +1% chance to apply Freeze for 1 turn",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3470,6 +3819,17 @@
                 "value": 25
               }
             ]
+          },
+          {
+            "appliesWhen": "HitWithAttack",
+            "chance": 1,
+            "effectID": "melvorD:Freeze",
+            "initialParams": [
+              {
+                "name": "turns",
+                "value": 1
+              }
+            ]
           }
         ]
       },
@@ -3480,6 +3840,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Superior_Sigil_of_Chilling.png",
+        "customDescription": "+10% chance on hit to apply 30% Slowed for 3 turns, and 1% chance to apply Freeze for 2 turn",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3525,11 +3886,22 @@
             "initialParams": [
               {
                 "name": "turns",
-                "value": 4
+                "value": 3
               },
               {
                 "name": "magnitude",
                 "value": 30
+              }
+            ]
+          },
+          {
+            "appliesWhen": "HitWithAttack",
+            "chance": 1,
+            "effectID": "melvorD:Freeze",
+            "initialParams": [
+              {
+                "name": "turns",
+                "value": 2
               }
             ]
           }
@@ -3576,7 +3948,7 @@
         ],
         "equipmentStats": [],
         "enemyModifiers": {
-          "dotDamageTaken": 5
+          "damageTaken": 3
         }
       },
       {
@@ -3623,7 +3995,7 @@
           "expandedAreas:Lesser_Sigil_of_Bursting"
         ],
         "enemyModifiers": {
-          "dotDamageTaken": 10
+          "damageTaken": 5
         }
       },
       {
@@ -3671,7 +4043,7 @@
           "expandedAreas:Greater_Sigil_of_Bursting"
         ],
         "enemyModifiers": {
-          "dotDamageTaken": 15
+          "damageTaken": 7
         }
       },
       {
@@ -3717,7 +4089,7 @@
         "combatEffects": [
           {
             "appliesWhen": "HitWithAttack",
-            "chance": 100,
+            "chance": 3,
             "effectID": "melvorD:Bleed100"
           }
         ]
@@ -3765,14 +4137,12 @@
         "cantEquipWith": [
           "expandedAreas:Lesser_Sigil_of_Blood"
         ],
-        "enemyModifiers": {
-          "bleedDOTDamageTaken": 10
-        },
+        
         "combatEffects": [
           {
             "appliesWhen": "HitWithAttack",
-            "chance": 100,
-            "effectID": "melvorD:Bleed100"
+            "chance": 5,
+            "effectID": "melvorD:Bleed200"
           }
         ]
       },
@@ -3783,7 +4153,6 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Superior_Sigil_of_Blood.png",
-        "customDescription": "+30% Lifesteal when the Enemy is afflicted by Bleed",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3821,14 +4190,11 @@
           "expandedAreas:Lesser_Sigil_of_Blood",
           "expandedAreas:Greater_Sigil_of_Blood"
         ],
-        "enemyModifiers": {
-          "bleedDOTDamageTaken": 20
-        },
         "combatEffects": [
           {
             "appliesWhen": "HitWithAttack",
-            "chance": 100,
-            "effectID": "melvorD:Bleed100"
+            "chance": 7,
+            "effectID": "melvorD:Bleed400"
           }
         ]
       },
@@ -3839,6 +4205,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Lesser_Sigil_of_Blight.png",
+        "customDescription": "+5% chance on hit to inflict Poison. While Enemy is afflicted by Poison, their Evasion is decreased by 10% on hit (up to 3 stacks).",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3886,7 +4253,7 @@
           {
             "effectID": "melvorD:Poison",
             "appliesWhen": "HitWithAttack",
-            "chance": 25
+            "chance": 5
           }
         ]
       },
@@ -3897,6 +4264,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Greater_Sigil_of_Blight.png",
+        "customDescription": "+10% chance on hit to inflict Poison. While Enemy is afflicted by Poison, their Evasion is decreased by 10% on hit (up to 3 stacks).",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -3947,7 +4315,7 @@
           {
             "effectID": "melvorD:Poison",
             "appliesWhen": "HitWithAttack",
-            "chance": 50
+            "chance": 10
           }
         ]
       },
@@ -3958,6 +4326,7 @@
         "category": "Accessory",
         "type": "Sigil",
         "media": "assets/items/Equipment/Superior_Sigil_of_Blight.png",
+        "customDescription": "+15% chance on hit to inflict Poison. While Enemy is afflicted by Poison, their Evasion is decreased by 10% on hit (up to 3 stacks).",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -4009,7 +4378,7 @@
           {
             "effectID": "melvorD:Poison",
             "appliesWhen": "HitWithAttack",
-            "chance": 75
+            "chance": 15
           }
         ]
       },
@@ -4376,7 +4745,7 @@
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
-            "chance": 100,
+            "customDescription": "Apply Stun for 1 turn when critically hitting with an attack.",
             "initialParams": [
               {
                 "name": "turns",
@@ -4433,7 +4802,7 @@
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
-            "chance": 100,
+            "customDescription": "Apply Stun for 2 turns when critically hitting with an attack.",
             "initialParams": [
               {
                 "name": "turns",
@@ -4491,7 +4860,7 @@
         {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
-            "chance": 100,
+            "customDescription": "Apply Stun for 3 turns when critically hitting with an attack.",
             "initialParams": [
               {
                 "name": "turns",
@@ -7246,14 +7615,14 @@
         "category": "Cooking",
         "type": "Potion",
         "media": "assets/items/Potion/Facekicker.png",
-        "customDescription": "-10% Attack Interval, but -80% Global Accuracy Rating.",
+        "customDescription": "-10% Attack Interval, but -100% Global Accuracy Rating.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 1200,
         "itemType": "Potion",
         "modifiers": {
-          "accuracyRating": -80,
+          "accuracyRating": -100,
           "attackInterval": -10
         },
         "charges": 5,
@@ -7271,14 +7640,14 @@
         "category": "Cooking",
         "type": "Potion",
         "media": "assets/items/Potion/Facekicker_m.png",
-        "customDescription": "-20% Attack Interval, but -95% Global Accuracy Rating.",
+        "customDescription": "-20% Attack Interval, but -200% Global Accuracy Rating.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 2400,
         "itemType": "Potion",
         "modifiers": {
-          "accuracyRating": -95,
+          "accuracyRating": -200,
           "attackInterval": -20
         },
         "charges": 5,
@@ -7432,7 +7801,6 @@
         "category": "Cooking",
         "type": "Potion",
         "media": "assets/items/Potion/One_Foot_in_the_Grave.png",
-        "customDescription": "+20% Damage Dealt when affected by 2 or more effects.<br>Become afflicted with 1-5 Random Curses (15% Chance per Curse) at the start of a fight.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -7442,39 +7810,16 @@
         "sellsFor": 2000,
         "itemType": "Potion",
         "modifiers": {
-          "damageDealtWith2Effects": 20
+          "damageDealtWith2Effects": 10
         },
         "combatEffects": [
           {
             "appliesWhen": "StartOfFight",
             "tableID": "melvorF:RandomCurse",
             "targetOverride": "Self",
-            "chance": 20
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 20
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 20
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 20
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 20
+            "chance": 50
           }
+          
         ],
         "consumesOn": [
           {
@@ -7488,7 +7833,6 @@
         "category": "Cooking",
         "type": "Potion",
         "media": "assets/items/Potion/One_Foot_in_the_Grave_m.png",
-        "customDescription": "+30% Damage Dealt when affected by 2 or more effects.<br>Become afflicted with 1-5 Random Curses (30% Chance per Curse) at the start of a fight.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -7504,32 +7848,7 @@
           {
             "appliesWhen": "StartOfFight",
             "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 30
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 30
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 30
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 30
-          },
-          {
-            "appliesWhen": "StartOfFight",
-            "tableID": "melvorF:RandomCurse",
-            "targetOverride": "Self",
-            "chance": 30
+            "targetOverride": "Self"
           }
         ],
         "consumesOn": [
@@ -9217,7 +9536,7 @@
       {
         "itemType": "Item",
         "id": "Bronze_Thrownaxe_Head",
-        "name": "Bronze Thrownaxe Head",
+        "name": "Bronze Thrownaxe Heads",
         "category": "Smithing",
         "type": "Thrownaxe",
         "media": "assets/items/Item/Bronze_Thrownaxe_Head.png",
@@ -9229,7 +9548,7 @@
       {
         "itemType": "Item",
         "id": "Iron_Thrownaxe_Head",
-        "name": "Iron Thrownaxe Head",
+        "name": "Iron Thrownaxe Heads",
         "category": "Smithing",
         "type": "Thrownaxe",
         "media": "assets/items/Item/Iron_Thrownaxe_Head.png",
@@ -9241,7 +9560,7 @@
       {
         "itemType": "Item",
         "id": "Steel_Thrownaxe_Head",
-        "name": "Steel Thrownaxe Head",
+        "name": "Steel Thrownaxe Heads",
         "category": "Smithing",
         "type": "Thrownaxe",
         "media": "assets/items/Item/Steel_Thrownaxe_Head.png",
@@ -9253,7 +9572,7 @@
       {
         "itemType": "Item",
         "id": "Black_Thrownaxe_Head",
-        "name": "Black Thrownaxe Head",
+        "name": "Black Thrownaxe Heads",
         "category": "Smithing",
         "type": "Thrownaxe",
         "media": "assets/items/Item/Black_Thrownaxe_Head.png",
@@ -9265,7 +9584,7 @@
       {
         "itemType": "Item",
         "id": "Mithril_Thrownaxe_Head",
-        "name": "Mithril Thrownaxe Head",
+        "name": "Mithril Thrownaxe Heads",
         "category": "Smithing",
         "type": "Thrownaxe",
         "media": "assets/items/Item/Mithril_Thrownaxe_Head.png",
@@ -9277,7 +9596,7 @@
       {
         "itemType": "Item",
         "id": "Adamant_Thrownaxe_Head",
-        "name": "Adamant Thrownaxe Head",
+        "name": "Adamant Thrownaxe Heads",
         "category": "Smithing",
         "type": "Thrownaxe",
         "media": "assets/items/Item/Adamant_Thrownaxe_Head.png",
@@ -9289,7 +9608,7 @@
       {
         "itemType": "Item",
         "id": "Rune_Thrownaxe_Head",
-        "name": "Rune Thrownaxe Head",
+        "name": "Rune Thrownaxe Heads",
         "category": "Smithing",
         "type": "Thrownaxe",
         "media": "assets/items/Item/Rune_Thrownaxe_Head.png",
@@ -9301,7 +9620,7 @@
       {
         "itemType": "Item",
         "id": "Dragon_Thrownaxe_Head",
-        "name": "Dragon Thrownaxe Head",
+        "name": "Dragon Thrownaxe Heads",
         "category": "Smithing",
         "type": "Thrownaxe",
         "media": "assets/items/Item/Dragon_Thrownaxe_Head.png",
@@ -9489,7 +9808,7 @@
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 450000,
-        "customDescription": "Passive: +50 Minimum Damage when using Water Spells. +2% chance to Freeze target on hit.",
+        "customDescription": "Passive: +35 Minimum Damage when using Water Spells. +1% chance to Freeze target on hit.",
         "tier": "ancient",
         "validSlots": [
           "Helmet",
@@ -9533,14 +9852,14 @@
           "flatMagicMinHit": [
             {
               "subcategoryID": "melvorD:Water",
-              "value": 5
+              "value": 3.5
             }
           ]
         },
         "combatEffects": [
           {
             "appliesWhen": "HitWithAttack",
-            "chance": 2,
+            "chance": 1,
             "effectID": "melvorD:Freeze",
             "condition": {
               "character": "Player",
@@ -9562,7 +9881,7 @@
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 950000,
-        "customDescription": "Passive: +50 Minimum Damage when using Water Spells.+2% chance to Freeze target on hit.",
+        "customDescription": "Passive: +40 Minimum Damage when using Water Spells. +2% chance to Freeze target on hit.",
         "tier": "ancient",
         "validSlots": [
           "Platelegs",
@@ -9606,7 +9925,7 @@
           "flatMagicMinHit": [
             {
               "subcategoryID": "melvorD:Water",
-              "value": 5
+              "value": 4
             }
           ]
         },
@@ -9635,7 +9954,7 @@
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 1050000,
-        "customDescription": "Passive: +50 Minimum Damage when using Water Spells. +2% chance to Freeze target on hit.",
+        "customDescription": "Passive: +40 Minimum Damage when using Water Spells. +2% chance to Freeze target on hit.",
         "tier": "ancient",
         "validSlots": [
           "Platebody",
@@ -9679,7 +9998,7 @@
           "flatMagicMinHit": [
             {
               "subcategoryID": "melvorD:Water",
-              "value": 5
+              "value": 4
             }
           ]
         },
@@ -9708,7 +10027,7 @@
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 200000,
-        "customDescription": "Passive: +50 Minimum Damage when using Water Spells.+2% chance to Freeze target on hit.",
+        "customDescription": "Passive: +35 Minimum Damage when using Water Spells. +1% chance to Freeze target on hit.",
         "tier": "ancient",
         "validSlots": [
           "Boots",
@@ -9752,14 +10071,14 @@
           "flatMagicMinHit": [
             {
               "subcategoryID": "melvorD:Water",
-              "value": 5
+              "value": 3.5
             }
           ]
         },
         "combatEffects": [
           {
             "appliesWhen": "HitWithAttack",
-            "chance": 2,
+            "chance": 1,
             "effectID": "melvorD:Freeze",
             "condition": {
               "character": "Player",
@@ -9781,7 +10100,7 @@
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 100000,
-        "customDescription": "Passive: +50 Minimum Damage when using Water Spells. +2% chance to Freeze target on hit.",
+        "customDescription": "Passive: +35 Minimum Damage when using Water Spells. +1% chance to Freeze target on hit.",
         "tier": "ancient",
         "validSlots": [
           "Gloves",
@@ -9825,14 +10144,14 @@
           "flatMagicMinHit": [
             {
               "subcategoryID": "melvorD:Water",
-              "value": 5
+              "value": 3.5
             }
           ]
         },
         "combatEffects": [
           {
             "appliesWhen": "HitWithAttack",
-            "chance": 2,
+            "chance": 1,
             "effectID": "melvorD:Freeze",
             "condition": {
               "character": "Player",
@@ -17885,7 +18204,35 @@
       }
     ],
     "attacks": [
-      {
+              {
+                "id": "DreadfulGlare",
+                "defaultChance": 30,
+                "damage": [],
+                "prehitEffects": [],
+                "onhitEffects": [
+                  {
+                    "chance": 50,
+                    "effectID": "melvorD:Fear",
+                    "targetOverride": "Target",
+                    "initialParams": [
+                      {
+                        "name": "turns",
+                        "value": 1
+                      }
+                    ]
+                  }
+                ],
+                "cantMiss": true,
+                "attackCount": 1,
+                "attackInterval": 200,
+                "lifesteal": 0,
+                "name": "Dreadful Glare",
+                "description": "On use, inflicts you with Fear for ${onHitEffect0turns} of your turns. Deals no damage. If the debuff is already active, performs a regular attack instead.",
+                "descriptionGenerator": "On use, <onhitEffect>. Deals no damage. If the debuff is already active, performs a regular attack instead.",
+                "usesRunesPerProc": false,
+                "canNormalAttack": true
+              },
+              {
         "id": "DrainingSwipe",
         "defaultChance": 100,
         "damage": [
@@ -45452,8 +45799,169 @@
       }
     ],
     "itemUpgrades": [
-      {
-        "rootItemIDs": [
+{
+            "upgradedItemID": "expandedAreas:Amulet_of_Rage",
+            "itemCosts": [
+              {
+                "id": "melvorD:Amulet_of_Fury",
+                "quantity": 10
+              }
+            ],
+            "rootItemIDs": [
+              "melvorD:Amulet_of_Fury"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "upgradedItemID": "expandedAreas:Amulet_of_Anguish",
+            "itemCosts": [
+              {
+                "id": "melvorD:Amulet_of_Torture",
+                "quantity": 10
+              }
+            ],
+            "rootItemIDs": [
+              "melvorD:Amulet_of_Torture"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Strength",
+            "itemCosts": [
+              {
+                "id": "melvorD:Elite_of_Strength",
+                "quantity": 100
+              }
+            ],
+            "rootItemIDs": [
+              "melvorD:Elite_Amulet_of_Strength"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Accuracy",
+            "itemCosts": [
+              {
+                "id": "melvorD:Elite_of_Accuracy",
+                "quantity": 100
+              }
+            ],
+            "rootItemIDs": [
+              "melvorD:Elite_Amulet_of_Accuracy"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Defence",
+            "itemCosts": [
+              {
+                "id": "melvorD:Elite_of_Defence",
+                "quantity": 100
+              }
+            ],
+            "rootItemIDs": [
+              "melvorD:Elite_Amulet_of_Defence"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Glory",
+            "itemCosts": [
+              {
+                "id": "melvorD:Elite_of_Glory",
+                "quantity": 100
+              }
+            ],
+            "rootItemIDs": [
+              "melvorD:Elite_Amulet_of_Glory"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Magic",
+            "itemCosts": [
+              {
+                "id": "melvorD:Elite_of_Magic",
+                "quantity": 100
+              }
+            ],
+            "rootItemIDs": [
+              "melvorD:Elite_Amulet_of_Magic"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Ranged",
+            "itemCosts": [
+              {
+                "id": "melvorD:Elite_of_Ranged",
+                "quantity": 100
+              }
+            ],
+            "rootItemIDs": [
+              "melvorD:Elite_Amulet_of_Ranged"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "upgradedItemID": "expandedAreas:M_E_L_V_O_R",
+            "itemCosts": [
+              {
+                "id": "expandedAreas:Masterful_Amulet_of_Accuracy",
+                "quantity": 2
+              },
+              {
+                "id": "expandedAreas:Masterful_Amulet_of_Strength",
+                "quantity": 2
+              },
+              {
+                "id": "expandedAreas:Masterful_Amulet_of_Defence",
+                "quantity": 2
+              },
+              {
+                "id": "expandedAreas:Masterful_Amulet_of_Magic",
+                "quantity": 2
+              },
+              {
+                "id": "expandedAreas:Masterful_Amulet_of_Ranged",
+                "quantity": 2
+              },
+              {
+                "id": "expandedAreas:Masterful_Amulet_of_Glory",
+                "quantity": 2
+              },
+              {
+                "id": "expandedAreas:Amulet_of_Rage",
+                "quantity": 10
+              },
+              {
+                "id": "expandedAreas:Amulet_of_Anguish",
+                "quantity": 10
+              }
+            ],
+            "rootItemIDs": [
+              "expandedAreas:Masterful_Amulet_of_Strength",
+              "expandedAreas:Masterful_Amulet_of_Accuracy",
+              "expandedAreas:Masterful_Amulet_of_Defence",
+              "expandedAreas:Masterful_Amulet_of_Glory",
+              "expandedAreas:Masterful_Amulet_of_Ranged",
+              "expandedAreas:Masterful_Amulet_of_Magic",
+              "expandedAreas:Amulet_of_Rage",
+              "expandedAreas:Amulet_of_Anguish"
+            ],
+            "isDowngrade": false,
+            "currencyCosts": []
+          },
+          {
+            "rootItemIDs": [
           "melvorF:Bronze_Javelin"
         ],
         "itemCosts": [
@@ -50751,9 +51259,9 @@
         "data": {
           "categories": [
             {
-              "id": "Barbarian_Smithing",
-              "name": "Barbarian Smithing",
-              "media": "assets/icons/Barbarian.png"
+              "id": "BlackGear",
+              "name": "Black Gear",
+              "media": "assets/items/Equipment/Black_Helmet.png"
             }
           ],
           "recipes": [
@@ -50792,7 +51300,7 @@
               "productID": "melvorD:Black_Dagger",
               "baseQuantity": 1,
               "baseExperience": 40,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50806,7 +51314,7 @@
               "productID": "expandedAreas:Black_Throwing_Knife",
               "baseQuantity": 4,
               "baseExperience": 40,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50820,7 +51328,7 @@
               "productID": "melvorD:Black_Sword",
               "baseQuantity": 1,
               "baseExperience": 40,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50834,7 +51342,7 @@
               "productID": "expandedAreas:Black_Arrowtips",
               "baseQuantity": 15,
               "baseExperience": 40,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50848,7 +51356,7 @@
               "productID": "expandedAreas:Black_Gloves",
               "baseQuantity": 1,
               "baseExperience": 80,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50862,7 +51370,7 @@
               "productID": "melvorD:Black_Scimitar",
               "baseQuantity": 1,
               "baseExperience": 80,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50876,7 +51384,7 @@
               "productID": "melvorD:Black_Helmet",
               "baseQuantity": 1,
               "baseExperience": 80,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50890,7 +51398,7 @@
               "productID": "melvorD:Black_Battleaxe",
               "baseQuantity": 1,
               "baseExperience": 120,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50904,7 +51412,7 @@
               "productID": "expandedAreas:Black_Javelin_Heads",
               "baseQuantity": 5,
               "baseExperience": 80,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50918,7 +51426,7 @@
               "productID": "melvorD:Black_Boots",
               "baseQuantity": 1,
               "baseExperience": 80,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50932,7 +51440,7 @@
               "productID": "melvorD:Black_Shield",
               "baseQuantity": 1,
               "baseExperience": 120,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50946,7 +51454,7 @@
               "productID": "melvorD:Black_2H_Sword",
               "baseQuantity": 1,
               "baseExperience": 120,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50960,7 +51468,7 @@
               "productID": "expandedAreas:Black_Crossbow_Head",
               "baseQuantity": 1,
               "baseExperience": 120,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50974,7 +51482,7 @@
               "productID": "melvorD:Black_Platelegs",
               "baseQuantity": 1,
               "baseExperience": 120,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50988,7 +51496,7 @@
               "productID": "melvorD:Black_Platebody",
               "baseQuantity": 1,
               "baseExperience": 200,
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Sterkite_Bar",
@@ -50999,7 +51507,7 @@
             {
               "id": "Bronze_Spear",
               "productID": "expandedAreas:Bronze_Spear",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:BronzeGear",
               "baseExperience": 20,
               "baseQuantity": 1,
               "level": 9,
@@ -51017,7 +51525,7 @@
             {
               "id": "Iron_Spear",
               "productID": "expandedAreas:Iron_Spear",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:IronGear",
               "baseExperience": 40,
               "baseQuantity": 1,
               "level": 24,
@@ -51035,7 +51543,7 @@
             {
               "id": "Steel_Spear",
               "productID": "expandedAreas:Steel_Spear",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:SteelGear",
               "baseExperience": 60,
               "baseQuantity": 1,
               "level": 39,
@@ -51053,7 +51561,7 @@
             {
               "id": "Black_Spear",
               "productID": "expandedAreas:Black_Spear",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "baseExperience": 80,
               "baseQuantity": 1,
               "level": 46,
@@ -51071,7 +51579,7 @@
             {
               "id": "Mithril_Spear",
               "productID": "expandedAreas:Mithril_Spear",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:MithrilGear",
               "baseExperience": 100,
               "baseQuantity": 1,
               "level": 54,
@@ -51089,7 +51597,7 @@
             {
               "id": "Adamant_Spear",
               "productID": "expandedAreas:Adamant_Spear",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:AdamantGear",
               "baseExperience": 120,
               "baseQuantity": 1,
               "level": 69,
@@ -51107,7 +51615,7 @@
             {
               "id": "Rune_Spear",
               "productID": "expandedAreas:Rune_Spear",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:RuneGear",
               "baseExperience": 150,
               "baseQuantity": 1,
               "level": 84,
@@ -51125,7 +51633,7 @@
             {
               "id": "Dragon_Spear",
               "productID": "expandedAreas:Dragon_Spear",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:DragonGear",
               "baseExperience": 200,
               "baseQuantity": 1,
               "level": 98,
@@ -51143,7 +51651,7 @@
             {
               "id": "Bronze_Thrownaxe_Head",
               "productID": "expandedAreas:Bronze_Thrownaxe_Head",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:BronzeGear",
               "baseExperience": 10,
               "baseQuantity": 3,
               "level": 4,
@@ -51157,7 +51665,7 @@
             {
               "id": "Iron_Thrownaxe_Head",
               "productID": "expandedAreas:Iron_Thrownaxe_Head",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:IronGear",
               "baseExperience": 20,
               "baseQuantity": 3,
               "level": 13,
@@ -51171,7 +51679,7 @@
             {
               "id": "Steel_Thrownaxe_Head",
               "productID": "expandedAreas:Steel_Thrownaxe_Head",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:SteelGear",
               "baseExperience": 30,
               "baseQuantity": 3,
               "level": 28,
@@ -51185,7 +51693,7 @@
             {
               "id": "Black_Thrownaxe_Head",
               "productID": "expandedAreas:Black_Thrownaxe_Head",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "expandedAreas:BlackGear",
               "baseExperience": 40,
               "baseQuantity": 3,
               "level": 36,
@@ -51199,7 +51707,7 @@
             {
               "id": "Mithril_Thrownaxe_Head",
               "productID": "expandedAreas:Mithril_Thrownaxe_Head",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:MithrilGear",
               "baseExperience": 50,
               "baseQuantity": 3,
               "level": 43,
@@ -51213,7 +51721,7 @@
             {
               "id": "Adamant_Thrownaxe_Head",
               "productID": "expandedAreas:Adamant_Thrownaxe_Head",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:AdamantGear",
               "baseExperience": 60,
               "baseQuantity": 3,
               "level": 58,
@@ -51227,7 +51735,7 @@
             {
               "id": "Rune_Thrownaxe_Head",
               "productID": "expandedAreas:Rune_Thrownaxe_Head",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:RuneGear",
               "baseExperience": 75,
               "baseQuantity": 3,
               "level": 73,
@@ -51241,7 +51749,7 @@
             {
               "id": "Dragon_Thrownaxe_Head",
               "productID": "expandedAreas:Dragon_Thrownaxe_Head",
-              "categoryID": "expandedAreas:Barbarian_Smithing",
+              "categoryID": "melvorD:DragonGear",
               "baseExperience": 100,
               "baseQuantity": 3,
               "level": 88,
@@ -51590,9 +52098,9 @@
         "data": {
           "categories": [
             {
-              "id": "Barbarian_Fletching",
-              "media": "assets/icons/Barbarian.png",
-              "name": "Barbarian Fletching"
+              "id": "Standard_Thrownaxes",
+              "media": "assets/items/Weapon/Rune_Thrownaxe.png",
+              "name": "Standard Thrownaxes"
             }
           ],
           "recipes": [
@@ -51663,7 +52171,7 @@
               "productID": "expandedAreas:Bronze_Thrownaxe",
               "baseQuantity": 3,
               "baseExperience": 16,
-              "categoryID": "expandedAreas:Barbarian_Fletching",
+              "categoryID": "expandedAreas:Standard_Thrownaxes",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Evergreen_Logs",
@@ -51682,7 +52190,7 @@
               "productID": "expandedAreas:Iron_Thrownaxe",
               "baseQuantity": 3,
               "baseExperience": 27,
-              "categoryID": "expandedAreas:Barbarian_Fletching",
+              "categoryID": "expandedAreas:Standard_Thrownaxes",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Evergreen_Logs",
@@ -51701,7 +52209,7 @@
               "productID": "expandedAreas:Steel_Thrownaxe",
               "baseQuantity": 3,
               "baseExperience": 61,
-              "categoryID": "expandedAreas:Barbarian_Fletching",
+              "categoryID": "expandedAreas:Standard_Thrownaxes",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Evergreen_Logs",
@@ -51720,7 +52228,7 @@
               "productID": "expandedAreas:Black_Thrownaxe",
               "baseQuantity": 3,
               "baseExperience": 89,
-              "categoryID": "expandedAreas:Barbarian_Fletching",
+              "categoryID": "expandedAreas:Standard_Thrownaxes",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Evergreen_Logs",
@@ -51739,7 +52247,7 @@
               "productID": "expandedAreas:Mithril_Thrownaxe",
               "baseQuantity": 3,
               "baseExperience": 105,
-              "categoryID": "expandedAreas:Barbarian_Fletching",
+              "categoryID": "expandedAreas:Standard_Thrownaxes",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Longleaf_Logs",
@@ -51758,7 +52266,7 @@
               "productID": "expandedAreas:Adamant_Thrownaxe",
               "baseQuantity": 3,
               "baseExperience": 121,
-              "categoryID": "expandedAreas:Barbarian_Fletching",
+              "categoryID": "expandedAreas:Standard_Thrownaxes",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Frostpine_Logs",
@@ -51777,7 +52285,7 @@
               "productID": "expandedAreas:Rune_Thrownaxe",
               "baseQuantity": 3,
               "baseExperience": 174,
-              "categoryID": "expandedAreas:Barbarian_Fletching",
+              "categoryID": "expandedAreas:Standard_Thrownaxes",
               "itemCosts": [
                 {
                   "id": "expandedAreas:White_Pine_Logs",
@@ -51796,7 +52304,7 @@
               "productID": "expandedAreas:Dragon_Thrownaxe",
               "baseQuantity": 3,
               "baseExperience": 219,
-              "categoryID": "expandedAreas:Barbarian_Fletching",
+              "categoryID": "expandedAreas:Standard_Thrownaxes",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Loblolly_Logs",
@@ -51822,9 +52330,9 @@
               "media": "assets/items/Equipment/Legendary_Sigil_of_the_Phoenix.png"
             },
             {
-              "id": "Unique",
+              "id": "Misc",
               "media": "assets/items/Item/Ruby_Dust.png",
-              "name": "Unique"
+              "name": "Misc"
             }
           ],
           "recipes": [
@@ -51834,7 +52342,7 @@
               "productID": "expandedAreas:Topaz_Dust",
               "baseQuantity": 6,
               "baseExperience": 8,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorD:Topaz",
@@ -51848,7 +52356,7 @@
               "productID": "expandedAreas:Sapphire_Dust",
               "baseQuantity": 6,
               "baseExperience": 18,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorD:Sapphire",
@@ -51862,7 +52370,7 @@
               "productID": "expandedAreas:Ruby_Dust",
               "baseQuantity": 6,
               "baseExperience": 27,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorD:Ruby",
@@ -51876,7 +52384,7 @@
               "productID": "expandedAreas:Emerald_Dust",
               "baseQuantity": 6,
               "baseExperience": 38,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorD:Emerald",
@@ -51890,7 +52398,7 @@
               "productID": "expandedAreas:Diamond_Dust",
               "baseQuantity": 6,
               "baseExperience": 53,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorD:Diamond",
@@ -51904,7 +52412,7 @@
               "productID": "expandedAreas:Jadestone_Dust",
               "baseQuantity": 6,
               "baseExperience": 63,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorF:Jadestone",
@@ -51918,7 +52426,7 @@
               "productID": "expandedAreas:Lesser_Sigil",
               "baseQuantity": 1,
               "baseExperience": 100,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorD:Bronze_Bar",
@@ -51948,7 +52456,7 @@
                 },
                 {
                   "id": "melvorD:Amulet_of_Accuracy",
-                  "quantity": 20
+                  "quantity": 50
                 }
               ]
             },
@@ -52283,7 +52791,7 @@
               "productID": "expandedAreas:Greater_Sigil",
               "baseQuantity": 1,
               "baseExperience": 150,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorD:Silver_Bar",
@@ -52313,7 +52821,7 @@
                 },
                 {
                   "id": "melvorD:Elite_Amulet_of_Accuracy",
-                  "quantity": 2
+                  "quantity": 1
                 }
               ]
             },
@@ -52664,7 +53172,7 @@
               "productID": "expandedAreas:Superior_Sigil",
               "baseQuantity": 1,
               "baseExperience": 200,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "melvorD:Gold_Bar",
@@ -52693,8 +53201,8 @@
                   "quantity": 200
                 },
                 {
-                  "id": "expandedAreas:Masterful_Amulet_of_Accuracy",
-                  "quantity": 1
+                  "id": "melvorD:Elite_Amulet_of_Accuracy",
+                  "quantity": 10
                 }
               ]
             },
@@ -53080,7 +53588,7 @@
               "productID": "expandedAreas:Legendary_Sigil",
               "baseQuantity": 1,
               "baseExperience": 300,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Platinum_Bar",
@@ -53515,8 +54023,8 @@
           ],
           "categories": [
             {
-              "id": "Unique",
-              "name": "Unique",
+              "id": "Misc",
+              "name": "Misc",
               "media": "assets/items/Item/Pureform_Rune.png"
             }
           ],
@@ -53753,7 +54261,7 @@
               "productID": "expandedAreas:Tome_of_the_Elements",
               "baseQuantity": 1,
               "baseExperience": 5000,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Tome_of_Air",
@@ -53783,7 +54291,7 @@
               "productID": "expandedAreas:Pure_Elementalist_Hat",
               "baseQuantity": 1,
               "baseExperience": 9001,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Air_Elementalist_Hat",
@@ -53818,7 +54326,7 @@
               "productID": "expandedAreas:Pure_Elementalist_Robes",
               "baseQuantity": 1,
               "baseExperience": 18002,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Air_Elementalist_Robes",
@@ -53852,7 +54360,7 @@
               "level": 99,
               "baseQuantity": 1,
               "baseExperience": 9001,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "productID": "expandedAreas:Pure_Elementalist_Boots",
               "itemCosts": [
                 {
@@ -53887,7 +54395,7 @@
               "level": 99,
               "baseQuantity": 1,
               "baseExperience": 9001,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "productID": "expandedAreas:Pure_Elementalist_Gloves",
               "itemCosts": [
                 {
@@ -53923,7 +54431,7 @@
               "productID": "expandedAreas:Pure_Elementalist_Sceptre",
               "baseQuantity": 1,
               "baseExperience": 9001,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Air_Elementalist_Staff",
@@ -53962,7 +54470,7 @@
               "productID": "expandedAreas:Fragmented_Elemental_Rune",
               "baseQuantity": 1,
               "baseExperience": 90,
-              "categoryID": "expandedAreas:Unique",
+              "categoryID": "expandedAreas:Misc",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Air_Rune_Shard",
@@ -55857,6 +56365,38 @@
       }
     ],
     "dungeons": [
+          {
+            "id": "melvorF:Air_God_Dungeon",
+            "nonBossPassives": {
+              "add": [
+                "expandedAreas:FireResistance"
+              ]
+            }
+          },
+          {
+            "id": "melvorF:Water_God_Dungeon",
+            "nonBossPassives": {
+              "add": [
+                "expandedAreas:AirResistance"
+              ]
+            }
+          },
+          {
+            "id": "melvorF:Earth_God_Dungeon",
+            "nonBossPassives": {
+              "add": [
+                "expandedAreas:WaterResistance"
+              ]
+            }
+          },
+          {
+            "id": "melvorF:Fire_God_Dungeon",
+            "nonBossPassives": {
+              "add": [
+                "expandedAreas:EarthResistance"
+              ]
+            }
+          },
       {
         "id": "melvorD:Frozen_Cove",
         "dropBones": true
@@ -56955,14 +57495,22 @@
           ]
         }
       },
-      {
-        "id": "melvorF:Mummy",
-        "passives": {
-          "add": [
-            "expandedAreas:MonsterTypeUndead"
-          ]
-        }
+    {
+      "id": "melvorF:Mummy",
+      "passives": {
+        "add": [
+          "expandedAreas:MonsterTypeUndead",
+          "expandedAreas:AfflictingTouch"
+        ]
       },
+      "specialAttacks": {
+        "add": [
+          {
+            "attackID": "expandedAreas:DreadfulGlare"
+          }
+        ]
+      }
+    },
       {
         "id": "melvorF:Murtia",
         "passives": {
@@ -57143,7 +57691,7 @@
         "id": "melvorF:Ragnar",
         "passives": {
           "add": [
-            "expandedAreas:MonsterTypeCelestial",
+            "expandedAreas:MonsterTypeFiend",
             "expandedAreas:MonsterTypeElemental"
           ]
         }
@@ -58444,6 +58992,7 @@
     {
       "namespace": "melvorAoD",
       "data": {
+        
         "items": [
           {
             "itemType": "Equipment",
@@ -58560,6 +59109,62 @@
         ]
       },
       "modifications": {
+        "skillData": [
+          {
+            "skillID": "melvorD:Runecrafting",
+            "data": {
+              "recipes": [
+                {
+                  "id": "expandedAreas:Tome_of_the_Elements",
+                  "categoryID": "melvorAoD:SpecialItems"
+                },
+                {
+                  "id": "expandedAreas:Pure_Elementalist_Hat",
+                  "categoryID": "melvorAoD:SpecialItems"
+                },
+                {
+                  "id": "expandedAreas:Pure_Elementalist_Robes",
+                  "categoryID": "melvorAoD:SpecialItems"
+                },
+                {
+                  "id": "expandedAreas:Pure_Elementalist_Boots",
+                  "categoryID": "melvorAoD:SpecialItems"
+                },
+                {
+                  "id": "expandedAreas:Pure_Elementalist_Gloves",
+                  "categoryID": "melvorAoD:SpecialItems"
+                },
+                {
+                  "id": "expandedAreas:Pure_Elementalist_Sceptre",
+                  "categoryID": "melvorAoD:SpecialItems"
+                }
+              ]
+            }
+          },
+          {
+            "skillID": "melvorD:Crafting",
+            "data": {
+              "recipes": [
+                {
+                  "id": "expandedAreas:Lesser_Sigil",
+                  "categoryID": "melvorAoD:SpecialItems"
+                },
+                {
+                  "id": "expandedAreas:Greater_Sigil",
+                  "categoryID": "melvorAoD:SpecialItems"
+                },
+                {
+                  "id": "expandedAreas:Superior_Sigil",
+                  "categoryID": "melvorAoD:SpecialItems"
+                },
+                {
+                  "id": "expandedAreas:Legendary_Sigil",
+                  "categoryID": "melvorAoD:SpecialItems"
+                }
+              ]
+            }
+          }
+        ],
         "items": [
           {
             "id": "melvorAoD:Ghostly_Parrot",
