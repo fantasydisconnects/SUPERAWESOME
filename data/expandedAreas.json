@@ -1022,7 +1022,7 @@
         {
         "id": "AirVulnerability",
         "name": "Air Vulnerability",
-        "customDescription": "The Enemy takes 50% more damage from Air Spells and takes 10% more damage while affected by Frostburn.",
+        "customDescription": "The Enemy takes 10% more damage from Air Spells and takes 10% more damage while affected by Frostburn.",
         "conditionalModifiers": [
           {
             "condition": {
@@ -1039,7 +1039,7 @@
           "magicMaxHit": [
             {
               "subcategoryID": "melvorD:Air",
-              "value": 50
+              "value": 10
             }
           ]
         }
@@ -1047,12 +1047,12 @@
       {
         "id": "AirResistance",
         "name": "Air Resistance",
-        "customDescription": "The Enemy takes 50% less damage from Air Spells and has a 50% Chance to ignore Frostburn.",
+        "customDescription": "The Enemy takes 10% less damage from Air Spells and has a 10% Chance to ignore Frostburn.",
         "modifiers": {
           "effectIgnoreChance": [
             {
               "effectGroupID": "melvorD:Frostburn",
-              "value": 50
+              "value": 10
             }
           ]
         },
@@ -1060,7 +1060,7 @@
           "magicMaxHit": [
             {
               "subcategoryID": "melvorD:Air",
-              "value": -50
+              "value": -10
             }
           ]
         }
@@ -1068,7 +1068,7 @@
       {
         "id": "WaterVulnerability",
         "name": "Water Vulnerability",
-        "customDescription": "The Enemy takes 50% more damage from Water Spells and takes 10% more damage while Frozen.",
+        "customDescription": "The Enemy takes 10% more damage from Water Spells and takes 10% more damage while Frozen.",
         "conditionalModifiers": [
           {
             "condition": {
@@ -1085,7 +1085,7 @@
           "magicMaxHit": [
             {
               "subcategoryID": "melvorD:Water",
-              "value": 50
+              "value": 10
             }
           ]
         }
@@ -1093,12 +1093,12 @@
       {
         "id": "WaterResistance",
         "name": "Water Resistance",
-        "customDescription": "The Enemy takes 50% less damage from Water Spells and has a 50% Chance to ignore Freeze.",
+        "customDescription": "The Enemy takes 10% less damage from Water Spells and has a 10% Chance to ignore Freeze.",
         "modifiers": {
           "effectIgnoreChance": [
             {
               "effectGroupID": "melvorD:Freeze",
-              "value": 50
+              "value": 10
             }
           ]
         },
@@ -1106,7 +1106,7 @@
           "magicMaxHit": [
             {
               "subcategoryID": "melvorD:Water",
-              "value": -50
+              "value": -10
             }
           ]
         }
@@ -1114,7 +1114,7 @@
       {
         "id": "EarthVulnerability",
         "name": "Earth Vulnerability",
-        "customDescription": "The Enemy takes 50% more damage from Earth Spells and takes 10% more damage while Bleeding.",
+        "customDescription": "The Enemy takes 10% more damage from Earth Spells and takes 10% more damage while Bleeding.",
         "conditionalModifiers": [
           {
             "condition": {
@@ -1131,7 +1131,7 @@
           "magicMaxHit": [
             {
               "subcategoryID": "melvorD:Earth",
-              "value": 50
+              "value": 10
             }
           ]
         }
@@ -1139,12 +1139,12 @@
       {
         "id": "EarthResistance",
         "name": "Earth Resistance",
-        "customDescription": "The Enemy takes 50% less damage from Earth Spells and has a 50% Chance to ignore Bleed.",
+        "customDescription": "The Enemy takes 10% less damage from Earth Spells and has a 10% Chance to ignore Bleed.",
         "modifiers": {
           "effectIgnoreChance": [
             {
               "effectGroupID": "melvorD:BleedDOT",
-              "value": 50
+              "value": 10
             }
           ]
         },
@@ -1152,7 +1152,7 @@
           "magicMaxHit": [
             {
               "subcategoryID": "melvorD:Earth",
-              "value": -50
+              "value": -10
             }
           ]
         }
@@ -1160,7 +1160,7 @@
       {
         "id": "FireVulnerability",
         "name": "Fire Vulnerability",
-        "customDescription": "The Enemy takes 50% more damage from Fire Spells and takes 10% more damage while Burning.",
+        "customDescription": "The Enemy takes 10% more damage from Fire Spells and takes 10% more damage while Burning.",
         "conditionalModifiers": [
           {
             "condition": {
@@ -1177,7 +1177,7 @@
           "magicMaxHit": [
             {
               "subcategoryID": "melvorD:Fire",
-              "value": 50
+              "value": 10
             }
           ]
         }
@@ -1185,12 +1185,12 @@
       {
         "id": "FireResistance",
         "name": "Fire Resistance",
-        "customDescription": "The Enemy takes 50% less damage from Fire Spells and has a 50% Chance to ignore Burn.",
+        "customDescription": "The Enemy takes 10% less damage from Fire Spells and has a 10% Chance to ignore Burn.",
         "modifiers": {
           "effectIgnoreChance": [
             {
               "effectGroupID": "melvorD:BurnDOT",
-              "value": 50
+              "value": 10
             }
           ]
         },
@@ -1198,7 +1198,7 @@
           "magicMaxHit": [
             {
               "subcategoryID": "melvorD:Fire",
-              "value": -50
+              "value": -10
             }
           ]
         }
@@ -1247,7 +1247,7 @@
       {
         "id": "ShadowTouchI",
         "name": "Shadow Touch I",
-        "customDescription": "All Enemy stats are weakened by 10% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
+        "customDescription": "All stats are weakened by 5% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
         "modifiers": {},
         "playerModifiers": {
           "attackInterval": 5,
@@ -1263,7 +1263,7 @@
       {
         "id": "ShadowTouchII",
         "name": "Shadow Touch II",
-        "customDescription": "All stats are weakened by 15% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
+        "customDescription": "All stats are weakened by 10% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
         "modifiers": {},
         "playerModifiers": {
           "attackInterval": 10,
@@ -1279,7 +1279,7 @@
       {
         "id": "ShadowTouchIII",
         "name": "Shadow Touch III",
-        "customDescription": "All stats are weakened by 20% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
+        "customDescription": "All stats are weakened by 15% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
         "modifiers": {},
         "playerModifiers": {
           "attackInterval": 15,
@@ -1464,7 +1464,7 @@
       {
         "id": "MonsterTypeUndead",
         "name": "Monster Type: Undead",
-        "customDescription": "Undead are immune to Sleep and Poison, and have a 10% chance upon dying to be rebirthed with 100% of their Hitpoints.",
+        "customDescription": "Undead are immune to Sleep and Poison, 50% resistant to Psychic Damage, and have a 10% chance upon dying to be rebirthed with 100% of their Hitpoints.",
         "combatEffects": [
           {
             "appliesWhen": "StartOfFight",
@@ -1480,7 +1480,7 @@
                 "name": "Masterful Amulet of Strength",
                 "category": "Combat",
                 "type": "Amulet",
-                "media": "assets/item/Equipment/Masterful_Amulet_of_Strength.png",
+                "media": "assets/items/Equipment/Masterful_Amulet_of_Strength.png",
                 "ignoreCompletion": false,
                 "obtainFromItemLog": false,
                 "golbinRaidExclusive": false,
@@ -1504,7 +1504,7 @@
                 "name": "Masterful Amulet of Accuracy",
                 "category": "Combat",
                 "type": "Amulet",
-                "media": "assets/item/Equipment/Masterful_Amulet_of_Accuracy.png",
+                "media": "assets/items/Equipment/Masterful_Amulet_of_Accuracy.png",
                 "ignoreCompletion": false,
                 "obtainFromItemLog": false,
                 "golbinRaidExclusive": false,
@@ -1536,7 +1536,7 @@
                 "name": "Masterful Amulet of Defence",
                 "category": "Combat",
                 "type": "Amulet",
-                "media": "assets/item/Equipment/Masterful_Amulet_of_Defence.png",
+                "media": "assets/items/Equipment/Masterful_Amulet_of_Defence.png",
                 "ignoreCompletion": false,
                 "obtainFromItemLog": false,
                 "golbinRaidExclusive": false,
@@ -1564,7 +1564,7 @@
                 "name": "Masterful Amulet of Glory",
                 "category": "Combat",
                 "type": "Amulet",
-                "media": "assets/item/Equipment/Masterful_Amulet_of_Glory.png",
+                "media": "assets/items/Equipment/Masterful_Amulet_of_Glory.png",
                 "ignoreCompletion": false,
                 "obtainFromItemLog": false,
                 "golbinRaidExclusive": false,
@@ -1604,7 +1604,7 @@
                 "name": "Masterful Amulet of Magic",
                 "category": "Combat",
                 "type": "Amulet",
-                "media": "assets/item/Equipment/Masterful_Amulet_of_Magic.png",
+                "media": "assets/items/Equipment/Masterful_Amulet_of_Magic.png",
                 "ignoreCompletion": false,
                 "obtainFromItemLog": false,
                 "golbinRaidExclusive": false,
@@ -1648,7 +1648,7 @@
                 "name": "Masterful Amulet of Ranged",
                 "category": "Combat",
                 "type": "Amulet",
-                "media": "assets/item/Equipment/Masterful_Amulet_of_Ranged",
+                "media": "assets/items/Equipment/Masterful_Amulet_of_Ranged",
                 "ignoreCompletion": false,
                 "obtainFromItemLog": false,
                 "golbinRaidExclusive": false,
@@ -1689,6 +1689,7 @@
                 "category": "Combat",
                 "type": "Armour",
                 "media": "assets/items/Equipment/M_E_L_V_O_R.png",
+                "customDescription": "Could it really be the fated Amulet of Melvor?",
                 "ignoreCompletion": false,
                 "obtainFromItemLog": false,
                 "golbinRaidExclusive": false,
@@ -45831,7 +45832,7 @@
             "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Strength",
             "itemCosts": [
               {
-                "id": "melvorD:Elite_of_Strength",
+                "id": "melvorD:Elite_Amulet_of_Strength",
                 "quantity": 100
               }
             ],
@@ -45845,7 +45846,7 @@
             "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Accuracy",
             "itemCosts": [
               {
-                "id": "melvorD:Elite_of_Accuracy",
+                "id": "melvorD:Elite_Amulet_of_Accuracy",
                 "quantity": 100
               }
             ],
@@ -45859,7 +45860,7 @@
             "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Defence",
             "itemCosts": [
               {
-                "id": "melvorD:Elite_of_Defence",
+                "id": "melvorD:Elite_Amulet_of_Defence",
                 "quantity": 100
               }
             ],
@@ -45873,7 +45874,7 @@
             "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Glory",
             "itemCosts": [
               {
-                "id": "melvorD:Elite_of_Glory",
+                "id": "melvorD:Elite_Amulet_of_Glory",
                 "quantity": 100
               }
             ],
@@ -45887,7 +45888,7 @@
             "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Magic",
             "itemCosts": [
               {
-                "id": "melvorD:Elite_of_Magic",
+                "id": "melvorD:Elite_Amulet_of_Magic",
                 "quantity": 100
               }
             ],
@@ -45901,7 +45902,7 @@
             "upgradedItemID": "expandedAreas:Masterful_Amulet_of_Ranged",
             "itemCosts": [
               {
-                "id": "melvorD:Elite_of_Ranged",
+                "id": "melvorD:Elite_Amulet_of_Ranged",
                 "quantity": 100
               }
             ],
