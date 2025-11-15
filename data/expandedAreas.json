@@ -1501,6 +1501,70 @@
       }
     ],
     "items": [
+          {
+        "id": "PolyCube_BlackDragon",
+        "name": "Poly Cube (Black Dragon)",
+        "category": "Combat",
+        "type": "Weapon",
+        "itemType": "Weapon",
+        "attackType": "melee",
+        "media": "assets/items/Weapon/PolyCube_BlackDragon.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 500000,
+        "tier": "ancient",
+        "validSlots": [
+          "Weapon"
+        ],
+        "consumesOn": [
+          {
+            "type": "MonsterKilled"
+          }
+        ],
+        "occupiesSlots": [
+          "Boots",
+          "Cape",
+          "Helmet",
+          "Platebody",
+          "Platelegs",
+          "Shield",
+          "Gloves"
+        ],
+        "equipRequirements": [
+          {
+            "type": "SkillLevel",
+            "skillID": "melvorD:Magic",
+            "level": 60
+          }
+        ],
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 3000
+          },
+          {
+            "key": "damageReduction",
+            "value": 5
+          },
+          {
+            "key": "stabAttackBonus",
+            "value": 60
+          },
+          {
+            "key": "meleeStrengthBonus",
+            "value": 80
+          },
+          {
+            "key": "meleeDefenceBonus",
+            "value": 80
+          }
+        ],
+        "specialAttacks": [
+          "expandedAreas:BlackDragonPolyNormal",
+          "melvorD:LesserDragonbreath"
+        ]
+      },
       {
         "itemType": "Equipment",
         "id": "Masterful_Amulet_of_Strength",
@@ -18221,7 +18285,30 @@
       }
     ],
     "attacks": [
-      {
+              {
+            "id": "BlackDragonPolyNormal",
+            "name": "Normal Attack",
+            "defaultChance": 60,
+            "attackCount": 1,
+            "damage": [
+              {
+                "damageType": "Custom",
+                "character": "Attacker",
+                "minRoll": "Fixed",
+                "maxRoll": "Fixed",
+                "minPercent": 0,
+                "maxPercent": 26.8,
+                "roll": true
+              }
+            ],
+            "prehitEffects": [],
+            "onhitEffects": [],
+            "attackInterval": 150,
+            "cantMiss": false,
+            "lifesteal": 0,
+            "description": "Make a normal attack as a Black Dragon, dealing up to ${attackDamageMaxValue0} damage on hit."
+          },
+          {
         "id": "DreadfulGlare",
         "defaultChance": 30,
         "damage": [],
@@ -34541,7 +34628,2643 @@
         "customName": "Secluded Monastery Slayer X",
         "customDescription": "Kill each monster in Secluded Monastery 10,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
       },
+{
+    "id": "Penumbra1000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [],
+    "purchaseRequirements": [
       {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 1000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer I",
+    "customDescription": "Kill each monster in Penumbra 1,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra2000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra1000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 2000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer II",
+    "customDescription": "Kill each monster in Penumbra 2,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra3000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra2000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 3000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer III",
+    "customDescription": "Kill each monster in Penumbra 3,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra4000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra3000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 4000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer IV",
+    "customDescription": "Kill each monster in Penumbra 4,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra5000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra4000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 5000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer V",
+    "customDescription": "Kill each monster in Penumbra 5,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra6000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra5000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 6000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer VI",
+    "customDescription": "Kill each monster in Penumbra 6,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra7000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra6000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 7000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer VII",
+    "customDescription": "Kill each monster in Penumbra 7,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra8000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra7000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 8000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer VIII",
+    "customDescription": "Kill each monster in Penumbra 8,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra9000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra8000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 9000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer IX",
+    "customDescription": "Kill each monster in Penumbra 9,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "Penumbra10000",
+    "media": "assets/combatAreas/Penumbra.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 120
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:Penumbra9000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Mummy",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Statue",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StoneSnake",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:UndeadWerewolf",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Vampire",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:FierceDevil",
+        "count": 10000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Penumbra Slayer X",
+    "customDescription": "Kill each monster in Penumbra 10,000 times each. Gain 120 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo1000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 1000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer I",
+    "customDescription": "Kill each monster in the Forest of Goo 1,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo2000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo1000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 2000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer II",
+    "customDescription": "Kill each monster in the Forest of Goo 2,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo3000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo2000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 3000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer III",
+    "customDescription": "Kill each monster in the Forest of Goo 3,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo4000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo3000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 4000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer IV",
+    "customDescription": "Kill each monster in the Forest of Goo 4,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo5000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo4000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 5000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer V",
+    "customDescription": "Kill each monster in the Forest of Goo 5,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo6000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo5000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 6000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer VI",
+    "customDescription": "Kill each monster in the Forest of Goo 6,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo7000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo6000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 7000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer VII",
+    "customDescription": "Kill each monster in the Forest of Goo 7,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo8000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo7000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 8000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer VIII",
+    "customDescription": "Kill each monster in the Forest of Goo 8,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo9000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo8000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 9000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer IX",
+    "customDescription": "Kill each monster in the Forest of Goo 9,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "ForestOfGoo10000",
+    "media": "assets/combatAreas/ForestOfGoo.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 100
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:ForestOfGoo9000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GooMonster",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:GreenGooMonster",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:PurpleGooMonster",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ScatteredGooMonster",
+        "count": 10000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Forest of Goo Slayer X",
+    "customDescription": "Kill each monster in the Forest of Goo 10,000 times each. Gain 100 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave1000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 1000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer I",
+    "customDescription": "Kill each monster in Strange Cave 1,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave2000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave1000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 2000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer II",
+    "customDescription": "Kill each monster in Strange Cave 2,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave3000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave2000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 3000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer III",
+    "customDescription": "Kill each monster in Strange Cave 3,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave4000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave3000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 4000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer IV",
+    "customDescription": "Kill each monster in Strange Cave 4,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave5000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave4000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 5000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer V",
+    "customDescription": "Kill each monster in Strange Cave 5,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave6000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave5000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 6000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer VI",
+    "customDescription": "Kill each monster in Strange Cave 6,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave7000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave6000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 7000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer VII",
+    "customDescription": "Kill each monster in Strange Cave 7,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave8000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave7000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 8000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer VIII",
+    "customDescription": "Kill each monster in Strange Cave 8,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave9000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave8000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 9000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer IX",
+    "customDescription": "Kill each monster in Strange Cave 9,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "StrangeCave10000",
+    "media": "assets/combatAreas/StrangeCave.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 200
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:StrangeCave9000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:ManyEyedMonster",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:LotsofEyes",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:StrangeEyedMonster",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Eyes",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:SuperiorEyedMonster",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:EyeOfFear",
+        "count": 10000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Strange Cave Slayer X",
+    "customDescription": "Kill each monster in Strange Cave 10,000 times each. Gain 200 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles1000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 1000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 1000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer I",
+    "customDescription": "Kill each monster in Holy Isles 1,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles2000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles1000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 2000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 2000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer II",
+    "customDescription": "Kill each monster in Holy Isles 2,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles3000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles2000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 3000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 3000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer III",
+    "customDescription": "Kill each monster in Holy Isles 3,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles4000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles3000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 4000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 4000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer IV",
+    "customDescription": "Kill each monster in Holy Isles 4,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles5000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles4000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 5000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 5000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer V",
+    "customDescription": "Kill each monster in Holy Isles 5,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles6000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles5000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 6000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 6000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer VI",
+    "customDescription": "Kill each monster in Holy Isles 6,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles7000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles6000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 7000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 7000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer VII",
+    "customDescription": "Kill each monster in Holy Isles 7,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles8000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles7000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 8000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 8000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer VIII",
+    "customDescription": "Kill each monster in Holy Isles 8,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles9000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles8000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 9000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 9000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer IX",
+    "customDescription": "Kill each monster in Holy Isles 9,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
+    "id": "HolyIsles10000",
+    "media": "assets/combatAreas/HolyIsles.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+      "items": [
+        {
+          "id": "expandedAreas:Mastery_Token_Combat",
+          "quantity": 140
+        }
+      ],
+      "modifiers": {
+        "damageDealtToMonstersInArea": [
+          {
+            "categoryID": "melvorF:SlayerAreas",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    "cost": {
+      "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+      {
+        "purchaseID": "expandedAreas:HolyIsles9000",
+        "count": 1,
+        "type": "ShopPurchase"
+      }
+    ],
+    "purchaseRequirements": [
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Fairy",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Valkyrie",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Angel",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:HolyArcher",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Paladin",
+        "count": 10000
+      },
+      {
+        "type": "MonsterKilled",
+        "monsterID": "melvorF:Priest",
+        "count": 10000
+      }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Holy Isles Slayer X",
+    "customDescription": "Kill each monster in Holy Isles 10,000 times each. Gain 140 Combat Mastery Tokens to spend on Combat Mastery Upgrades."
+  },
+  {
         "id": "Attack_Adept",
         "media": "assets/shop/combatMastery/attack_adept.png",
         "category": "expandedAreas:CombatMastery",
@@ -34557,18 +37280,14 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 250
+              "quantity": 2500
             }
           ]
         },
         "allowQuantityPurchase": false,
         "unlockRequirements": [],
         "purchaseRequirements": [
-          {
-            "skillID": "melvorD:Attack",
-            "level": 40,
-            "type": "SkillLevel"
-          }
+          
         ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
@@ -34591,7 +37310,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 5000
             }
           ]
         },
@@ -34604,11 +37323,7 @@
           }
         ],
         "purchaseRequirements": [
-          {
-            "skillID": "melvorD:Attack",
-            "level": 60,
-            "type": "SkillLevel"
-          }
+          
         ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
@@ -34636,7 +37351,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 7500
             }
           ]
         },
@@ -34647,12 +37362,13 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
         "purchaseRequirements": [
           {
-            "skillID": "melvorD:Attack",
-            "level": 80,
-            "type": "SkillLevel"
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Into_the_Mist",
+            "count": 1
           }
         ],
         "defaultBuyLimit": 1,
@@ -34682,7 +37398,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 2000
+              "quantity": 10000
             }
           ]
         },
@@ -34693,8 +37409,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -34717,7 +37440,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 25
+              "quantity": 50
             }
           ]
         },
@@ -34804,7 +37527,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 250
+              "quantity": 2500
             }
           ]
         },
@@ -34844,7 +37567,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 5000
             }
           ]
         },
@@ -34878,7 +37601,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 7500
             }
           ]
         },
@@ -34889,8 +37612,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Into_the_Mist",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -34913,7 +37643,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 2000
+              "quantity": 10000
             }
           ]
         },
@@ -34924,8 +37654,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -34946,7 +37683,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 50
+              "quantity": 100
             }
           ]
         },
@@ -35026,7 +37763,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 250
+              "quantity": 2500
             }
           ]
         },
@@ -35059,7 +37796,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 5000
             }
           ]
         },
@@ -35093,7 +37830,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 7500
             }
           ]
         },
@@ -35104,8 +37841,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Into_the_Mist",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -35128,7 +37872,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 2000
+              "quantity": 10000
             }
           ]
         },
@@ -35139,8 +37883,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -35163,7 +37914,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 25
+              "quantity": 50
             }
           ]
         },
@@ -35247,7 +37998,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 250
+              "quantity": 2500
             }
           ]
         },
@@ -35284,7 +38035,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 5000
             }
           ]
         },
@@ -35318,7 +38069,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 7500
             }
           ]
         },
@@ -35329,8 +38080,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Into_the_Mist",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -35353,7 +38111,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 2000
+              "quantity": 10000
             }
           ]
         },
@@ -35364,6 +38122,7 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
         "purchaseRequirements": [],
         "defaultBuyLimit": 1,
@@ -35461,7 +38220,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 250
+              "quantity": 2500
             }
           ]
         },
@@ -35501,7 +38260,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 5000
             }
           ]
         },
@@ -35547,7 +38306,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 7500
             }
           ]
         },
@@ -35594,7 +38353,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 2000
+              "quantity": 10000
             }
           ]
         },
@@ -35605,8 +38364,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -35628,7 +38394,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 75
+              "quantity": 150
             }
           ]
         },
@@ -35703,7 +38469,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 250
+              "quantity": 2500
             }
           ]
         },
@@ -35743,7 +38509,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 5000
             }
           ]
         },
@@ -35778,7 +38544,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 7500
             }
           ]
         },
@@ -35789,8 +38555,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Into_the_Mist",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -35858,7 +38631,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 2000
+              "quantity": 10000
             }
           ]
         },
@@ -35869,8 +38642,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -35936,11 +38716,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [],
         "purchaseRequirements": [
-          {
-            "skillID": "melvorD:Magic",
-            "level": 99,
-            "type": "SkillLevel"
-          },
+          
           {
             "type": "ShopPurchase",
             "purchaseID": "expandedAreas:Magic_Grandmaster",
@@ -35968,7 +38744,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 250
+              "quantity": 2500
             }
           ]
         },
@@ -36001,7 +38777,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 10000
             }
           ]
         },
@@ -36035,7 +38811,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 7500
             }
           ]
         },
@@ -36046,8 +38822,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Into_the_Mist",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -36081,6 +38864,7 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
         "purchaseRequirements": [],
         "defaultBuyLimit": 1,
@@ -36185,7 +38969,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 250
+              "quantity": 2500
             }
           ]
         },
@@ -36214,7 +38998,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 10000
             }
           ]
         },
@@ -36248,7 +39032,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 7500
             }
           ]
         },
@@ -36259,8 +39043,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Into_the_Mist",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -36299,8 +39090,15 @@
             "count": 1,
             "type": "ShopPurchase"
           }
+          
         ],
-        "purchaseRequirements": [],
+        "purchaseRequirements": [
+          {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 1
+          }
+        ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
@@ -36315,7 +39113,7 @@
           "items": [],
           "modifiers": {
             "damageDealtToSlayerTasks": 1,
-            "flatMonsterRespawnInterval": -100
+            "flatMonsterRespawnInterval": -10
           }
         },
         "cost": {
@@ -36333,7 +39131,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Slayer Training",
-        "customDescription": "Gain +1% Damage Dealt to Slayer Tasks and -0.1s Monster Respawn Interval"
+        "customDescription": "Gain +1% Damage Dealt to Slayer Tasks and -0.01s Monster Respawn Interval"
       },
       {
         "id": "Slayer_Mastery_Cape",
@@ -37727,6 +40525,26 @@
           "expandedAreas:Farmlands8000",
           "expandedAreas:Farmlands9000",
           "expandedAreas:Farmlands10000",
+          "expandedAreas:BotanicalGardens1000",
+          "expandedAreas:BotanicalGardens2000",
+          "expandedAreas:BotanicalGardens3000",
+          "expandedAreas:BotanicalGardens4000",
+          "expandedAreas:BotanicalGardens5000",
+          "expandedAreas:BotanicalGardens6000",
+          "expandedAreas:BotanicalGardens7000",
+          "expandedAreas:BotanicalGardens8000",
+          "expandedAreas:BotanicalGardens9000",
+          "expandedAreas:BotanicalGardens10000",
+          "expandedAreas:LowTown1000",
+          "expandedAreas:LowTown2000",
+          "expandedAreas:LowTown3000",
+          "expandedAreas:LowTown4000",
+          "expandedAreas:LowTown5000",
+          "expandedAreas:LowTown6000",
+          "expandedAreas:LowTown7000",
+          "expandedAreas:LowTown8000",
+          "expandedAreas:LowTown9000",
+          "expandedAreas:LowTown10000",
           "expandedAreas:GolbinVillage1000",
           "expandedAreas:GolbinVillage2000",
           "expandedAreas:GolbinVillage3000",
@@ -37757,26 +40575,6 @@
           "expandedAreas:SandyShores8000",
           "expandedAreas:SandyShores9000",
           "expandedAreas:SandyShores10000",
-          "expandedAreas:BotanicalGardens1000",
-          "expandedAreas:BotanicalGardens2000",
-          "expandedAreas:BotanicalGardens3000",
-          "expandedAreas:BotanicalGardens4000",
-          "expandedAreas:BotanicalGardens5000",
-          "expandedAreas:BotanicalGardens6000",
-          "expandedAreas:BotanicalGardens7000",
-          "expandedAreas:BotanicalGardens8000",
-          "expandedAreas:BotanicalGardens9000",
-          "expandedAreas:BotanicalGardens10000",
-          "expandedAreas:LowTown1000",
-          "expandedAreas:LowTown2000",
-          "expandedAreas:LowTown3000",
-          "expandedAreas:LowTown4000",
-          "expandedAreas:LowTown5000",
-          "expandedAreas:LowTown6000",
-          "expandedAreas:LowTown7000",
-          "expandedAreas:LowTown8000",
-          "expandedAreas:LowTown9000",
-          "expandedAreas:LowTown10000",
           "expandedAreas:BarbarianVillage1000",
           "expandedAreas:BarbarianVillage2000",
           "expandedAreas:BarbarianVillage3000",
@@ -37857,6 +40655,16 @@
           "expandedAreas:DragonValley8000",
           "expandedAreas:DragonValley9000",
           "expandedAreas:DragonValley10000",
+          "expandedAreas:ElerineBattlegrounds1000",
+          "expandedAreas:ElerineBattlegrounds2000",
+          "expandedAreas:ElerineBattlegrounds3000",
+          "expandedAreas:ElerineBattlegrounds4000",
+          "expandedAreas:ElerineBattlegrounds5000",
+          "expandedAreas:ElerineBattlegrounds6000",
+          "expandedAreas:ElerineBattlegrounds7000",
+          "expandedAreas:ElerineBattlegrounds8000",
+          "expandedAreas:ElerineBattlegrounds9000",
+          "expandedAreas:ElerineBattlegrounds10000",
           "expandedAreas:SecludedMonastery1000",
           "expandedAreas:SecludedMonastery2000",
           "expandedAreas:SecludedMonastery3000",
@@ -37867,16 +40675,136 @@
           "expandedAreas:SecludedMonastery8000",
           "expandedAreas:SecludedMonastery9000",
           "expandedAreas:SecludedMonastery10000",
-          "expandedAreas:ElerineBattlegrounds1000",
-          "expandedAreas:ElerineBattlegrounds2000",
-          "expandedAreas:ElerineBattlegrounds3000",
-          "expandedAreas:ElerineBattlegrounds4000",
-          "expandedAreas:ElerineBattlegrounds5000",
-          "expandedAreas:ElerineBattlegrounds6000",
-          "expandedAreas:ElerineBattlegrounds7000",
-          "expandedAreas:ElerineBattlegrounds8000",
-          "expandedAreas:ElerineBattlegrounds9000",
-          "expandedAreas:ElerineBattlegrounds10000"
+          "expandedAreas:Penumbra1000",
+          "expandedAreas:Penumbra2000",
+          "expandedAreas:Penumbra3000",
+          "expandedAreas:Penumbra4000",
+          "expandedAreas:Penumbra5000",
+          "expandedAreas:Penumbra6000",
+          "expandedAreas:Penumbra7000",
+          "expandedAreas:Penumbra8000",
+          "expandedAreas:Penumbra9000",
+          "expandedAreas:Penumbra10000",
+          "expandedAreas:ForestOfGoo1000",
+          "expandedAreas:ForestOfGoo2000",
+          "expandedAreas:ForestOfGoo3000",
+          "expandedAreas:ForestOfGoo4000",
+          "expandedAreas:ForestOfGoo5000",
+          "expandedAreas:ForestOfGoo6000",
+          "expandedAreas:ForestOfGoo7000",
+          "expandedAreas:ForestOfGoo8000",
+          "expandedAreas:ForestOfGoo9000",
+          "expandedAreas:ForestOfGoo10000",
+          "expandedAreas:StrangeCave1000",
+          "expandedAreas:StrangeCave2000",
+          "expandedAreas:StrangeCave3000",
+          "expandedAreas:StrangeCave4000",
+          "expandedAreas:StrangeCave5000",
+          "expandedAreas:StrangeCave6000",
+          "expandedAreas:StrangeCave7000",
+          "expandedAreas:StrangeCave8000",
+          "expandedAreas:StrangeCave9000",
+          "expandedAreas:StrangeCave10000",
+          "expandedAreas:HolyIsles1000",
+          "expandedAreas:HolyIsles2000",
+          "expandedAreas:HolyIsles3000",
+          "expandedAreas:HolyIsles4000",
+          "expandedAreas:HolyIsles5000",
+          "expandedAreas:HolyIsles6000",
+          "expandedAreas:HolyIsles7000",
+          "expandedAreas:HolyIsles8000",
+          "expandedAreas:HolyIsles9000",
+          "expandedAreas:HolyIsles10000",
+          "expandedAreas:RunicRuins1000",
+          "expandedAreas:RunicRuins2000",
+          "expandedAreas:RunicRuins3000",
+          "expandedAreas:RunicRuins4000",
+          "expandedAreas:RunicRuins5000",
+          "expandedAreas:RunicRuins6000",
+          "expandedAreas:RunicRuins7000",
+          "expandedAreas:RunicRuins8000",
+          "expandedAreas:RunicRuins9000",
+          "expandedAreas:RunicRuins10000",
+          "expandedAreas:AridPlains1000",
+          "expandedAreas:AridPlains2000",
+          "expandedAreas:AridPlains3000",
+          "expandedAreas:AridPlains4000",
+          "expandedAreas:AridPlains5000",
+          "expandedAreas:AridPlains6000",
+          "expandedAreas:AridPlains7000",
+          "expandedAreas:AridPlains8000",
+          "expandedAreas:AridPlains9000",
+          "expandedAreas:AridPlains10000",
+          "expandedAreas:HighLands1000",
+          "expandedAreas:HighLands2000",
+          "expandedAreas:HighLands3000",
+          "expandedAreas:HighLands4000",
+          "expandedAreas:HighLands5000",
+          "expandedAreas:HighLands6000",
+          "expandedAreas:HighLands7000",
+          "expandedAreas:HighLands8000",
+          "expandedAreas:HighLands9000",
+          "expandedAreas:HighLands10000",
+          "expandedAreas:ToxicSwamps1000",
+          "expandedAreas:ToxicSwamps2000",
+          "expandedAreas:ToxicSwamps3000",
+          "expandedAreas:ToxicSwamps4000",
+          "expandedAreas:ToxicSwamps5000",
+          "expandedAreas:ToxicSwamps6000",
+          "expandedAreas:ToxicSwamps7000",
+          "expandedAreas:ToxicSwamps8000",
+          "expandedAreas:ToxicSwamps9000",
+          "expandedAreas:ToxicSwamps10000",
+          "expandedAreas:DesolatePlains1000",
+          "expandedAreas:DesolatePlains2000",
+          "expandedAreas:DesolatePlains3000",
+          "expandedAreas:DesolatePlains4000",
+          "expandedAreas:DesolatePlains5000",
+          "expandedAreas:DesolatePlains6000",
+          "expandedAreas:DesolatePlains7000",
+          "expandedAreas:DesolatePlains8000",
+          "expandedAreas:DesolatePlains9000",
+          "expandedAreas:DesolatePlains10000",
+          "expandedAreas:ShroudedBadlands1000",
+          "expandedAreas:ShroudedBadlands2000",
+          "expandedAreas:ShroudedBadlands3000",
+          "expandedAreas:ShroudedBadlands4000",
+          "expandedAreas:ShroudedBadlands5000",
+          "expandedAreas:ShroudedBadlands6000",
+          "expandedAreas:ShroudedBadlands7000",
+          "expandedAreas:ShroudedBadlands8000",
+          "expandedAreas:ShroudedBadlands9000",
+          "expandedAreas:ShroudedBadlands10000",
+          "expandedAreas:PerilousPeaks1000",
+          "expandedAreas:PerilousPeaks2000",
+          "expandedAreas:PerilousPeaks3000",
+          "expandedAreas:PerilousPeaks4000",
+          "expandedAreas:PerilousPeaks5000",
+          "expandedAreas:PerilousPeaks6000",
+          "expandedAreas:PerilousPeaks7000",
+          "expandedAreas:PerilousPeaks8000",
+          "expandedAreas:PerilousPeaks9000",
+          "expandedAreas:PerilousPeaks10000",
+          "expandedAreas:DarkWaters1000",
+          "expandedAreas:DarkWaters2000",
+          "expandedAreas:DarkWaters3000",
+          "expandedAreas:DarkWaters4000",
+          "expandedAreas:DarkWaters5000",
+          "expandedAreas:DarkWaters6000",
+          "expandedAreas:DarkWaters7000",
+          "expandedAreas:DarkWaters8000",
+          "expandedAreas:DarkWaters9000",
+          "expandedAreas:DarkWaters10000",
+          "expandedAreas:UnhallowedWasteland1000",
+          "expandedAreas:UnhallowedWasteland2000",
+          "expandedAreas:UnhallowedWasteland3000",
+          "expandedAreas:UnhallowedWasteland4000",
+          "expandedAreas:UnhallowedWasteland5000",
+          "expandedAreas:UnhallowedWasteland6000",
+          "expandedAreas:UnhallowedWasteland7000",
+          "expandedAreas:UnhallowedWasteland8000",
+          "expandedAreas:UnhallowedWasteland9000",
+          "expandedAreas:UnhallowedWasteland10000"
         ]
       },
       {
@@ -38038,6 +40966,97 @@
         "defaultDescription": "No Secluded Monastery completion."
       },
       {
+    "id": "Penumbra",
+    "chainName": "Current Penumbra Completion",
+    "rootUpgradeID": "expandedAreas:Penumbra10000",
+    "defaultName": "Penumbra Completion",
+    "defaultDescription": "No Penumbra completion."
+  },
+  {
+    "id": "ForestOfGoo",
+    "chainName": "Current ForestOfGoo Completion",
+    "rootUpgradeID": "expandedAreas:ForestOfGoo10000",
+    "defaultName": "ForestOfGoo Completion",
+    "defaultDescription": "No ForestOfGoo completion."
+  },
+  {
+    "id": "StrangeCave",
+    "chainName": "Current Strange Cave Completion",
+    "rootUpgradeID": "expandedAreas:StrangeCave10000",
+    "defaultName": "Strange Cave Completion",
+    "defaultDescription": "No Strange Cave completion."
+  },
+  {
+    "id": "HolyIsles",
+    "chainName": "Current Holy Isles Completion",
+    "rootUpgradeID": "expandedAreas:HolyIsles10000",
+    "defaultName": "Holy Isles Completion",
+    "defaultDescription": "No Holy Isles completion."
+  },
+  {
+    "id": "RunicRuins",
+    "chainName": "Current Runic Ruins Completion",
+    "rootUpgradeID": "expandedAreas:RunicRuins10000",
+    "defaultName": "Runic Ruins Completion",
+    "defaultDescription": "No Runic Ruins completion."
+  },
+  {
+    "id": "AridPlains",
+    "chainName": "Current Arid Plains Completion",
+    "rootUpgradeID": "expandedAreas:AridPlains10000",
+    "defaultName": "Arid Plains Completion",
+    "defaultDescription": "No Arid Plains completion."
+  },
+  {
+    "id": "HighLands",
+    "chainName": "Current High Lands Completion",
+    "rootUpgradeID": "expandedAreas:HighLands10000",
+    "defaultName": "High Lands Completion",
+    "defaultDescription": "No High Lands completion."
+  },
+  {
+    "id": "ToxicSwamps",
+    "chainName": "Current Toxic Swamps Completion",
+    "rootUpgradeID": "expandedAreas:ToxicSwamps10000",
+    "defaultName": "Toxic Swamps Completion",
+    "defaultDescription": "No Toxic Swamps completion."
+  },
+  {
+    "id": "DesolatePlains",
+    "chainName": "Current Desolate Plains Completion",
+    "rootUpgradeID": "expandedAreas:DesolatePlains10000",
+    "defaultName": "Desolate Plains Completion",
+    "defaultDescription": "No Desolate Plains completion."
+  },
+  {
+    "id": "ShroudedBadlands",
+    "chainName": "Current Shrouded Badlands Completion",
+    "rootUpgradeID": "expandedAreas:ShroudedBadlands10000",
+    "defaultName": "Shrouded Badlands Completion",
+    "defaultDescription": "No Shrouded Badlands completion."
+  },
+  {
+    "id": "PerilousPeaks",
+    "chainName": "Current Perilous Peaks Completion",
+    "rootUpgradeID": "expandedAreas:PerilousPeaks10000",
+    "defaultName": "Perilous Peaks Completion",
+    "defaultDescription": "No Perilous Peaks completion."
+  },
+  {
+    "id": "DarkWaters",
+    "chainName": "Current Dark Waters Completion",
+    "rootUpgradeID": "expandedAreas:DarkWaters10000",
+    "defaultName": "Dark Waters Completion",
+    "defaultDescription": "No Dark Waters completion."
+  },
+  {
+    "id": "UnhallowedWasteland",
+    "chainName": "Current Unhallowed Wasteland Completion",
+    "rootUpgradeID": "expandedAreas:UnhallowedWasteland10000",
+    "defaultName": "Unhallowed Wasteland Completion",
+    "defaultDescription": "No Unhallowed Wasteland completion."
+  },
+  {
         "id": "Attack_Mastery",
         "chainName": "Current Attack Mastery Level",
         "rootUpgradeID": "expandedAreas:Attack_Grandmaster",
