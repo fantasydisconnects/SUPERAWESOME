@@ -1,6 +1,7 @@
 {
     "namespace": "expandedAreas",
     "setup": "setup.mjs",
+    "icon": "assets/icons/icon.png",
     "load": [
         "data/expandedAreas.json"
     ]

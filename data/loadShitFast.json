@@ -2,97 +2,441 @@
     "$schema": "https://melvoridle.com/assets/schema/gameData.json",
     "namespace": "expandedAreas",
 "data": {
-    "attacks": [
-        {
-            "id": "BlackDragonPolyNormal",
-            "name": "Normal Attack",
-            "defaultChance": 60,
-            "attackCount": 1,
-            "damage": [
+"shopPurchases": [
+    {
+        "id": "ImpendingDarkness100",
+        "media": "assets/dungeons/ImpendingDarkness.png",
+        "category": "expandedAreas:CombatAchievements",
+        "contains": {
+            "items": [
                 {
-                    "damageType": "Custom",
-                    "character": "Attacker",
-                    "minRoll": "Fixed",
-                    "maxRoll": "Fixed",
-                    "minPercent": 0,
-                    "maxPercent": 26.8,
-                    "roll": true
+                    "id": "expandedAreas:Mastery_Token_Combat",
+                    "quantity": 1500
                 }
             ],
-            "prehitEffects": [],
-            "onhitEffects": [],
-            "attackInterval": 150,
-            "cantMiss": false,
-            "lifesteal": 0,
-            "description": "Make a normal attack as a Black Dragon, dealing up to ${attackDamageMaxValue0} damage on hit."
-        }
-    ],
-"items": [
-    {
-        "id": "PolyCube_BlackDragon",
-        "name": "Poly Cube (Black Dragon)",
-        "category": "Combat",
-        "type": "Weapon",
-        "itemType": "Weapon",
-        "attackType": "melee",
-        "media": "assets/items/Weapon/PolyCube_BlackDragon.png",
-        "ignoreCompletion": false,
-        "obtainFromItemLog": false,
-        "golbinRaidExclusive": false,
-        "sellsFor": 500000,
-        "tier": "ancient",
-        "validSlots": [
-            "Weapon"
-        ],
-        "consumesOn": [
+            "modifiers": {
+                "damageDealtToMonstersInArea": [
+                    {
+                        "categoryID": "melvorD:Dungeons",
+                        "value": 0.01
+                    }
+                ]
+            }
+        },
+        "cost": {
+            "items": []
+        },
+        "allowQuantityPurchase": false,
+        "unlockRequirements": [],
+        "purchaseRequirements": [
             {
-                "type": "MonsterKilled"
+                "type": "DungeonCompletion",
+                "dungeonID": "melvorF:Impending_Darkness",
+                "count": 100
             }
         ],
-        "occupiesSlots": [
-            "Boots",
-            "Cape",
-            "Helmet",
-            "Platebody",
-            "Platelegs",
-            "Shield",
-            "Gloves"
-        ],
-        "equipRequirements": [
+        "defaultBuyLimit": 1,
+        "buyLimitOverrides": [],
+        "showBuyLimit": false,
+        "customName": "Dungeon Master I",
+        "customDescription": "Complete the Impending Darkness Event 100 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+    },
+    {
+        "id": "ImpendingDarkness200",
+        "media": "assets/dungeons/ImpendingDarkness.png",
+        "category": "expandedAreas:CombatAchievements",
+        "contains": {
+            "items": [
+                {
+                    "id": "expandedAreas:Mastery_Token_Combat",
+                    "quantity": 1500
+                }
+            ],
+            "modifiers": {
+                "damageDealtToMonstersInArea": [
+                    {
+                        "categoryID": "melvorD:Dungeons",
+                        "value": 0.01
+                    }
+                ]
+            }
+        },
+        "cost": {
+            "items": []
+        },
+        "allowQuantityPurchase": false,
+        "unlockRequirements": [
             {
-            "type": "SkillLevel",
-            "skillID": "melvorD:Magic",
-            "level": 60
+                "purchaseID": "expandedAreas:ImpendingDarkness1000",
+                "count": 1,
+                "type": "ShopPurchase"
+            }
+        ],
+        "purchaseRequirements": [
+            {
+                "type": "DungeonCompletion",
+                "dungeonID": "melvorF:Impending_Darkness",
+                "count": 200
+            }
+        ],
+        "defaultBuyLimit": 1,
+        "buyLimitOverrides": [],
+        "showBuyLimit": false,
+        "customName": "Dungeon Master II",
+        "customDescription": "Complete the Impending Darkness Event 100 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+    },
+    {
+        "id": "ImpendingDarkness300",
+        "media": "assets/dungeons/ImpendingDarkness.png",
+        "category": "expandedAreas:CombatAchievements",
+        "contains": {
+            "items": [
+                {
+                    "id": "expandedAreas:Mastery_Token_Combat",
+                    "quantity": 1500
+                }
+            ],
+            "modifiers": {
+                "damageDealtToMonstersInArea": [
+                    {
+                        "categoryID": "melvorD:Dungeons",
+                        "value": 0.01
+                    }
+                ]
+            }
+        },
+        "cost": {
+            "items": []
+        },
+        "allowQuantityPurchase": false,
+        "unlockRequirements": [
+            {
+                "purchaseID": "expandedAreas:ImpendingDarkness200",
+                "count": 1,
+                "type": "ShopPurchase"
+            }
+        ],
+        "purchaseRequirements": [
+            {
+                "type": "DungeonCompletion",
+                "dungeonID": "melvorF:Impending_Darkness",
+                "count": 300
+            }
+        ],
+        "defaultBuyLimit": 1,
+        "buyLimitOverrides": [],
+        "showBuyLimit": false,
+        "customName": "Dungeon Master III",
+        "customDescription": "Complete the Impending Darkness event 300 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+    },
+    {
+        "id": "ImpendingDarkness400",
+        "media": "assets/dungeons/ImpendingDarkness.png",
+        "category": "expandedAreas:CombatAchievements",
+        "contains": {
+            "items": [
+                {
+                    "id": "expandedAreas:Mastery_Token_Combat",
+                    "quantity": 1500
+                }
+            ],
+            "modifiers": {
+                "damageDealtToMonstersInArea": [
+                    {
+                        "categoryID": "melvorD:Dungeons",
+                        "value": 0.01
+                    }
+                ]
+            }
+        },
+        "cost": {
+            "items": []
+        },
+        "allowQuantityPurchase": false,
+        "unlockRequirements": [
+            {
+                "purchaseID": "expandedAreas:ImpendingDarkness300",
+                "count": 1,
+                "type": "ShopPurchase"
+            }
+        ],
+        "purchaseRequirements": [
+            {
+                "type": "DungeonCompletion",
+                "dungeonID": "melvorF:Impending_Darkness",
+                "count": 400
+            }
+        ],
+        "defaultBuyLimit": 1,
+        "buyLimitOverrides": [],
+        "showBuyLimit": false,
+        "customName": "Dungeon Master IV",
+        "customDescription": "Complete the Impending Darkness event 400 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+    },
+    {
+        "id": "ImpendingDarkness500",
+        "media": "assets/dungeons/ImpendingDarkness.png",
+        "category": "expandedAreas:CombatAchievements",
+        "contains": {
+            "items": [
+                {
+                    "id": "expandedAreas:Mastery_Token_Combat",
+                    "quantity": 1500
+                }
+            ],
+            "modifiers": {
+                "damageDealtToMonstersInArea": [
+                    {
+                        "categoryID": "melvorD:Dungeons",
+                        "value": 0.01
+                    }
+                ]
+            }
+        },
+        "cost": {
+            "items": []
+        },
+        "allowQuantityPurchase": false,
+        "unlockRequirements": [
+            {
+                "purchaseID": "expandedAreas:ImpendingDarkness400",
+                "count": 1,
+                "type": "ShopPurchase"
+            }
+        ],
+        "purchaseRequirements": [
+            {
+                "type": "DungeonCompletion",
+                "dungeonID": "melvorF:Impending_Darkness",
+                "count": 500
+            }
+        ],
+        "defaultBuyLimit": 1,
+        "buyLimitOverrides": [],
+        "showBuyLimit": false,
+        "customName": "Dungeon Master V",
+        "customDescription": "Complete the Impending Darkness event 500 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+    },
+    {
+        "id": "ImpendingDarkness600",
+        "media": "assets/dungeons/ImpendingDarkness.png",
+        "category": "expandedAreas:CombatAchievements",
+        "contains": {
+            "items": [
+                {
+                    "id": "expandedAreas:Mastery_Token_Combat",
+                    "quantity": 1500
+                }
+            ],
+            "modifiers": {
+                "damageDealtToMonstersInArea": [
+                    {
+                        "categoryID": "melvorD:Dungeons",
+                        "value": 0.01
+                    }
+                ]
+            }
+        },
+        "cost": {
+            "items": []
+        },
+        "allowQuantityPurchase": false,
+        "unlockRequirements": [
+            {
+            "purchaseID": "expandedAreas:ImpendingDarkness500",
+            "count": 1,
+            "type": "ShopPurchase"
         }
     ],
-    "equipmentStats": [
+    "purchaseRequirements": [
         {
-            "key": "attackSpeed",
-            "value": 3000
-        },
-        {
-            "key": "damageReduction",
-            "value": 5
-        },
-        {
-            "key": "stabAttackBonus",
-            "value": 60
-        },
-        {
-            "key": "meleeStrengthBonus",
-            "value": 80
-        },
-        {
-            "key": "meleeDefenceBonus",
-            "value": 80
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 600
         }
     ],
-        "specialAttacks": [
-            "expandedAreas:BlackDragonPolyNormal",
-            "melvorD:LesserDragonbreath"
-        ]
-        
-    }
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Dungeon Master VI",
+    "customDescription": "Complete the Impending Darkness event 600 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+},
+{
+    "id": "ImpendingDarkness700",
+    "media": "assets/dungeons/ImpendingDarkness.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+        "items": [
+            {
+                "id": "expandedAreas:Mastery_Token_Combat",
+                "quantity": 1500
+            }
+        ],
+        "modifiers": {
+            "damageDealtToMonstersInArea": [
+                {
+                    "categoryID": "melvorD:Dungeons",
+                    "value": 0.01
+                }
+            ]
+        }
+    },
+    "cost": {
+        "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+        {
+            "purchaseID": "expandedAreas:ImpendingDarkness600",
+            "count": 1,
+            "type": "ShopPurchase"
+        }
+    ],
+    "purchaseRequirements": [
+        {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 700
+        }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Dungeon Master VII",
+    "customDescription": "Complete the Impending Darkness event 700 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+},
+{
+    "id": "ImpendingDarkness800",
+    "media": "assets/dungeons/ImpendingDarkness.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+        "items": [
+            {
+                "id": "expandedAreas:Mastery_Token_Combat",
+                "quantity": 1500
+            }
+        ],
+        "modifiers": {
+            "damageDealtToMonstersInArea": [
+                {
+                    "categoryID": "melvorD:Dungeons",
+                    "value": 0.01
+                }
+            ]
+        }
+    },
+    "cost": {
+        "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+        {
+            "purchaseID": "expandedAreas:ImpendingDarkness700",
+            "count": 1,
+            "type": "ShopPurchase"
+        }
+    ],
+    "purchaseRequirements": [
+        {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 800
+        }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Dungeon Master VIII",
+    "customDescription": "Complete the Impending Darkness event 800 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+},
+{
+    "id": "ImpendingDarkness900",
+    "media": "assets/dungeons/ImpendingDarkness.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+        "items": [
+            {
+                "id": "expandedAreas:Mastery_Token_Combat",
+                "quantity": 1500
+            }
+        ],
+        "modifiers": {
+            "damageDealtToMonstersInArea": [
+                {
+                    "categoryID": "melvorD:Dungeons",
+                    "value": 0.01
+                }
+            ]
+        }
+    },
+    "cost": {
+        "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+        {
+            "purchaseID": "expandedAreas:ImpendingDarkness800",
+            "count": 1,
+            "type": "ShopPurchase"
+        }
+    ],
+    "purchaseRequirements": [
+        {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 9000
+        }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Dungeon Master IX",
+    "customDescription": "Complete the Impending Darkness event 900 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+},
+{
+    "id": "ImpendingDarkness1000",
+    "media": "assets/dungeons/ImpendingDarkness.png",
+    "category": "expandedAreas:CombatAchievements",
+    "contains": {
+        "items": [
+            {
+                "id": "expandedAreas:Mastery_Token_Combat",
+                "quantity": 1500
+            }
+        ],
+        "modifiers": {
+            "damageDealtToMonstersInArea": [
+                {
+                    "categoryID": "melvorD:Dungeons",
+                    "value": 0.01
+                }
+            ]
+        }
+    },
+    "cost": {
+        "items": []
+    },
+    "allowQuantityPurchase": false,
+    "unlockRequirements": [
+        {
+            "purchaseID": "expandedAreas:ImpendingDarkness900",
+            "count": 1,
+            "type": "ShopPurchase"
+        }
+    ],
+    "purchaseRequirements": [
+        {
+            "type": "DungeonCompletion",
+            "dungeonID": "melvorF:Impending_Darkness",
+            "count": 1000
+        }
+    ],
+    "defaultBuyLimit": 1,
+    "buyLimitOverrides": [],
+    "showBuyLimit": false,
+    "customName": "Dungeon Master X",
+    "customDescription": "Complete the Impending Darkness event 1,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+}
 ]
 },
 "modifications": {}
