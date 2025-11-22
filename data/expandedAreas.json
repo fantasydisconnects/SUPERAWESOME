@@ -1501,7 +1501,7 @@
       }
     ],
     "items": [
-          {
+      {
         "id": "PolyCube_BlackDragon",
         "name": "Poly Cube (Black Dragon)",
         "category": "Combat",
@@ -23918,7 +23918,7 @@
           "weight": 200
         },
         "fixedPetClears": false,
-        "id": "ElementalSanctuary",
+        "id": "Elemental_Sanctuary",
         "media": "assets/dungeons/ElementalSanctuary.png",
         "monsterIDs": [
           "expandedAreas:Monk_of_the_Wind",
@@ -23970,7 +23970,7 @@
         ]
       },
       {
-        "id": "BarbarianTrials",
+        "id": "The_Barbarian_Trials",
         "name": "The Barbarian Trials",
         "media": "assets/dungeons/BarbarianTrials.svg",
         "monsterIDs": [
@@ -44573,7 +44573,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 1000
           }
         ],
@@ -44609,7 +44609,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials1000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials1000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44617,7 +44617,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 2000
           }
         ],
@@ -44653,7 +44653,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials2000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials2000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44661,7 +44661,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 3000
           }
         ],
@@ -44697,7 +44697,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials3000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials3000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44705,7 +44705,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 4000
           }
         ],
@@ -44741,7 +44741,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials4000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials4000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44749,7 +44749,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 5000
           }
         ],
@@ -44785,7 +44785,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials5000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials5000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44793,7 +44793,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 6000
           }
         ],
@@ -44829,7 +44829,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials6000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials6000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44837,7 +44837,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 7000
           }
         ],
@@ -44873,7 +44873,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials7000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials7000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44881,7 +44881,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 8000
           }
         ],
@@ -44917,7 +44917,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials8000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials8000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44925,7 +44925,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 90000
           }
         ],
@@ -44961,7 +44961,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:BarbarianTrials9000",
+            "purchaseID": "expandedAreas:The_Barbarian_Trials9000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44969,7 +44969,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 10000
           }
         ],
@@ -47177,7 +47177,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 1000
           }
         ],
@@ -47213,7 +47213,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary1000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary1000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47221,7 +47221,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 2000
           }
         ],
@@ -47257,7 +47257,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary2000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary2000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47265,7 +47265,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 3000
           }
         ],
@@ -47301,7 +47301,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary3000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary3000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47309,7 +47309,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 4000
           }
         ],
@@ -47345,7 +47345,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary4000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary4000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47353,7 +47353,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 5000
           }
         ],
@@ -47389,7 +47389,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary5000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary5000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47397,7 +47397,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 6000
           }
         ],
@@ -47433,7 +47433,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary6000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary6000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47441,7 +47441,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 7000
           }
         ],
@@ -47477,7 +47477,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary7000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary7000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47485,7 +47485,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 8000
           }
         ],
@@ -47521,7 +47521,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary8000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary8000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47529,7 +47529,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 90000
           }
         ],
@@ -47565,7 +47565,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:ElementalSanctuary9000",
+            "purchaseID": "expandedAreas:Elemental_Sanctuary9000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47573,7 +47573,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:ElementalSanctuary",
+            "dungeonID": "expandedAreas:Elemental_Sanctuary",
             "count": 10000
           }
         ],
@@ -54088,7 +54088,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 1
           }
         ],
@@ -54134,7 +54134,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 1
           }
         ],
@@ -54170,7 +54170,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 1
           }
         ],
@@ -54216,7 +54216,7 @@
         "purchaseRequirements": [
           {
             "type": "DungeonCompletion",
-            "dungeonID": "expandedAreas:BarbarianTrials",
+            "dungeonID": "expandedAreas:The_Barbarian_Trials",
             "count": 1
           }
         ],
@@ -54616,16 +54616,16 @@
           "expandedAreas:HallOfWizards8000",
           "expandedAreas:HallOfWizards9000",
           "expandedAreas:HallOfWizards10000",
-          "expandedAreas:BarbarianTrials1000",
-          "expandedAreas:BarbarianTrials2000",
-          "expandedAreas:BarbarianTrials3000",
-          "expandedAreas:BarbarianTrials4000",
-          "expandedAreas:BarbarianTrials5000",
-          "expandedAreas:BarbarianTrials6000",
-          "expandedAreas:BarbarianTrials7000",
-          "expandedAreas:BarbarianTrials8000",
-          "expandedAreas:BarbarianTrials9000",
-          "expandedAreas:BarbarianTrials10000",
+          "expandedAreas:The_Barbarian_Trials1000",
+          "expandedAreas:The_Barbarian_Trials2000",
+          "expandedAreas:The_Barbarian_Trials3000",
+          "expandedAreas:The_Barbarian_Trials4000",
+          "expandedAreas:The_Barbarian_Trials5000",
+          "expandedAreas:The_Barbarian_Trials6000",
+          "expandedAreas:The_Barbarian_Trials7000",
+          "expandedAreas:The_Barbarian_Trials8000",
+          "expandedAreas:The_Barbarian_Trials9000",
+          "expandedAreas:The_Barbarian_Trials10000",
           "expandedAreas:SpiderForest1000",
           "expandedAreas:SpiderForest2000",
           "expandedAreas:SpiderForest3000",
@@ -54676,16 +54676,16 @@
           "expandedAreas:DragonsDen8000",
           "expandedAreas:DragonsDen9000",
           "expandedAreas:DragonsDen10000",
-          "expandedAreas:ElementalSanctuary1000",
-          "expandedAreas:ElementalSanctuary2000",
-          "expandedAreas:ElementalSanctuary3000",
-          "expandedAreas:ElementalSanctuary4000",
-          "expandedAreas:ElementalSanctuary5000",
-          "expandedAreas:ElementalSanctuary6000",
-          "expandedAreas:ElementalSanctuary7000",
-          "expandedAreas:ElementalSanctuary8000",
-          "expandedAreas:ElementalSanctuary9000",
-          "expandedAreas:ElementalSanctuary10000",
+          "expandedAreas:Elemental_Sanctuary1000",
+          "expandedAreas:Elemental_Sanctuary2000",
+          "expandedAreas:Elemental_Sanctuary3000",
+          "expandedAreas:Elemental_Sanctuary4000",
+          "expandedAreas:Elemental_Sanctuary5000",
+          "expandedAreas:Elemental_Sanctuary6000",
+          "expandedAreas:Elemental_Sanctuary7000",
+          "expandedAreas:Elemental_Sanctuary8000",
+          "expandedAreas:Elemental_Sanctuary9000",
+          "expandedAreas:Elemental_Sanctuary10000",
           "expandedAreas:VolcanicCave1000",
           "expandedAreas:VolcanicCave2000",
           "expandedAreas:VolcanicCave3000",
@@ -55055,7 +55055,7 @@
       {
         "id": "BarbarianTrials",
         "chainName": "Current Barbarian Trials Completion",
-        "rootUpgradeID": "expandedAreas:BarbarianTrials10000",
+        "rootUpgradeID": "expandedAreas:The_Barbarian_Trials10000",
         "defaultName": "Barbarian Trials Completion",
         "defaultDescription": "No Barbarian Trials completion."
       },
@@ -65752,14 +65752,14 @@
               "insertAt": "After",
               "afterID": "melvorD:Hall_of_Wizards",
               "ids": [
-                "expandedAreas:BarbarianTrials"
+                "expandedAreas:The_Barbarian_Trials"
               ]
             },
             {
               "insertAt": "After",
               "afterID": "melvorF:Dragons_Den",
               "ids": [
-                "expandedAreas:ElementalSanctuary"
+                "expandedAreas:Elemental_Sanctuary"
               ]
             }
           ]
@@ -65767,38 +65767,38 @@
       }
     ],
     "dungeons": [
-          {
-            "id": "melvorF:Air_God_Dungeon",
-            "nonBossPassives": {
-              "add": [
-                "expandedAreas:FireResistance"
-              ]
-            }
-          },
-          {
-            "id": "melvorF:Water_God_Dungeon",
-            "nonBossPassives": {
-              "add": [
-                "expandedAreas:AirResistance"
-              ]
-            }
-          },
-          {
-            "id": "melvorF:Earth_God_Dungeon",
-            "nonBossPassives": {
-              "add": [
-                "expandedAreas:WaterResistance"
-              ]
-            }
-          },
-          {
-            "id": "melvorF:Fire_God_Dungeon",
-            "nonBossPassives": {
-              "add": [
-                "expandedAreas:EarthResistance"
-              ]
-            }
-          },
+      {
+        "id": "melvorF:Air_God_Dungeon",
+        "nonBossPassives": {
+          "add": [
+            "expandedAreas:FireResistance"
+          ]
+        }
+      },
+      {
+        "id": "melvorF:Water_God_Dungeon",
+        "nonBossPassives": {
+          "add": [
+            "expandedAreas:AirResistance"
+          ]
+        }
+      },
+      {
+        "id": "melvorF:Earth_God_Dungeon",
+        "nonBossPassives": {
+          "add": [
+            "expandedAreas:WaterResistance"
+          ]
+        }
+      },
+      {
+        "id": "melvorF:Fire_God_Dungeon",
+        "nonBossPassives": {
+          "add": [
+            "expandedAreas:EarthResistance"
+          ]
+        }
+      },
       {
         "id": "melvorD:Frozen_Cove",
         "dropBones": true
@@ -65872,7 +65872,6 @@
           2
         ]
       },
-      
       {
         "id": "melvorF:Dragons_Den",
         "difficulty": [
@@ -66897,22 +66896,22 @@
           ]
         }
       },
-    {
-      "id": "melvorF:Mummy",
-      "passives": {
-        "add": [
-          "expandedAreas:MonsterTypeUndead",
-          "expandedAreas:AfflictingTouch"
-        ]
+      {
+        "id": "melvorF:Mummy",
+        "passives": {
+          "add": [
+            "expandedAreas:MonsterTypeUndead",
+            "expandedAreas:AfflictingTouch"
+          ]
+        },
+        "specialAttacks": {
+          "add": [
+            {
+              "attackID": "expandedAreas:DreadfulGlare"
+            }
+          ]
+        }
       },
-      "specialAttacks": {
-        "add": [
-          {
-            "attackID": "expandedAreas:DreadfulGlare"
-          }
-        ]
-      }
-    },
       {
         "id": "melvorF:Murtia",
         "passives": {
@@ -67987,7 +67986,6 @@
           "Magic": 820
         }
       },
-      
       {
         "id": "melvorD:JuniorFarmer",
         "lootChance": 100,
@@ -68394,7 +68392,6 @@
     {
       "namespace": "melvorAoD",
       "data": {
-        
         "items": [
           {
             "itemType": "Equipment",
@@ -68575,551 +68572,551 @@
                 "expandedAreas:Accessory1",
                 "expandedAreas:Accessory2"
               ]
-              }
-            },
-            {
-              "id": "melvorAoD:Sailors_Compass",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Cursed_Arcana",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ancient_Arcana",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ancient_Scythe",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Old_Wooden_Ladle",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Mining_Lantern",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Blacksmith_Tongs",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Chisel",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Fishing_Net",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Archaeologists_Whip",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Golden_Trowel",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Captains_Logbook",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Old_Spyglass",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Enhanced_Spyglass",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Old_Fancy_Quill",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Sturdy_Fancy_Quill",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Bottle_of_Mystic_Water",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Summoning",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Barrier_Eroding_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Barrier_Hunter_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Bone_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Bronze_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Cleansing_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Cursed_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Haunted_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Barrier_Touch",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Deception",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Faith",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Ring_of_Malice",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Silver_Magic_Band",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Summoners_Blessed_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorAoD:Unholy_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
             }
-          ],
-          "dungeons": [
-            {
-              "id": "melvorAoD:Unholy_Forest",
-              "difficulty": [
-                3
+          },
+          {
+            "id": "melvorAoD:Sailors_Compass",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
               ]
             }
-          ],
-          "monsters": [
-            {
-              "id": "melvorAoD:Nagaia",
-              "levels": {
-                "Hitpoints": 1125,
-                "Attack": 1,
-                "Strength": 1,
-                "Defence": 575,
-                "Ranged": 750,
-                "Magic": 500
-              }
+          },
+          {
+            "id": "melvorAoD:Cursed_Arcana",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
+              ]
             }
-          ]
-        }
-      },
-      {
-        "namespace": "melvorTotH",
-        "data": {
-          "itemUpgrades": [
-            {
-              "rootItemIDs": [
-                "melvorTotH:Corundum_Javelin"
-              ],
-              "itemCosts": [
-                {
-                  "id": "melvorTotH:Corundum_Javelin",
-                  "quantity": 1
-                }
-              ],
-              "upgradedItemID": "expandedAreas:Corundum_Javelin_Ammo",
-              "isDowngrade": false
-            },
-            {
-              "rootItemIDs": [
-                "melvorTotH:Augite_Javelin"
-              ],
-              "itemCosts": [
-                {
-                  "id": "melvorTotH:Augite_Javelin",
-                  "quantity": 1
-                }
-              ],
-              "upgradedItemID": "expandedAreas:Augite_Javelin_Ammo",
-              "isDowngrade": false
-            },
-            {
-              "rootItemIDs": [
-                "melvorTotH:Divine_Javelin"
-              ],
-              "itemCosts": [
-                {
-                  "id": "melvorTotH:Divine_Javelin",
-                  "quantity": 1
-                }
-              ],
-              "upgradedItemID": "expandedAreas:Divine_Javelin_Ammo",
-              "isDowngrade": false
-            },
-            {
-              "rootItemIDs": [
-                "melvorTotH:Meteorite_Javelin"
-              ],
-              "itemCosts": [
-                {
-                  "id": "melvorTotH:Meteorite_Javelin",
-                  "quantity": 1
-                }
-              ],
-              "upgradedItemID": "expandedAreas:Meteorite_Javelin_Ammo",
-              "isDowngrade": false
+          },
+          {
+            "id": "melvorAoD:Ancient_Arcana",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
+              ]
             }
-          ]
-        },
-        "modifications": {
-          "items": [
-            {
-              "id": "melvorTotH:Voodoo_Trinket",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Book_of_the_Ancients",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Hunters_Journal",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Mortar_and_Pestle",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Grappling_Hook",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Potion_Stirrer",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Tool"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Burning_Embers_Book",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Accessory1",
-                  "expandedAreas:Accessory2"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Onyx_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Onyx_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Cerulean_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Cerulean_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Oricha_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Oricha_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Runestone_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Iridium_Zephyte_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Zephyte_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Palladium_Runestone_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Meteorite_Warrior_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Meteorite_Marksman_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Meteorite_Spellcaster_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Meteorite_Woodcutting_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Blood_Ring",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Ring_of_Curse_Protection",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
-            },
-            {
-              "id": "melvorTotH:Ring_of_Phantom_Summon",
-              "validSlots": {
-                "add": [
-                  "expandedAreas:Ring"
-                ]
-              }
+          },
+          {
+            "id": "melvorAoD:Ancient_Scythe",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
             }
-          ]
-        }
+          },
+          {
+            "id": "melvorAoD:Old_Wooden_Ladle",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Mining_Lantern",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Blacksmith_Tongs",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Chisel",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Fishing_Net",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Archaeologists_Whip",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Golden_Trowel",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Captains_Logbook",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Old_Spyglass",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Enhanced_Spyglass",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Old_Fancy_Quill",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Sturdy_Fancy_Quill",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Bottle_of_Mystic_Water",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Ring_of_Summoning",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Barrier_Eroding_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Barrier_Hunter_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Bone_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Bronze_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Cleansing_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Cursed_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Haunted_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Ring_of_Barrier_Touch",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Ring_of_Deception",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Ring_of_Faith",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Ring_of_Malice",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Silver_Magic_Band",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Summoners_Blessed_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorAoD:Unholy_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          }
+        ],
+        "dungeons": [
+          {
+            "id": "melvorAoD:Unholy_Forest",
+            "difficulty": [
+              3
+            ]
+          }
+        ],
+        "monsters": [
+          {
+            "id": "melvorAoD:Nagaia",
+            "levels": {
+              "Hitpoints": 1125,
+              "Attack": 1,
+              "Strength": 1,
+              "Defence": 575,
+              "Ranged": 750,
+              "Magic": 500
+            }
+          }
+        ]
       }
-    ]
+    },
+    {
+      "namespace": "melvorTotH",
+      "data": {
+        "itemUpgrades": [
+          {
+            "rootItemIDs": [
+              "melvorTotH:Corundum_Javelin"
+            ],
+            "itemCosts": [
+              {
+                "id": "melvorTotH:Corundum_Javelin",
+                "quantity": 1
+              }
+            ],
+            "upgradedItemID": "expandedAreas:Corundum_Javelin_Ammo",
+            "isDowngrade": false
+          },
+          {
+            "rootItemIDs": [
+              "melvorTotH:Augite_Javelin"
+            ],
+            "itemCosts": [
+              {
+                "id": "melvorTotH:Augite_Javelin",
+                "quantity": 1
+              }
+            ],
+            "upgradedItemID": "expandedAreas:Augite_Javelin_Ammo",
+            "isDowngrade": false
+          },
+          {
+            "rootItemIDs": [
+              "melvorTotH:Divine_Javelin"
+            ],
+            "itemCosts": [
+              {
+                "id": "melvorTotH:Divine_Javelin",
+                "quantity": 1
+              }
+            ],
+            "upgradedItemID": "expandedAreas:Divine_Javelin_Ammo",
+            "isDowngrade": false
+          },
+          {
+            "rootItemIDs": [
+              "melvorTotH:Meteorite_Javelin"
+            ],
+            "itemCosts": [
+              {
+                "id": "melvorTotH:Meteorite_Javelin",
+                "quantity": 1
+              }
+            ],
+            "upgradedItemID": "expandedAreas:Meteorite_Javelin_Ammo",
+            "isDowngrade": false
+          }
+        ]
+      },
+      "modifications": {
+        "items": [
+          {
+            "id": "melvorTotH:Voodoo_Trinket",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Book_of_the_Ancients",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Hunters_Journal",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Mortar_and_Pestle",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Grappling_Hook",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Potion_Stirrer",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Tool"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Burning_Embers_Book",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Accessory1",
+                "expandedAreas:Accessory2"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Iridium_Onyx_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Palladium_Onyx_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Iridium_Cerulean_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Palladium_Cerulean_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Iridium_Oricha_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Palladium_Oricha_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Iridium_Runestone_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Iridium_Zephyte_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Palladium_Zephyte_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Palladium_Runestone_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Meteorite_Warrior_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Meteorite_Marksman_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Meteorite_Spellcaster_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Meteorite_Woodcutting_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Blood_Ring",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Ring_of_Curse_Protection",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          },
+          {
+            "id": "melvorTotH:Ring_of_Phantom_Summon",
+            "validSlots": {
+              "add": [
+                "expandedAreas:Ring"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
 }
