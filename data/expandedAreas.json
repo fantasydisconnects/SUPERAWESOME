@@ -2,6 +2,24 @@
   "$schema": "https://melvoridle.com/assets/schema/gameData.json",
   "namespace": "expandedAreas",
   "data": {
+    "damageTypes": [
+      {
+        "id": "HOLY",
+        "name": "Holy Damage",
+        "media": "assets/skills/combat/HOLY.png",
+        "resistanceCap": 95,
+        "resistanceName": "Holy Resistance",
+        "spanClass": "font-w600 damage-type-pure"
+      },
+      {
+        "id": "UNHOLY",
+        "name": "Unholy Damage",
+        "media": "assets/skills/combat/UNHOLY.png",
+        "resistanceCap": 95,
+        "resistanceName": "Unholy Resistance",
+        "spanClass": "font-w600 damage-type-pure"
+      }
+    ],
     "equipmentSlots": [
       {
         "id": "Ring",
@@ -53,9 +71,73 @@
         "id": "WitherDOT",
         "name": "Wither",
         "adjective": "Withering"
+      },
+      {
+        "id": "Paralyze",
+        "name": "Paralyze",
+        "adjective": "Paralyzed"
       }
     ],
     "combatEffectTemplates": [
+      {
+        "id": "Paralyze",
+        "description": "Endpoint Template. Defines behaviours for an effect that: Interrupts a character's turn when applied; prevents them from attacking, evading, or regenerating barrier; and causes them to take 100% more damage. Also grants immunity to stun-likes for 3 turns.",
+        "baseTemplates": [
+          "melvorD:StunLike"
+        ],
+        "baseEffectData": {
+          "name": "Paralyzed",
+          "media": "assets/status/paralyzed.png",
+          "tooltipSpans": [
+            {
+              "type": "String",
+              "value": "Cannot attack or evade"
+            },
+            {
+              "type": "String",
+              "value": "Increased damage taken",
+              "templateData": {
+                "value": 100
+              },
+              "className": "text-danger"
+            },
+            {
+              "type": "Turns",
+              "turns": "p.turns"
+            }
+          ],
+          "behaviours": [
+            {
+              "type": "ProcessApplicator",
+              "applicator": {
+                "effectID": "melvorD:StunImmunity"
+              },
+              "triggersOn": [
+                {
+                  "type": "EffectApplied"
+                }
+              ]
+            }
+          ],
+          "statGroups": [
+            {
+              "name": "debuff",
+              "modifiers": {
+                "cantAttack": 1,
+                "cantEvade": 1,
+                "cantRegenBarrier": 1,
+                "damageTaken": 100
+              }
+            }
+          ],
+          "effectGroups": [
+            "expandedAreas:Paralyze"
+          ],
+          "exclusiveGroups": [
+            "melvorD:StunImmune"
+          ]
+        }
+      },
       {
         "id": "WitherDOT",
         "baseTemplates": [
@@ -67,7 +149,6 @@
           "behaviours": [
             {
               "type": "DamageCharacter",
-              "damageType": "Bleed",
               "value": "p.damagePerProc",
               "triggersOn": [
                 {
@@ -137,6 +218,105 @@
       }
     ],
     "combatEffects": [
+      {
+        "id": "IncreasedMaxHitpoints",
+        "templateID": "melvorD:StackingNonCountingModifier",
+        "name": "Constitution",
+        "media": "assets/status/hp_up.svg",
+        "target": "Self",
+        "parameters": [
+          {
+            "name": "initialStacks",
+            "initialValue": 1
+          },
+          {
+            "name": "stacksToAdd",
+            "initialValue": 1
+          },
+          {
+            "name": "maxStacks",
+            "initialValue": 50
+          }
+        ],
+        "statGroups": [
+          {
+            "name": "stacks",
+            "modifiers": {
+              "maxHitpoints": 1
+            }
+          }
+        ],
+        "effectGroups": [
+          "melvorD:Buff"
+        ]
+      },
+      {
+        "id": "Paralyze",
+        "templateID": "expandedAreas:Paralyze",
+        "parameters": [
+          {
+            "name": "turns",
+            "initialValue": 1
+          }
+        ]
+      },
+      {
+        "id": "BlindedByTheLight",
+        "templateID": "melvorD:StaticSelfCountingModifier",
+        "name": "Dawn Blindness",
+        "media": "assets/status/blindedbythelight.png",
+        "parameters": [
+          {
+            "name": "turns",
+            "initialValue": 3
+          }
+        ],
+        "target": "Target",
+        "statGroups": [
+          {
+            "name": "stacks",
+            "modifiers": {
+              "accuracyRating": -15
+            }
+          }
+        ],
+        "effectGroups": [
+          "melvorD:Debuff"
+        ]
+      },
+      {
+        "id": "Parry",
+        "templateID": "melvorD:SelfCountingReflexive",
+        "name": "Parry",
+        "media": "assets/status/evasion_increase.svg",
+        "parameters": [
+          {
+            "name": "turns",
+            "initialValue": 1
+          },
+          {
+            "name": "maxStacks",
+            "initialValue": 1
+          }
+        ],
+        "statGroups": [
+          {
+            "name": "stacks",
+            "modifiers": {
+              "evasion": 100,
+              "flatResistance": [
+                {
+                  "damageTypeID": "melvorD:Normal",
+                  "value": 25
+                }
+              ]
+            }
+          }
+        ],
+        "effectGroups": [
+          "melvorD:Buff"
+        ]
+      },
       {
         "id": "ResistanceIncrease5",
         "templateID": "melvorD:StaticSelfCountingModifier",
@@ -230,7 +410,7 @@
         "parameters": [
           {
             "name": "procs",
-            "initialValue": 15
+            "initialValue": 50
           },
           {
             "name": "interval",
@@ -245,11 +425,10 @@
                 "character": "Target",
                 "roll": false,
                 "maxRoll": "MaxHP",
-                "maxPercent": 250
+                "maxPercent": 1000
               }
             ],
             "applyDamageModifiers": true,
-            "applyTypeModifiers": "Bleed",
             "applyResistance": true
           }
         ]
@@ -784,7 +963,19 @@
                 ],
                 "appliesWhen": "StartOfFight"
               }
-            ]
+            ],
+            "modifiers": {
+              "resistance": [
+                {
+                  "damageTypeID": "expandedAreas:UNHOLY",
+                  "value": -50
+                },
+                {
+                  "damageTypeID": "expandedAreas:HOLY",
+                  "value": 50
+                }
+              ]
+            }
           }
         ]
       },
@@ -872,6 +1063,16 @@
                 {
                   "effectGroupID": "melvorD:Curse",
                   "value": 1
+                }
+              ],
+              "resistance": [
+                {
+                  "damageTypeID": "expandedAreas:UNHOLY",
+                  "value": 50
+                },
+                {
+                  "damageTypeID": "expandedAreas:HOLY",
+                  "value": -50
                 }
               ]
             }
@@ -1009,6 +1210,122 @@
       }
     ],
     "combatPassives": [
+      {
+                "id": "AncientSwords",
+                "name": "Ancient Swords",
+                "customDescription": "If the Enemy has 80% of its Hipoints or higher, it gains +20% Damage Dealt.",
+                "conditionalModifiers": [
+                    {
+                        "condition": {
+                            "type": "Hitpoints",
+                            "character": "Player",
+                            "value": 80,
+                            "operator": ">"
+                        },
+                        "modifiers": {
+                            "damageDealt": 20
+                        }
+                    }
+                ]
+            },
+      {
+        "id": "AfflictedLifeAbsorbance",
+        "name": "Afflicted Life Absorbance",
+        "customDescription": "+40% Lifesteal. +50% Chance to Apply 1 stack of Affliction and gain 1 stack of Constitution (+1% Max HP, up to 50 stacks) per attack.",
+        "combatEffects": [
+          {
+            "appliesWhen": "PostFirstAttack",
+            "effectID": "melvorD:Affliction",
+            "chance": 50
+          },
+          {
+            "appliesWhen": "PostAttack",
+            "effectID": "expandedAreas:IncreasedMaxHitpoints",
+            "chance": 50
+          }
+        ],
+        "modifiers": {
+          "lifesteal": 40
+        }
+      },
+      {
+        "id": "MonsterSubtypeHorde",
+        "name": "Monster Subtype: Horde",
+        "customDescription": "A Horde consists of 20 creatures of the same type. Their stats are the same, except they gain +50% Damage Reduction, -80% Base Attack Interval, and +1000% HP. Hordes also cannot regen HP or Barrier, be stunned, or rebirthed.",
+        "modifiers": {
+          "flatResistance": [
+            {
+              "damageTypeID": "melvorD:Normal",
+              "value": 50
+            }
+          ],
+          "attackInterval": -80,
+          "cantRegenBarrier": 1,
+          "hitpointRegeneration": -9999,
+          "rebirthChance": -9999,
+          "effectImmunity": [
+            {
+              "effectGroupID": "melvorD:RegenDOT",
+              "value": 1
+            },
+            {
+              "effectGroupID": "melvorD:Stun",
+              "value": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": "GhoulTouch",
+        "name": "Ghoul Touch",
+        "customDescription": "+20% chance to apply Paralyze for 3 turns on hit (target is Paralyzed and takes +100% Damage during effect)",
+        "combatEffects": [
+          {
+            "appliesWhen": "HitWithAttack",
+            "effectID": "expandedAreas:Paralyze",
+            "chance": 20,
+            "initialParams": [
+              {
+                "name": "turns",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Parry",
+        "name": "Parry",
+        "customDescription": "As a reaction to being attacked with melee, the Death Knight has a 30% Chance to double its Evasion Ratings and Resistance for 1 turn.",
+        "combatEffects": [
+          {
+            "appliesWhen": "BeingAttacked",
+            "condition": {
+              "character": "Player",
+              "targetAttackType": "melee",
+              "thisAttackType": "melee",
+              "type": "CombatType"
+            },
+            "effectID": "expandedAreas:Parry",
+            "chance": 30
+          }
+        ]
+      },
+      {
+        "id": "UnholyAura",
+        "name": "Unholy Aura",
+        "customDescription": "As a reaction to being hit, the Death Knight applies a stack of Affliction, and inflicts Fear for 1 turn.",
+        "combatEffects": [
+          {
+            "appliesWhen": "HitByAttack",
+            "effectID": "melvorD:Affliction"
+          },
+          {
+            "appliesWhen": "HitByAttack",
+            "effectID": "melvorD:Fear"
+          }
+        ]
+      },
       {
         "id": "AfflictingTouch",
         "name": "Afflicting Touch",
@@ -1364,7 +1681,7 @@
       {
         "id": "MonsterTypeCelestial",
         "name": "Monster Type: Celestial",
-        "customDescription": "Celestials regenerate 10% of their health at the end of each of their turns for the first 5 turns at the Start of the Fight.",
+        "customDescription": "<ul><li>-50% Unholy Damage Resistance</li><li>+50% Holy Damage Resistance</li><li>Immunity to Sleep and Poison</li><li>Regens 10% Max HP at End of Turn (5 turns)</li></ul>",
         "combatEffects": [
           {
             "appliesWhen": "StartOfFight",
@@ -1405,7 +1722,7 @@
       {
         "id": "MonsterTypeFiend",
         "name": "Monster Type: Fiend",
-        "customDescription": "Fiends are immune to Curses.",
+        "customDescription": "Immunity to Curses | Secretly vulnerable to a certain alloy...",
         "combatEffects": [
           {
             "appliesWhen": "StartOfFight",
@@ -1491,7 +1808,7 @@
       {
         "id": "MonsterTypeUndead",
         "name": "Monster Type: Undead",
-        "customDescription": "Undead are immune to Sleep and Poison, and have a 10% chance upon dying to be rebirthed with 100% of their Hitpoints.",
+        "customDescription": "Immunity to Sleep and Poison and +10% Rebirth Chance",
         "combatEffects": [
           {
             "appliesWhen": "StartOfFight",
@@ -1502,67 +1819,117 @@
     ],
     "items": [
       {
-        "id": "PolyCube_BlackDragon",
-        "name": "Poly Cube (Black Dragon)",
+        "id": "Holy_Blade_of_the_Dawnmartyr",
+        "name": "Holy Blade of the Dawnmartyr",
         "category": "Combat",
         "type": "Weapon",
-        "itemType": "Weapon",
-        "attackType": "melee",
-        "media": "assets/items/Weapon/PolyCube_BlackDragon.png",
+        "media": "assets/items/Weapon/Holy_Blade_of_the_Dawnmartyr.png",
+        "customDescription": "Passive: +10% Lifesteal, permanent Piety (+15% Melee Accuracy and +25% Melee Max Hit), Prayers are disabled<br>Conditional Passive: When the Enemy is Fiend or Undead, double this weapon's Equipment Stats (except Attack Speed), and Attack Rolls are Lucky (roll twice and take the highest result).",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
-        "sellsFor": 500000,
-        "tier": "ancient",
+        "sellsFor": 20000000,
+        "tier": "special",
         "validSlots": [
           "Weapon"
         ],
-        "consumesOn": [
-          {
-            "type": "MonsterKilled"
-          }
-        ],
         "occupiesSlots": [
-          "Boots",
-          "Cape",
-          "Helmet",
-          "Platebody",
-          "Platelegs",
-          "Shield",
-          "Gloves"
+          "Shield"
         ],
         "equipRequirements": [
           {
             "type": "SkillLevel",
-            "skillID": "melvorD:Magic",
-            "level": 60
+            "skillID": "melvorD:Attack",
+            "level": 90
+          },
+          {
+            "type": "SkillLevel",
+            "skillID": "melvorD:Prayer",
+            "level": 90
           }
         ],
+        "modifiers": {
+          "meleeAccuracyRating": 15,
+          "meleeMaxHit": 25,
+          "lifesteal": 10
+        },
         "equipmentStats": [
           {
             "key": "attackSpeed",
-            "value": 3000
-          },
-          {
-            "key": "damageReduction",
-            "value": 5
+            "value": 3600
           },
           {
             "key": "stabAttackBonus",
-            "value": 60
+            "value": -4
+          },
+          {
+            "key": "slashAttackBonus",
+            "value": 130
+          },
+          {
+            "key": "blockAttackBonus",
+            "value": 130
           },
           {
             "key": "meleeStrengthBonus",
-            "value": 80
+            "value": 280
           },
           {
             "key": "meleeDefenceBonus",
-            "value": 80
+            "value": 25
+          },
+          {
+            "key": "resistance",
+            "value": 3
+          },
+          {
+            "damageType": "expandedAreas:UNHOLY",
+            "key": "resistance",
+            "value": 6
           }
         ],
         "specialAttacks": [
-          "expandedAreas:BlackDragonPolyNormal",
-          "melvorD:LesserDragonbreath"
+          "expandedAreas:CrushingTripleSlash",
+          "expandedAreas:HeavenlySmite"
+        ],
+        "itemType": "Weapon",
+        "attackType": "melee",
+        "damageType": "expandedAreas:HOLY",
+        "conditionalModifiers": [
+          {
+            "condition": {
+              "type": "Some",
+              "conditions": [
+                {
+                  "character": "Enemy",
+                  "effectID": "expandedAreas:MonsterTypeFiend",
+                  "type": "CombatEffect"
+                },
+                {
+                  "character": "Enemy",
+                  "effectID": "expandedAreas:MonsterTypeUndead",
+                  "type": "CombatEffect"
+                }
+              ]
+            },
+            "modifiers": {
+              "attackRolls": 2,
+              "flatSlashAttackBonus": 130,
+              "flatBlockAttackBonus": 130,
+              "flatMeleeStrengthBonus": 280,
+              "flatMeleeDefenceBonus": 25,
+              "resistance": [
+                {
+                  "damageTypeID": "melvorD:Normal",
+                  "value": 3
+                },
+                {
+                  "damageTypeID": "expandedAreas:UNHOLY",
+                  "value": 6
+                }
+              ]
+            }
+          }
         ]
       },
       {
@@ -1739,7 +2106,7 @@
         "name": "Masterful Amulet of Ranged",
         "category": "Combat",
         "type": "Amulet",
-        "media": "assets/items/Equipment/Masterful_Amulet_of_Ranged",
+        "media": "assets/items/Equipment/Masterful_Amulet_of_Ranged.png",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -1776,9 +2143,9 @@
       {
         "itemType": "Equipment",
         "id": "M_E_L_V_O_R",
-        "name": "(M)agnificently (E)nchanted (L)aurel (V)anguard (O)f (R)eckoning",
+        "name": "Magnificently Enchanted Laurel Vanguard of Reckoning",
         "category": "Combat",
-        "type": "Armour",
+        "type": "Amulet",
         "media": "assets/items/Equipment/M_E_L_V_O_R.png",
         "customDescription": "Could it really be the fated Amulet of Melvor?",
         "ignoreCompletion": false,
@@ -2639,7 +3006,7 @@
         "name": "Umbral Sand",
         "category": "Material",
         "type": "Misc",
-        "media": "assets/items/Item/Umbral_Sand.png",
+        "media": "assets/icons/question.svg",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -2651,7 +3018,7 @@
         "name": "Nightmarish Visage",
         "category": "Material",
         "type": "Misc",
-        "media": "assets/items/Item/Nightmarish_Visage.png",
+        "media": "assets/icons/question.svg",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
@@ -2745,7 +3112,7 @@
         "name": "Legendary Sigil of Nightmares",
         "category": "Accessory",
         "type": "Sigil",
-        "media": "assets/items/Equipment/Legendary_Sigil_of_Nightmares.png",
+        "media": "assets/icons/question.svg",
         "customDescription": "25% Chance on Hit to apply Wither ([PERCENT] Max HP dealt as damage over [TIME]). 100% Chance if Enemy is Sleeping.",
         "ignoreCompletion": false,
         "obtainFromItemLog": false,
@@ -18286,27 +18653,241 @@
     ],
     "attacks": [
       {
-        "id": "BlackDragonPolyNormal",
-        "name": "Normal Attack",
-        "defaultChance": 60,
-        "attackCount": 1,
+        "id": "DualAttack",
+        "defaultChance": 100,
         "damage": [
           {
-            "damageType": "Custom",
-            "character": "Attacker",
-            "minRoll": "Fixed",
-            "maxRoll": "Fixed",
-            "minPercent": 0,
-            "maxPercent": 26.8,
-            "roll": true
+            "damageType": "Normal",
+            "amplitude": 100
           }
         ],
         "prehitEffects": [],
         "onhitEffects": [],
-        "attackInterval": 150,
         "cantMiss": false,
+        "attackCount": 2,
+        "attackInterval": 200,
         "lifesteal": 0,
-        "description": "Make a normal attack as a Black Dragon, dealing up to ${attackDamageMaxValue0} damage on hit."
+        "name": "Dual Attack",
+        "description": "Always perform ${hitCount} consecutive attacks that deal ${attackDamageMaxValue0}% normal damage.",
+        "descriptionGenerator": "Always perform <count> consecutive attacks that deal <damage>.",
+        "usesRunesPerProc": false
+      },
+      {
+        "id": "CrushingTripleSlash",
+        "defaultChance": 30,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100,
+            "attackCount": 0
+          },
+          {
+            "damageType": "Normal",
+            "amplitude": 150,
+            "attackCount": 1
+          },
+          {
+            "damageType": "Normal",
+            "amplitude": 300,
+            "attackCount": 1
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 3,
+        "attackInterval": 300,
+        "lifesteal": 0,
+        "name": "Crushing Triple Slash",
+        "description": "Perform 3 attacks that deal ${attackDamageMaxValue0}% of your normal damage on the 1st attack, ${attackDamageMaxValue1}% of your normal damage on the 2nd, and ${attackDamageMaxValue2}% of your normal damage on the 3rd.",
+        "descriptionGenerator": "Perform 3 attacks that deal <damage>."
+      },
+      {
+        "id": "HeavenlySmite",
+        "defaultChance": 15,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100,
+            "attackCount": 0
+          },
+          {
+            "damageType": "Custom",
+            "roll": true,
+            "character": "Attacker",
+            "maxRoll": "Fixed",
+            "minRoll": "Fixed",
+            "maxPercent": 32,
+            "minPercent": 4
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "melvorD:Burn",
+            "condition": {
+              "type": "Some",
+              "conditions": [
+                {
+                  "type": "CombatEffect",
+                  "character": "Enemy",
+                  "effectID": "expandedAreas:MonsterTypeFiend"
+                },
+                {
+                  "type": "CombatEffect",
+                  "character": "Enemy",
+                  "effectID": "expandedAreas:MonsterTypeUndead"
+                }
+              ]
+            }
+          },
+          {
+            "effectID": "expandedAreas:BlindedByTheLight",
+            "condition": {
+              "type": "Some",
+              "conditions": [
+                {
+                  "type": "CombatEffect",
+                  "character": "Enemy",
+                  "effectID": "expandedAreas:MonsterTypeFiend"
+                },
+                {
+                  "type": "CombatEffect",
+                  "character": "Enemy",
+                  "effectID": "expandedAreas:MonsterTypeUndead"
+                }
+              ]
+            }
+          }
+        ],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 300,
+        "lifesteal": 0,
+        "name": "Heavenly Smite",
+        "description": "Make an unavoidable, dealing ${attackDamageMaxValue0}% of your normal damage + ${attackDamageMinValue1}-${attackDamageMaxValue1} damage. On hit, if the Enemy is a Fiend or Undead, inflict Burn and 3 turns of Dawn Blindness (-15% Global Accuracy).",
+        "descriptionGenerator": "Make an <avoidable> attack that deals <damage> + 40-320 daamage. If Enemy is Fiend or Undead, <hitEffect>."
+      },
+      {
+        "id": "CommandGrovel",
+        "defaultChance": 10,
+        "damage": [],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "melvorD:Stun",
+            "targetOverride": "Target",
+            "initialParams": [
+              {
+                "name": "turns",
+                "value": 2
+              }
+            ]
+          }
+        ],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 200,
+        "lifesteal": 0,
+        "name": "Command: Grovel",
+        "description": "On use, inflicts you with Stun for ${onHitEffect0turns} of your turns. Deals no damage. If the debuff is already active, performs a regular attack instead.",
+        "descriptionGenerator": "On use, <onhitEffect>. Deals no damage. If the debuff is already active, performs a regular attack instead.",
+        "usesRunesPerProc": false,
+        "canNormalAttack": true
+      },
+      {
+        "id": "MarshalUndead",
+        "defaultChance": 20,
+        "damage": [
+          {
+            "damageType": "Custom",
+            "character": "Attacker",
+            "maxRoll": "Fixed",
+            "maxPercent": 25,
+            "roll": false
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "tableID": "melvorF:RandomCurse"
+          },
+          {
+            "effectID": "melvorD:Slow",
+            "initialParams": [
+              {
+                "name": "magnitude",
+                "value": 20
+              },
+              {
+                "name": "turns",
+                "value": 3
+              }
+            ]
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 12,
+        "attackInterval": 100,
+        "lifesteal": 0,
+        "name": "Marshal Undead",
+        "description": "A horde of ${hitCount} undead controlled by the Death Knight attack you. On a hit, applies a random Curse and gives you +${onHitEffect1modValue0}% Attack Interval for ${onHitEffect1turns} turns.",
+        "descriptionGenerator": "A horde of <hitCount> undead attack you for <damage> damage each (<CanMiss>). On a hit, <hitEffect>",
+        "usesRunesPerProc": false
+      },
+      {
+        "id": "DreadBlade",
+        "defaultChance": 50,
+        "damage": [
+          {
+            "damageType": "Normal",
+            "amplitude": 100
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "expandedAreas:Wither"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 3,
+        "attackInterval": 50,
+        "lifesteal": 10,
+        "name": "Dread Blade",
+        "description": "The Death Knight performs ${hitCount} regular attacks with its Dread Blade, each with 10% Lifesteal. On a hit, inflicts Wither that deals ${onHitEffect0DamageMaxValue0}% of the enemy's max hitpoints as damage over ${onHitEffect0duration}s.",
+        "descriptionGenerator": "Perform <hitCount> regular attacks. On a hit, <hitEffect>.",
+        "usesRunesPerProc": false
+      },
+      {
+        "id": "HellfireOrb",
+        "defaultChance": 20,
+        "damage": [
+          {
+            "damageType": "Custom",
+            "character": "Attacker",
+            "maxRoll": "Fixed",
+            "maxPercent": 70,
+            "roll": false
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "melvorD:Burn"
+          },
+          {
+            "effectID": "expandedAreas:Wither"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "name": "Hellfire Orb",
+        "description": "Launch an avoidable hellfire orb that deals ${attackDamageMaxValue0} damage. On a hit, inflicts Burn that deals ${onHitEffect0DamageMaxValue0}% of your current hitpoints as damage over ${onHitEffect1duration}s and Wither that deals ${onHitEffect1DamageMaxValue0}% of your current hitpoints as damage over ${onHitEffect1duration}s.",
+        "descriptionGenerator": "Launch an <avoidable> hellfire orb that deals <damage> damage. On a hit, <hitEffect>.",
+        "usesRunesPerProc": false
       },
       {
         "id": "DreadfulGlare",
@@ -19137,6 +19718,324 @@
       }
     ],
     "monsters": [
+      {
+        "id": "Ancient_Warrior",
+        "name": "Ancient Warrior",
+        "media": "assets/monsters/Ancient_Warrior.png",
+        "levels": {
+          "Hitpoints": 1000,
+          "Attack": 600,
+          "Strength": 600,
+          "Defence": 600,
+          "Ranged": 1,
+          "Magic": 400
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 2400
+          },
+          {
+            "key": "damageReduction",
+            "value": 35
+          },
+          {
+            "key": "stabAttackBonus",
+            "value": 72
+          },
+          {
+            "key": "meleeStrengthBonus",
+            "value": 75
+          },
+          {
+            "key": "meleeDefenceBonus",
+            "value": 346
+          },
+          {
+            "key": "rangedDefenceBonus",
+            "value": 242
+          },
+          {
+            "key": "magicDefenceBonus",
+            "value": -21
+          }
+        ],
+        "ignoreCompletion": false,
+        "attackType": "melee",
+        "specialAttacks": [
+          "expandedAreas:DualAttack"
+        ],
+        "passives": [
+          "expandedAreas:AfflictedLifeAbsorbance",
+          "expandedAreas:AncientSwords",
+          "expandedAreas:MonsterTypeUndead"
+        ],
+        "lootChance": 5,
+        "lootTable": [
+          {
+            "itemID": "melvorD:Ancient_Helmet",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ancient_Shield",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ancient_Sword",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ancient_Sword",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ancient_Platelegs",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ancient_Platebody",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ],
+        "canSlayer": true,
+        "isBoss": false,
+        "selectedSpell": "melvorD:WindStrike",
+        "bones": {
+          "itemID": "melvorD:Bones",
+          "quantity": 1
+        },
+        "currencyDrops": [
+          {
+            "currencyID": "melvorD:GP",
+            "min": 10000,
+            "max": 25000
+          }
+        ]
+      },
+      {
+        "id": "Ghoul_Horde",
+        "name": "Ghoul Horde",
+        "media": "assets/monsters/Ghoul_Horde.png",
+        "levels": {
+          "Hitpoints": 900,
+          "Attack": 90,
+          "Strength": 90,
+          "Defence": 30,
+          "Ranged": 1,
+          "Magic": 1
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 2400
+          }
+        ],
+        "ignoreCompletion": false,
+        "attackType": "melee",
+        "specialAttacks": [],
+        "passives": [
+          "expandedAreas:GhoulTouch",
+          "expandedAreas:MonsterTypeUndead",
+          "expandedAreas:MonsterSubtypeHorde"
+        ],
+        "lootChance": 100,
+        "lootTable": [
+          {
+            "itemID": "melvorD:Garum_Seed",
+            "minQuantity": 1,
+            "maxQuantity": 3,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Iron_Platebody",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Iron_Boots",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Steel_Platebody",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Steel_Boots",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ],
+        "canSlayer": true,
+        "isBoss": false,
+        "selectedSpell": "melvorD:WindStrike",
+        "bones": {
+          "itemID": "melvorD:Bones",
+          "quantity": 1
+        },
+        "currencyDrops": [
+          {
+            "currencyID": "melvorD:GP",
+            "min": 20,
+            "max": 80
+          }
+        ]
+      },
+      {
+        "id": "Ghoul",
+        "name": "Ghoul",
+        "media": "assets/monsters/Ghoul.png",
+        "levels": {
+          "Hitpoints": 90,
+          "Attack": 90,
+          "Strength": 90,
+          "Defence": 30,
+          "Ranged": 1,
+          "Magic": 1
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 2400
+          }
+        ],
+        "ignoreCompletion": false,
+        "attackType": "melee",
+        "specialAttacks": [],
+        "passives": [
+          "expandedAreas:GhoulTouch"
+        ],
+        "lootChance": 100,
+        "lootTable": [
+          {
+            "itemID": "melvorD:Garum_Seed",
+            "minQuantity": 1,
+            "maxQuantity": 3,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Iron_Platebody",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Iron_Boots",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Steel_Platebody",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Steel_Boots",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ],
+        "canSlayer": true,
+        "isBoss": false,
+        "selectedSpell": "melvorD:WindStrike",
+        "bones": {
+          "itemID": "melvorD:Bones",
+          "quantity": 1
+        },
+        "currencyDrops": [
+          {
+            "currencyID": "melvorD:GP",
+            "min": 20,
+            "max": 80
+          }
+        ]
+      },
+      {
+        "id": "Death_Knight",
+        "name": "Death Knight",
+        "media": "assets/monsters/Death_Knight.png",
+        "levels": {
+          "Hitpoints": 800,
+          "Attack": 675,
+          "Strength": 675,
+          "Defence": 600,
+          "Ranged": 1,
+          "Magic": 350
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 2400
+          },
+          {
+            "key": "stabAttackBonus",
+            "value": 20
+          },
+          {
+            "key": "meleeStrengthBonus",
+            "value": 30
+          },
+          {
+            "key": "meleeDefenceBonus",
+            "value": 20
+          },
+          {
+            "key": "rangedDefenceBonus",
+            "value": 40
+          },
+          {
+            "key": "magicDefenceBonus",
+            "value": -10
+          },
+          {
+            "key": "damageReduction",
+            "value": 25
+          }
+        ],
+        "ignoreCompletion": false,
+        "attackType": "melee",
+        "specialAttacks": [
+          "expandedAreas:DreadBlade",
+          "expandedAreas:HellfireOrb",
+          "expandedAreas:MarshalUndead",
+          "expandedAreas:CommandGrovel"
+        ],
+        "passives": [
+          "expandedAreas:MonsterTypeUndead",
+          "expandedAreas:Parry",
+          "expandedAreas:UnholyAura"
+        ],
+        "lootChance": 0,
+        "lootTable": [],
+        "canSlayer": true,
+        "isBoss": false,
+        "selectedSpell": "melvorD:WindStrike",
+        "bones": {
+          "itemID": "melvorD:Bones",
+          "quantity": 169
+        },
+        "currencyDrops": []
+      },
       {
         "id": "Shadow",
         "name": "Shadow",
@@ -23822,6 +24721,20 @@
     ],
     "combatAreas": [
       {
+        "id": "Forgotten_Battlefield",
+        "name": "Forgotten Battlefield",
+        "media": "assets/combatAreas/Forgotten_Battlefield.png",
+        "difficulty": [
+          5
+        ],
+        "monsterIDs": [
+          "expandedAreas:Ancient_Warrior"
+        ],
+        "entryRequirements": [
+
+        ]
+      },
+      {
         "id": "Low_Town",
         "name": "Low Town",
         "media": "assets/combatAreas/Low_Town.png",
@@ -24027,7 +24940,7 @@
       {
         "id": "NightmareRealm",
         "name": "[BETA] The Nightmare Realm",
-        "media": "assets/expandedAreas/NightmareRealm.png",
+        "media": "assets/worldBosses/NightmareRealm.png",
         "monsterIDs": [
           "expandedAreas:Shadow",
           "expandedAreas:Shadow",
@@ -44609,7 +45522,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials1000",
+            "purchaseID": "expandedAreas:BarbarianTrials1000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44653,7 +45566,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials2000",
+            "purchaseID": "expandedAreas:BarbarianTrials2000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44697,7 +45610,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials3000",
+            "purchaseID": "expandedAreas:BarbarianTrials3000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44741,7 +45654,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials4000",
+            "purchaseID": "expandedAreas:BarbarianTrials4000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44785,7 +45698,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials5000",
+            "purchaseID": "expandedAreas:BarbarianTrials5000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44829,7 +45742,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials6000",
+            "purchaseID": "expandedAreas:BarbarianTrials6000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44873,7 +45786,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials7000",
+            "purchaseID": "expandedAreas:BarbarianTrials7000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44917,7 +45830,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials8000",
+            "purchaseID": "expandedAreas:BarbarianTrials8000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -44961,7 +45874,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:The_Barbarian_Trials9000",
+            "purchaseID": "expandedAreas:BarbarianTrials9000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47213,7 +48126,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary1000",
+            "purchaseID": "expandedAreas:ElementalSanctuary1000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47257,7 +48170,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary2000",
+            "purchaseID": "expandedAreas:ElementalSanctuary2000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47301,7 +48214,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary3000",
+            "purchaseID": "expandedAreas:ElementalSanctuary3000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47345,7 +48258,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary4000",
+            "purchaseID": "expandedAreas:ElementalSanctuary4000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47389,7 +48302,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary5000",
+            "purchaseID": "expandedAreas:ElementalSanctuary5000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47433,7 +48346,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary6000",
+            "purchaseID": "expandedAreas:ElementalSanctuary6000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47477,7 +48390,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary7000",
+            "purchaseID": "expandedAreas:ElementalSanctuary7000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47521,7 +48434,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary8000",
+            "purchaseID": "expandedAreas:ElementalSanctuary8000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -47565,7 +48478,7 @@
         "allowQuantityPurchase": false,
         "unlockRequirements": [
           {
-            "purchaseID": "expandedAreas:Elemental_Sanctuary9000",
+            "purchaseID": "expandedAreas:ElementalSanctuary9000",
             "count": 1,
             "type": "ShopPurchase"
           }
@@ -54616,16 +55529,16 @@
           "expandedAreas:HallOfWizards8000",
           "expandedAreas:HallOfWizards9000",
           "expandedAreas:HallOfWizards10000",
-          "expandedAreas:The_Barbarian_Trials1000",
-          "expandedAreas:The_Barbarian_Trials2000",
-          "expandedAreas:The_Barbarian_Trials3000",
-          "expandedAreas:The_Barbarian_Trials4000",
-          "expandedAreas:The_Barbarian_Trials5000",
-          "expandedAreas:The_Barbarian_Trials6000",
-          "expandedAreas:The_Barbarian_Trials7000",
-          "expandedAreas:The_Barbarian_Trials8000",
-          "expandedAreas:The_Barbarian_Trials9000",
-          "expandedAreas:The_Barbarian_Trials10000",
+          "expandedAreas:BarbarianTrials1000",
+          "expandedAreas:BarbarianTrials2000",
+          "expandedAreas:BarbarianTrials3000",
+          "expandedAreas:BarbarianTrials4000",
+          "expandedAreas:BarbarianTrials5000",
+          "expandedAreas:BarbarianTrials6000",
+          "expandedAreas:BarbarianTrials7000",
+          "expandedAreas:BarbarianTrials8000",
+          "expandedAreas:BarbarianTrials9000",
+          "expandedAreas:BarbarianTrials10000",
           "expandedAreas:SpiderForest1000",
           "expandedAreas:SpiderForest2000",
           "expandedAreas:SpiderForest3000",
@@ -54676,16 +55589,16 @@
           "expandedAreas:DragonsDen8000",
           "expandedAreas:DragonsDen9000",
           "expandedAreas:DragonsDen10000",
-          "expandedAreas:Elemental_Sanctuary1000",
-          "expandedAreas:Elemental_Sanctuary2000",
-          "expandedAreas:Elemental_Sanctuary3000",
-          "expandedAreas:Elemental_Sanctuary4000",
-          "expandedAreas:Elemental_Sanctuary5000",
-          "expandedAreas:Elemental_Sanctuary6000",
-          "expandedAreas:Elemental_Sanctuary7000",
-          "expandedAreas:Elemental_Sanctuary8000",
-          "expandedAreas:Elemental_Sanctuary9000",
-          "expandedAreas:Elemental_Sanctuary10000",
+          "expandedAreas:ElementalSanctuary1000",
+          "expandedAreas:ElementalSanctuary2000",
+          "expandedAreas:ElementalSanctuary3000",
+          "expandedAreas:ElementalSanctuary4000",
+          "expandedAreas:ElementalSanctuary5000",
+          "expandedAreas:ElementalSanctuary6000",
+          "expandedAreas:ElementalSanctuary7000",
+          "expandedAreas:ElementalSanctuary8000",
+          "expandedAreas:ElementalSanctuary9000",
+          "expandedAreas:ElementalSanctuary10000",
           "expandedAreas:VolcanicCave1000",
           "expandedAreas:VolcanicCave2000",
           "expandedAreas:VolcanicCave3000",
@@ -55055,7 +55968,7 @@
       {
         "id": "BarbarianTrials",
         "chainName": "Current Barbarian Trials Completion",
-        "rootUpgradeID": "expandedAreas:The_Barbarian_Trials10000",
+        "rootUpgradeID": "expandedAreas:BarbarianTrials10000",
         "defaultName": "Barbarian Trials Completion",
         "defaultDescription": "No Barbarian Trials completion."
       },
@@ -61744,9 +62657,9 @@
               "media": "assets/items/Equipment/Legendary_Sigil_of_the_Phoenix.png"
             },
             {
-              "id": "Misc",
+              "id": "Refinement",
               "media": "assets/items/Item/Ruby_Dust.png",
-              "name": "Misc"
+              "name": "Refinement"
             }
           ],
           "recipes": [
@@ -61756,7 +62669,7 @@
               "productID": "expandedAreas:Topaz_Dust",
               "baseQuantity": 6,
               "baseExperience": 8,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Refinement",
               "itemCosts": [
                 {
                   "id": "melvorD:Topaz",
@@ -61770,7 +62683,7 @@
               "productID": "expandedAreas:Sapphire_Dust",
               "baseQuantity": 6,
               "baseExperience": 18,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Refinement",
               "itemCosts": [
                 {
                   "id": "melvorD:Sapphire",
@@ -61784,7 +62697,7 @@
               "productID": "expandedAreas:Ruby_Dust",
               "baseQuantity": 6,
               "baseExperience": 27,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Refinement",
               "itemCosts": [
                 {
                   "id": "melvorD:Ruby",
@@ -61798,7 +62711,7 @@
               "productID": "expandedAreas:Emerald_Dust",
               "baseQuantity": 6,
               "baseExperience": 38,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Refinement",
               "itemCosts": [
                 {
                   "id": "melvorD:Emerald",
@@ -61812,7 +62725,7 @@
               "productID": "expandedAreas:Diamond_Dust",
               "baseQuantity": 6,
               "baseExperience": 53,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Refinement",
               "itemCosts": [
                 {
                   "id": "melvorD:Diamond",
@@ -61826,7 +62739,7 @@
               "productID": "expandedAreas:Jadestone_Dust",
               "baseQuantity": 6,
               "baseExperience": 63,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Refinement",
               "itemCosts": [
                 {
                   "id": "melvorF:Jadestone",
@@ -61840,7 +62753,7 @@
               "productID": "expandedAreas:Lesser_Sigil",
               "baseQuantity": 1,
               "baseExperience": 100,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Accessories",
               "itemCosts": [
                 {
                   "id": "melvorD:Bronze_Bar",
@@ -62204,7 +63117,7 @@
               "productID": "expandedAreas:Greater_Sigil",
               "baseQuantity": 1,
               "baseExperience": 150,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Accessories",
               "itemCosts": [
                 {
                   "id": "melvorD:Silver_Bar",
@@ -62584,7 +63497,7 @@
               "productID": "expandedAreas:Superior_Sigil",
               "baseQuantity": 1,
               "baseExperience": 200,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Accessories",
               "itemCosts": [
                 {
                   "id": "melvorD:Gold_Bar",
@@ -63000,7 +63913,7 @@
               "productID": "expandedAreas:Legendary_Sigil",
               "baseQuantity": 1,
               "baseExperience": 300,
-              "categoryID": "expandedAreas:Misc",
+              "categoryID": "expandedAreas:Accessories",
               "itemCosts": [
                 {
                   "id": "expandedAreas:Platinum_Bar",
@@ -64231,7 +65144,153 @@
     ]
   },
   "modifications": {
+    "damageTypes": [
+      {
+        "id": "melvorD:Normal",
+        "immuneTo": {
+          "remove": [
+            "expandedAreas:HOLY"
+          ]
+        }
+      }
+    ],
     "items": [
+          {
+        "id":"melvorD:Iron_2H_Sword",
+        "conditionalModifiers":{
+            "add": [
+                    {
+                        "condition": {
+                            "character": "Enemy",
+                            "effectID": "expandedAreas:MonsterTypeFiend",
+                            "type": "CombatEffect"
+                        },
+                        "modifiers": {
+                            "meleeMaxHit": 300
+                        }
+                    }
+            ]
+        }
+    },
+    {
+        "id": "melvorD:Iron_Battleaxe",
+        "conditionalModifiers": {
+            "add": [
+                {
+                    "condition": {
+                        "character": "Enemy",
+                        "effectID": "expandedAreas:MonsterTypeFiend",
+                        "type": "CombatEffect"
+                    },
+                    "modifiers": {
+                        "meleeMaxHit": 300
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "melvorD:Iron_Dagger",
+        "conditionalModifiers": {
+            "add": [
+                {
+                    "condition": {
+                        "character": "Enemy",
+                        "effectID": "expandedAreas:MonsterTypeFiend",
+                        "type": "CombatEffect"
+                    },
+                    "modifiers": {
+                        "meleeMaxHit": 300
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "melvorD:Iron_Scimitar",
+        "conditionalModifiers": {
+            "add": [
+                {
+                    "condition": {
+                        "character": "Enemy",
+                        "effectID": "expandedAreas:MonsterTypeFiend",
+                        "type": "CombatEffect"
+                    },
+                    "modifiers": {
+                        "meleeMaxHit": 300
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "melvorD:Iron_Sword",
+        "conditionalModifiers": {
+            "add": [
+                {
+                    "condition": {
+                        "character": "Enemy",
+                        "effectID": "expandedAreas:MonsterTypeFiend",
+                        "type": "CombatEffect"
+                    },
+                    "modifiers": {
+                        "meleeMaxHit": 300
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "melvorD:Iron_Throwing_Knife",
+        "conditionalModifiers": {
+            "add": [
+                {
+                    "condition": {
+                        "character": "Enemy",
+                        "effectID": "expandedAreas:MonsterTypeFiend",
+                        "type": "CombatEffect"
+                    },
+                    "modifiers": {
+                        "rangedMaxHit": 300
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "melvorF:Iron_Crossbow",
+        "conditionalModifiers": {
+            "add": [
+                {
+                    "condition": {
+                        "character": "Enemy",
+                        "effectID": "expandedAreas:MonsterTypeFiend",
+                        "type": "CombatEffect"
+                    },
+                    "modifiers": {
+                        "rangedMaxHit": 300
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "id": "melvorF:Iron_Javelin",
+        "conditionalModifiers": {
+            "add": [
+                {
+                    "condition": {
+                        "character": "Enemy",
+                        "effectID": "expandedAreas:MonsterTypeFiend",
+                        "type": "CombatEffect"
+                    },
+                    "modifiers": {
+                        "rangedMaxHit": 300
+                    }
+                }
+            ]
+        }
+    },
       {
         "id": "melvorF:Aeris_God_Helmet",
         "equipmentStats": {
@@ -65664,6 +66723,18 @@
             {
               "insertAt": 5,
               "monsterID": "expandedAreas:Novice_Necromancer"
+            },
+            {
+              "insertAt": 6,
+              "monsterID": "expandedAreas:Death_Knight"
+            },
+            {
+              "insertAt": 7,
+              "monsterID": "expandedAreas:Ghoul"
+            },
+            {
+              "insertAt": 8,
+              "monsterID": "expandedAreas:Ghoul_Horde"
             }
           ]
         }
@@ -65724,7 +66795,8 @@
               "insertAt": "After",
               "afterID": "melvorD:ElerineBattlegrounds",
               "ids": [
-                "expandedAreas:Secluded_Monastery"
+                "expandedAreas:Secluded_Monastery",
+                "expandedAreas:Ancient_Ruined_City"
               ]
             },
             {
@@ -65768,51 +66840,22 @@
     ],
     "dungeons": [
       {
-        "id": "melvorF:Air_God_Dungeon",
-        "nonBossPassives": {
-          "add": [
-            "expandedAreas:FireResistance"
+        "id": "melvorD:Chicken_Coop",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
           ]
-        }
-      },
-      {
-        "id": "melvorF:Water_God_Dungeon",
-        "nonBossPassives": {
-          "add": [
-            "expandedAreas:AirResistance"
-          ]
-        }
-      },
-      {
-        "id": "melvorF:Earth_God_Dungeon",
-        "nonBossPassives": {
-          "add": [
-            "expandedAreas:WaterResistance"
-          ]
-        }
-      },
-      {
-        "id": "melvorF:Fire_God_Dungeon",
-        "nonBossPassives": {
-          "add": [
-            "expandedAreas:EarthResistance"
-          ]
-        }
-      },
-      {
-        "id": "melvorD:Frozen_Cove",
-        "dropBones": true
-      },
-      {
-        "id": "melvorD:Volcanic_Cave",
-        "dropBones": true
-      },
-      {
-        "id": "melvorF:Infernal_Stronghold",
+        },
         "dropBones": true
       },
       {
         "id": "melvorD:Undead_Graveyard",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true,
         "monsters": {
           "remove": [
             {
@@ -65830,7 +66873,7 @@
               "monsterID": "expandedAreas:Giant_Grub"
             },
             {
-              "insertAt": 7,
+              "insertAt": 6,
               "monsterID": "expandedAreas:Novice_Necromancer"
             }
           ]
@@ -65838,12 +66881,42 @@
       },
       {
         "id": "melvorD:Bandit_Base",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true,
         "difficulty": [
           2
         ]
       },
       {
+        "id": "melvorD:Hall_of_Wizards",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true
+      },
+      {
+        "id": "melvorD:Spider_Forest",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true
+      },
+      {
         "id": "melvorF:Miolite_Caves",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true,
         "difficulty": [
           2
         ],
@@ -65862,21 +66935,109 @@
       },
       {
         "id": "melvorD:Deep_Sea_Ship",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true,
         "difficulty": [
           2
         ]
       },
       {
         "id": "melvorD:Frozen_Cove",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true,
         "difficulty": [
           2
         ]
       },
       {
         "id": "melvorF:Dragons_Den",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true,
         "difficulty": [
           3
         ]
+      },
+      {
+        "id": "melvorD:Volcanic_Cave",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true
+      },
+      {
+        "id": "melvorF:Infernal_Stronghold",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "dropBones": true
+      },
+      {
+        "id": "melvorF:Air_God_Dungeon",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "nonBossPassives": {
+          "add": [
+            "expandedAreas:FireResistance"
+          ]
+        }
+      },
+      {
+        "id": "melvorF:Water_God_Dungeon",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "nonBossPassives": {
+          "add": [
+            "expandedAreas:AirResistance"
+          ]
+        }
+      },
+      {
+        "id": "melvorF:Earth_God_Dungeon",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "nonBossPassives": {
+          "add": [
+            "expandedAreas:WaterResistance"
+          ]
+        }
+      },
+      {
+        "id": "melvorF:Fire_God_Dungeon",
+        "allowedDamageTypeIDs": {
+          "remove": [
+            "melvorD:Normal"
+          ]
+        },
+        "nonBossPassives": {
+          "add": [
+            "expandedAreas:EarthResistance"
+          ]
+        }
       }
     ],
     "monsters": [
@@ -68510,6 +69671,25 @@
       "modifications": {
         "skillData": [
           {
+            "skillID": "melvorD:Crafting",
+            "data": {
+              "recipes": [
+                {
+                  "id": "melvorAoD:Barrier_Dust",
+                  "categoryID": "expandedAreas:Refinement"
+                },
+                {
+                  "id": "melvorAoD:Refined_Crystal",
+                  "categoryID": "expandedAreas:Refinement"
+                },
+                {
+                  "id": "melvorAoD:Refined_Pure_Crystal",
+                  "categoryID": "expandedAreas:Refinement"
+                }
+              ]
+            }
+          },
+          {
             "skillID": "melvorD:Runecrafting",
             "data": {
               "recipes": [
@@ -68535,29 +69715,6 @@
                 },
                 {
                   "id": "expandedAreas:Pure_Elementalist_Sceptre",
-                  "categoryID": "melvorAoD:SpecialItems"
-                }
-              ]
-            }
-          },
-          {
-            "skillID": "melvorD:Crafting",
-            "data": {
-              "recipes": [
-                {
-                  "id": "expandedAreas:Lesser_Sigil",
-                  "categoryID": "melvorAoD:SpecialItems"
-                },
-                {
-                  "id": "expandedAreas:Greater_Sigil",
-                  "categoryID": "melvorAoD:SpecialItems"
-                },
-                {
-                  "id": "expandedAreas:Superior_Sigil",
-                  "categoryID": "melvorAoD:SpecialItems"
-                },
-                {
-                  "id": "expandedAreas:Legendary_Sigil",
                   "categoryID": "melvorAoD:SpecialItems"
                 }
               ]
