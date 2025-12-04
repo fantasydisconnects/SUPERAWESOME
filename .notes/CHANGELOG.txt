@@ -1,4 +1,0 @@
-1. Reduce file size for all images
-2. Fix WitherDOT template (previously incorrectly categorized as "Bleed")
-3. Add new Combat Effects:
-3a. Paralyze: Interrupts a character's turn when applied; prevents them from attacking, evading, or regenerating barrier; and causes them to take 100% more damage. Also grants immunity to stun-likes for 3 turns.
