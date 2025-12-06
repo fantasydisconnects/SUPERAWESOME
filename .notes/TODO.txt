@@ -1,2 +1,45 @@
 11/30/25
 _________________________________
+1. Add remaining enemies and loot to Forgotten Battlefield
+- Ancient Warrior
+ - Rusted Ancient Helm
+ - Rusted Ancient Cuirass
+ - Rusted Ancient Greaves
+ - Rusted Ancient Gauntlets
+ - Rusted Ancient Boots
+ - Brittle Ancient Warhorn
+- Ancient Marksman
+ - Worm-eaten Ancient Coif
+ - Worm-eaten Ancient Jerkin
+ - Worm-eaten Ancient Chaps
+ - Worm-eaten Ancient Bracers
+ - Worm-eaten Ancient Boots
+ - Cracked Ancient Shield
+- Ancient Mage
+ - Tattered Ancient Hat
+ - Tattered Ancient Robe Top
+ - Tattered Ancient Robe Bottoms
+ - Tattered Ancient Gloves
+ - Tattered Ancient Shoes
+ - Warped Ancient Focus
+- Blight Eater
+ - Drops different Bones
+ - Drops metal lumps, torn cloth, and leather scraps
+ - Virulent Stomach Acid
+ - Afflicted Talon
+- Melvoria Bones
+ - Drops junk, bones, gems, and generic artifacts
+ - Drops map to the Tombs of the Forgotten
+ 2. Add Tombs of the Forgotten Slayer Area
+ - Hidden until map is obtained
+ - 5 or 6 undead monsters
+ - Prayers disabled
+ - Monsters deal unholy damage
+ - Key to Unholy Sanctum obtained from Sarcophagi, Bone Piles, and Jars
+
+ 3. Add Unholy Sanctum Dungeon
+ - Hidden until key is obtained
+ - Sir Vaengoethe the Irredeemable Mega-Boss
+  - Deals Unholy Damage
+  - Takes extra damage from Holy Damage
+  - 

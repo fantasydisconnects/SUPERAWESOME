@@ -3,132 +3,65 @@
     "namespace": "expandedAreas",
     "data": {
         "attacks": [
-                {
-                    "id": "DualAttack",
-                    "defaultChance": 100,
-                    "damage": [
-                        {
-                            "damageType": "Normal",
-                            "amplitude": 100
-                        }
-                    ],
-                    "prehitEffects": [],
-                    "onhitEffects": [],
-                    "cantMiss": false,
-                    "attackCount": 2,
-                    "attackInterval": 200,
-                    "lifesteal": 0,
-                    "name": "Dual Attack",
-                    "description": "Always perform ${hitCount} consecutive attacks that deal ${attackDamageMaxValue0}% of your normal damage.",
-                    "descriptionGenerator": "Always perform <count> consecutive attacks that deal <damage>.",
-                    "usesRunesPerProc": false
-                }
-        ],
-        "combatEffectGroups": [
             {
-                "id": "Paralyze",
-                "name": "Paralyze",
-                "adjective": "Paralyzed"
-            },
-            {
-                "id": "Blind",
-                "name": "Blind",
-                "adjective": "Blinded"
-            },
-            {
-                "id": "Flight",
-                "name": "Flight",
-                "adjective": "Flying"
-            },
-            {
-                "id": "Food_Poisoning",
-                "name": "Food Poisoning",
-                "adjective": "Food Poisoning"
-            },
-            {
-                "id": "Rot",
-                "name": "Rot",
-                "adjective": "Rotting"
-            },
-            {
-                "id": "Petrify",
-                "name": "Petrify",
-                "adjective": "Petrified"
-            },
-            {
-                "id": "Suffocate",
-                "name": "Suffocate",
-                "adjective": "Suffocating"
-            },
-            {
-                "id": "TerminalIllness",
-                "name": "Terminal Illness",
-                "adjective": "Terminally Ill"
-            }
-        ],
-        "combatEffectTemplates": [
-            {
-                "id": "Paralyze",
-                "description": "Defines behaviours for an effect that: Interrupts a character's turn when applied; prevents them from attacking or regenerating barrier; reduces their evasion ratings by 50%; and causes them to take 100% more damage. Also grants immunity to stuns for 3 turns.",
-                "baseTemplates": [
-                    "melvorD:StunLike"
+                "id": "DeathCaw",
+                "defaultChance": 15,
+                "damage": [],
+                "prehitEffects": [
+                    {
+                        "effectID": "expandedAreas:Paralyze"
+                    }
                 ],
-                "baseEffectData": {
-                    "name": "Paralyzed",
-                    "media": "assets/status/paralyzed.png",
-                    "tooltipSpans": [
-                        {
-                            "type": "String",
-                            "value": "Cannot attack or evade"
-                        },
-                        {
-                            "type": "String",
-                            "value": "Increased damage taken",
-                            "templateData": {
-                                "value": 100
-                            },
-                            "className": "text-danger"
-                        },
-                        {
-                            "type": "Turns",
-                            "turns": "p.turns"
-                        }
-                    ],
-                    "statGroups": [
-                        {
-                            "name": "debuff",
-                            "modifiers": {
-                                "cantAttack": 1,
-                                "cantEvade": 1,
-                                "cantRegenBarrier": 1,
-                                "damageTaken": 100
-                            }
-                        }
-                    ],
-                    "effectGroups": [
-                        "expandedAreas:Paralyze"
-                    ]
+                "onhitEffects": [],
+                "cantMiss": true,
+                "attackCount": 1,
+                "attackInterval": 50,
+                "lifesteal": 0,
+                "name": "Death Caw",
+                "description": "Emits a chilling caw that has a ${onHitEffect0chance}% to apply Paralyze. Deals no damage.",
+                "descriptionGenerator": "Perform <count> consecutive attacks.",
+                "usesRunesPerProc": false
+            },
+            {
+                "id": "BlightReap",
+                "defaultChance": 15,
+                "damage": [
+                    {
+                        "damageType": "Custom",
+                        "character": "Attacker",
+                        "maxRoll": "Fixed",
+                        "maxPercent": 45,
+                        "roll": false
+                    }
+                ],
+                "prehitEffects": [],
+                "onhitEffects": [],
+                "cantMiss": false,
+                "attackCount": 5,
+                "attackInterval": 200,
+                "lifesteal": 100,
+                "name": "Blight Reap",
+                "description": "An avoidable attack that hits ${hitCount} times, plus an extra time per Blight stack applied to you. Deals ${attackDamageMaxValue0} damage each and heals the enemy for ${lifesteal}% of damage dealt. Removes all Blight stacks from you after attack.",
+                "descriptionGenerator": "An <avoidable> attack that hits <count> times, plus an extra time per Blight stack applied to <target>. Deals <damage> damage each and heals <attacker> for <lifesteal> of damage dealt. Removes all Blight stacks from <target> after attack.",
+                "usesRunesPerProc": false,
+                "consumesEffect": {
+                    "effectID": "expandedAreas:Blight",
+                    "paramName": "stacks"
                 }
             }
         ],
         "combatEffects": [
             {
-                "id": "Paralyze",
-                "templateID": "expandedAreas:Paralyze",
+                "id": "Blight",
+                "templateID": "melvorD:StackingSelfCountingModifier",
+                "name": "Blight",
+                "media": "assets/status/blight.png",
+                "target": "Target",
                 "parameters": [
                     {
                         "name": "turns",
-                        "initialValue": 1
-                    }
-                ]
-            },
-            {
-                "id": "IncreasedMaxHitpoints",
-                "templateID": "melvorD:StackingNonCountingModifier",
-                "name": "Constitution",
-                "media": "assets/status/hp_up.svg",
-                "target": "Self",
-                "parameters": [
+                        "initialValue": 50
+                    },
                     {
                         "name": "initialStacks",
                         "initialValue": 1
@@ -146,468 +79,304 @@
                     {
                         "name": "stacks",
                         "modifiers": {
-                            "maxHitpoints": 1
+                            "damageTaken": 1
                         }
                     }
                 ],
                 "effectGroups": [
-                    "melvorD:Buff"
+                    "melvorD:Debuff"
+                ]
+            },
+            {
+                "id": "Flight",
+                "templateID": "melvorD:StaticNonCountingModifier",
+                "name": "Flight",
+                "media": "assets/status/flight.png",
+                "target": "Self",
+                "parameters": [],
+                "statGroups": [
+                    {
+                        "name": "stacks",
+                        "modifiers":{
+                            "evasion": 20,
+                            "accuracyRating": 20
+                        }
+                    }
                 ]
             }
         ],
         "combatPassives": [
-            
             {
-                "id": "Horde",
-                "name": "Horde",
-                "customDescription": "A Horde consists of 10 creatures of the same type. Their stats are the same, except they gain +50% Damage Reduction, -1,000% Attack Interval, and +1,000% HP.<br>Hordes cannot regen HP or Barrier, be stunned, or rebirthed.<br>For every 1 of 10 creatures in a horde killed, a Horde loses 10% Attack Interval and 5% Damage Reduction.",
-                "modifiers": {
-                    "flatResistance": [
-                        {
-                            "damageTypeID": "melvorD:Normal",
-                            "value": 50
-                        }
-                    ],
-                    "attackInterval": -1000,
-                    "cantRegenBarrier": 1,
-                    "hitpointRegeneration": -9999,
-                    "rebirthChance": -9999,
-                    "effectImmunity": [
-                        {
-                            "effectGroupID": "melvorD:RegenDOT",
-                            "value": 1
-                        },
-                        {
-                            "effectGroupID": "melvorD:Stun",
-                            "value": 1
-                        }
-                    ]
-                },
-                "conditionalModifiers": [
+                "id": "BlightEater",
+                "name": "Blight Eater",
+                "customDescription": "+100% Chance to apply 5 stacks of Blight On Hit if either the Enemy or Player has at least 1 stack of Affliction.",
+                "combatEffects": [
                     {
                         "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 90,
-                            "operator": "<="
-                        },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
+                            "type": "Some",
+                            "conditions": [
                                 {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
+                                    "effectID": "melvorD:Affliction",
+                                    "character": "Enemy",
+                                    "type": "CombatEffect"
+                                },
+                                {
+                                    "effectID": "melvorD:Affliction",
+                                    "character": "Player",
+                                    "type": "CombatEffect"
                                 }
                             ]
-                        }
-                    },
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 80,
-                            "operator": "<="
                         },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
-                                {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 70,
-                            "operator": "<="
-                        },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
-                                {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 60,
-                            "operator": "<="
-                        },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
-                                {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 50,
-                            "operator": "<="
-                        },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
-                                {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 40,
-                            "operator": "<="
-                        },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
-                                {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 30,
-                            "operator": "<="
-                        },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
-                                {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 20,
-                            "operator": "<="
-                        },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
-                                {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 10,
-                            "operator": "<="
-                        },
-                        "modifiers": {
-                            "attackInterval": 100,
-                            "flatResistance": [
-                                {
-                                    "damageTypeID": "melvorD:Normal",
-                                    "value": -5
-                                }
-                            ]
-                        }
+                        "appliesWhen": "PostFirstAttack",
+                        "effectID": "expandedAreas:Blight",
+                        "initialParams": [
+                            {
+                                "name": "stacks",
+                                "value": 5
+                            }
+                        ]
                     }
                 ]
             },
             {
-                "id": "AfflictedLifeAbsorbance",
-                "name": "Afflicted Life Absorbance",
-                "customDescription": "+40% Lifesteal. +50% Chance to Apply 1 stack of Affliction and gain 1 stack of Constitution (+1% Max HP, up to 50 stacks) per attack.",
+                "id": "Blighted",
+                "name": "Blighted",
+                "customDescription": "+15% Chance each to apply On Hit: Deadly Poison, the Decay Curse, 2 stacks of Affliction, or 2 stacks of Blight.",
                 "combatEffects": [
                     {
-                        "appliesWhen":"PostFirstAttack",
-                        "effectID":"melvorD:Affliction",
-                        "chance": 50
+                        "appliesWhen": "HitWithAttack",
+                        "effectID": "melvorD:DeadlyPoison",
+                        "chance": 15
                     },
                     {
-                        "appliesWhen":"PostAttack",
-                        "effectID": "expandedAreas:IncreasedMaxHitpoints",
-                        "chance": 50
+                        "appliesWhen": "HitWithAttack",
+                        "effectID": "melvorF:Decay",
+                        "chance": 15
+                    },
+                    {
+                        "appliesWhen": "PostFirstAttack",
+                        "effectID": "melvorD:Affliction",
+                        "chance": 15,
+                        "initialParams": [
+                            {
+                                "name": "stacks",
+                                "value": 2
+                            }
+                        ]
+                    },
+                    {
+                        "appliesWhen": "PostFirstAttack",
+                        "effectID": "expandedAreas:Blight",
+                        "chance": 15,
+                        "initialParams": [
+                            {
+                                "name": "stacks",
+                                "value": 2
+                            }
+                        ]
                     }
-                ],
-                "modifiers":{
-                    "lifesteal": 40
-                }
+                ]
             },
-            
+            {
+                "id": "Flying",
+                "name": "Flying",
+                "customDescription": "+20% to Global Evasion and Accuracy Rating — Doubled if Target: does not have Flight and Attack Style is Melee",
+                "conditionalModifiers": [
+                    {
+                        "condition":{
+                            "type": "Every",
+                            "conditions": [
+                                {
+                                    "character": "Enemy",
+                                    "targetAttackType":"melee",
+                                    "thisAttackType":"any",
+                                    "type": "CombatType"
+                                },
+                                {
+                                    "character": "Enemy",
+                                    "effectID":"expandedAreas:Flight",
+                                    "inverted": true,
+                                    "type": "CombatEffect"
+                                }
+                            ]
+                        },
+                        "modifiers":{
+                            "evasion": 20,
+                            "accuracyRating": 20
+                        }
+                    }
+                    
+                ],
+                "combatEffects": [
+                    {
+                        "appliesWhen":"StartOfFight",
+                        "effectID":"expandedAreas:Flight"
+                    }
+                ]
+            }
         ],
         "monsters": [
-                {
-                    "id": "Ancient_Warrior",
-                    "name": "Ancient Warrior",
-                    "media": "assets/monsters/Ancient_Warrior.png",
-                    "levels": {
-                        "Hitpoints": 120,
-                        "Attack": 120,
-                        "Strength": 120,
-                        "Defence": 120,
-                        "Ranged": 120,
-                        "Magic": 120
-                    },
-                    "equipmentStats": [
-                        {
-                            "key": "attackSpeed",
-                            "value": 1200
-                        },
-                        {
-                            "key": "damageReduction",
-                            "value": 28
-                        },
-                        {
-                            "key": "stabAttackBonus",
-                            "value": 72
-                        },
-                        {
-                            "key": "meleeStrengthBonus",
-                            "value": 125
-                        },
-                        {
-                            "key": "meleeDefenceBonus",
-                            "value": 343
-                        },
-                        {
-                            "key": "rangedDefenceBonus",
-                            "value": 242
-                        },
-                        {
-                            "key": "magicDefenceBonus",
-                            "value": -21  
-                        }
-                    ],
-                    "ignoreCompletion": false,
-                    "attackType": "melee",
-                    "specialAttacks": [
-                        "expandedAreas:DualAttack"
-                        
-                    ],
-                    "passives": ["expandedAreas:AfflictedLifeAbsorbance",
-                "expandedAreas:AncientSwords"],
-                    "lootChance": 5,
-                    "lootTable": [
-                        
-                        {
-                            "itemID": "melvorD:Ancient_Helmet",
-                            "minQuantity": 1,
-                            "maxQuantity": 1,
-                            "weight": 1
-                        },
-                        {
-                            "itemID": "melvorD:Ancient_Shield",
-                            "minQuantity": 1,
-                            "maxQuantity": 1,
-                            "weight": 1
-                        },
-                        {
-                            "itemID": "melvorD:Ancient_Sword",
-                            "minQuantity": 1,
-                            "maxQuantity": 1,
-                            "weight": 1
-                        },
-                        {
-                            "itemID": "melvorD:Ancient_Sword",
-                            "minQuantity": 1,
-                            "maxQuantity": 1,
-                            "weight": 1
-                        },
-                        {
-                            "itemID": "melvorD:Ancient_Platelegs",
-                            "minQuantity": 1,
-                            "maxQuantity": 1,
-                            "weight": 1
-                        },
-                        {
-                            "itemID": "melvorD:Ancient_Platebody",
-                            "minQuantity": 1,
-                            "maxQuantity": 1,
-                            "weight": 1
-                        }
-                    ],
-                    "canSlayer": true,
-                    "isBoss": false,
-                    "selectedSpell": "melvorD:WindStrike",
-                    "bones": {
+            {
+                "id": "Blightbird",
+                "name": "Blightbird",
+                "media": "assets/monsters/Blight_Eater.png",
+                "levels": {
+                    "Hitpoints": 1000,
+                    "Attack": 2000,
+                    "Strength": 200,
+                    "Defence": 200,
+                    "Ranged": 1,
+                    "Magic": 1
+                },
+                "equipmentStats": [
+                    {
+                        "key": "attackSpeed",
+                        "value": 1600
+                    }
+                ],
+                "ignoreCompletion": false,
+                "attackType": "melee",
+                "specialAttacks": [
+                    "expandedAreas:DeathCaw",
+                    "expandedAreas:BlightReap"
+                ],
+                "passives": [
+                    "expandedAreas:Blighted",
+                    "expandedAreas:BlightEater",
+                    "expandedAreas:Flying",
+                    "expandedAreas:MonsterTypeBeast",
+                    "expandedAreas:MonsterTypeUndead"
+                ],
+                "lootChance": 70,
+                "lootTable": [
+                    {
                         "itemID": "melvorD:Bones",
-                        "quantity": 1
+                        "minQuantity": 1,
+                        "maxQuantity": 30,
+                        "weight": 20
                     },
-                    "currencyDrops": [
+                    {
+                        "itemID": "melvorD:Big_Bones",
+                        "minQuantity": 1,
+                        "maxQuantity": 30,
+                        "weight": 16
+                    },
+                    {
+                        "itemID": "melvorD:Magic_Bones",
+                        "minQuantity": 1,
+                        "maxQuantity": 30,
+                        "weight": 12
+                    },
+                    {
+                        "itemID": "expandedAreas:Afflicted_Bones",
+                        "minQuantity": 1,
+                        "maxQuantity": 30,
+                        "weight": 8
+                    },
+                    {
+                        "itemID": "melvorF:Desecrated_Bones",
+                        "minQuantity": 1,
+                        "maxQuantity": 10,
+                        "weight": 4
+                    },
+                    {
+                        "itemID": "expandedAreas:Scrap_Metal",
+                        "minQuantity": 1,
+                        "maxQuantity": 3,
+                        "weight": 10
+                    },
+                    {
+                        "itemID": "expandedAreas:Torn_Cloth",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 10
+                    },
+                    {
+                        "itemID": "expandedAreas:Leather_Section",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 10
+                    },
+                    {
+                        "itemID": "expandedAreas:Blightbird_Feather",
+                        "minQuantity": 1,
+                        "maxQuantity": 4,
+                        "weight": 4
+                    },
+                    {
+                        "itemID": "expandedAreas:Virulent_Stomach",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 2
+                    },
+                    {
+                        "itemID": "expandedAreas:Blighted_Talon",
+                        "minQuantity": 1,
+                        "maxQuantity": 2,
+                        "weight": 1
+                    }
+                ],
+                "canSlayer": true,
+                "isBoss": false,
+                "selectedSpell": "melvorD:WindStrike",
+                "bones": {
+                    "itemID": "expandedAreas:Afflicted_Bones",
+                    "quantity": 1
+                },
+                "currencyDrops": [
+                    {
+                        "currencyID": "melvorD:GP",
+                        "min": 5,
+                        "max": 40
+                    }
+                ]
+            }
+        ],
+        "shopPurchases": [
+            {
+                "id": "Combat_Mastery_Tokens",
+                "media": "assets/items/Item/Combat_Mastery_Token.png",
+                "category": "melvorF:Slayer",
+                "contains": {
+                    "items": [
                         {
-                            "currencyID": "melvorD:GP",
-                            "min": 10000,
-                            "max": 25000
+                            "id":"expandedAreas:Combat_Mastery_Token",
+                            "quantity": 1
                         }
                     ]
-                }
-        ]
-        
-    },
-    "modifications": {
-"items": [
-    {
-        "id":"melvorD:Iron_2H_Sword",
-        "conditionalModifiers":{
-            "add": [
-                    {
-                        "condition": {
-                            "character": "Enemy",
-                            "effectID": "expandedAreas:MonsterTypeFiend",
-                            "type": "CombatEffect"
+                },
+                "cost": {
+                    "items": [],
+                    "currencies": [
+                        {
+                            "currency":"melvorD:GP",
+                            "initial": 500000,
+                            "scaling": 500000,
+                            "type": "Linear"
                         },
-                        "modifiers": {
-                            "meleeMaxHit": 300
+                        {
+                            "currency": "melvorD:SlayerCoins",
+                            "initial": 250000,
+                            "scaling": 250000,
+                            "type": "Linear"
+                            
                         }
-                    }
-            ]
-        }
+                    ]
+                },
+                "allowQuantityPurchase": false,
+                "unlockRequirements": [],
+                "purchaseRequirements": [
+                    
+                ],
+                "defaultBuyLimit": 0,
+                "buyLimitOverrides": [],
+                "showBuyLimit": false,
+                "customName": "Combat Mastery Tokens"
+            }
+        ],
+        "shopDisplayOrder": [
+            
+        ]
     },
-    {
-        "id": "melvorD:Iron_Battleaxe",
-        "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "meleeMaxHit": 300
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "id": "melvorD:Iron_Dagger",
-        "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "meleeMaxHit": 300
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "id": "melvorD:Iron_Scimitar",
-        "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "meleeMaxHit": 300
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "id": "melvorD:Iron_Sword",
-        "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "meleeMaxHit": 300
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "id": "melvorD:Iron_Throwing_Knife",
-        "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "rangedMaxHit": 300
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "id": "melvorF:Iron_Crossbow",
-        "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "rangedMaxHit": 300
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "id": "melvorF:Iron_Javelin",
-        "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "rangedMaxHit": 300
-                    }
-                }
-            ]
-        }
-    }
-]
-    }
+    "modifications": {}
 }

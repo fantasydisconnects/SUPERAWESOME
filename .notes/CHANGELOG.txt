@@ -1,4 +1,19 @@
 1. Reduce file size for all images
 2. Fix WitherDOT template (previously incorrectly categorized as "Bleed")
-3. Add new Combat Effects:
+3. Add new general Combat Effects:
 3a. Paralyze: Interrupts a character's turn when applied; prevents them from attacking, evading, or regenerating barrier; and causes them to take 100% more damage. Also grants immunity to stun-likes for 3 turns.
+3b. Flight: Gives +20% to Evasion and Accuracy, doubled if Enemy is Melee and does not have Flight
+3c. Blight: Sort of a combination of Affliction and Mark of Death, gives +1% Damage Taken per stack up to 50 stacks.
+4. Fix Tier IX of all Combat Achievements from req. 90,000 kills -> 9,000 kills as intended.
+5. Add new Legendary Combat Area - Fields of Dishonor
+5a. Add new Master-tier enemy Ancient Warrior
+5b. Add new Master-tier enemy Ancient Magician
+5c. Add new Master-tier enemy Ancient Marksman
+5d. Add new Easy-tier enemy Melvoria Bones
+5e. Add new Legendary-tier enemy Blightbird
+5f. Add Tattered Leather pieces, Rusted Ancient pieces, Wormeaten Cloth pieces
+5g. Add Virulent Stomach, Blighted Talon, Blightclaw (Left) and Blightclaw (Right), Blightbird Skull, Blightbird Feather, Afflicted Bones, Unholy Bones, Unholy Dust
+5h. Add Blightbird Deathgarb
+5i. Add Blightbird Deathmask
+6. Add new Damage Types - Holy and Unholy
+7. Add Mastery Tokens as purchasable item to Slayer Shop for 500K gp +500K per purchase and 250K Slayer Coins +250K per purchase

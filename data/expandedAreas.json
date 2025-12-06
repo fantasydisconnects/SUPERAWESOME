@@ -219,6 +219,59 @@
     ],
     "combatEffects": [
       {
+        "id": "Blight",
+        "templateID": "melvorD:StackingSelfCountingModifier",
+        "name": "Blight",
+        "media": "assets/status/blight.png",
+        "target": "Target",
+        "parameters": [
+          {
+            "name": "turns",
+            "initialValue": 50
+          },
+          {
+            "name": "initialStacks",
+            "initialValue": 1
+          },
+          {
+            "name": "stacksToAdd",
+            "initialValue": 1
+          },
+          {
+            "name": "maxStacks",
+            "initialValue": 50
+          }
+        ],
+        "statGroups": [
+          {
+            "name": "stacks",
+            "modifiers": {
+              "damageTaken": 1
+            }
+          }
+        ],
+        "effectGroups": [
+          "melvorD:Debuff"
+        ]
+      },
+      {
+        "id": "Flight",
+        "templateID": "melvorD:StaticNonCountingModifier",
+        "name": "Flight",
+        "media": "assets/status/flight.png",
+        "target": "Self",
+        "parameters": [],
+        "statGroups": [
+          {
+            "name": "stacks",
+            "modifiers": {
+              "evasion": 20,
+              "accuracyRating": 20
+            }
+          }
+        ]
+      },
+      {
         "id": "IncreasedMaxHitpoints",
         "templateID": "melvorD:StackingNonCountingModifier",
         "name": "Constitution",
@@ -1211,26 +1264,204 @@
     ],
     "combatPassives": [
       {
-                "id": "AncientSwords",
-                "name": "Ancient Swords",
-                "customDescription": "If the Enemy has 80% of its Hipoints or higher, it gains +20% Damage Dealt.",
-                "conditionalModifiers": [
-                    {
-                        "condition": {
-                            "type": "Hitpoints",
-                            "character": "Player",
-                            "value": 80,
-                            "operator": ">"
-                        },
-                        "modifiers": {
-                            "damageDealt": 20
-                        }
-                    }
-                ]
+        "id": "BlightEater",
+        "name": "Blight Eater",
+        "customDescription": "+100% Chance to apply 5 stacks of Blight On Hit if either the Enemy or Player has at least 1 stack of Affliction.",
+        "combatEffects": [
+          {
+            "condition": {
+              "type": "Some",
+              "conditions": [
+                {
+                  "effectID": "melvorD:Affliction",
+                  "character": "Enemy",
+                  "type": "CombatEffect"
+                },
+                {
+                  "effectID": "melvorD:Affliction",
+                  "character": "Player",
+                  "type": "CombatEffect"
+                }
+              ]
             },
+            "appliesWhen": "PostFirstAttack",
+            "effectID": "expandedAreas:Blight",
+            "initialParams": [
+              {
+                "name": "stacks",
+                "value": 5
+              }
+            ]
+          }
+        ]
+      },
       {
-        "id": "AfflictedLifeAbsorbance",
-        "name": "Afflicted Life Absorbance",
+        "id": "Blighted",
+        "name": "Blighted",
+        "customDescription": "+15% Chance each to apply On Hit: Deadly Poison, the Decay Curse, 2 stacks of Affliction, or 2 stacks of Blight.",
+        "combatEffects": [
+          {
+            "appliesWhen": "HitWithAttack",
+            "effectID": "melvorD:DeadlyPoison",
+            "chance": 15
+          },
+          {
+            "appliesWhen": "HitWithAttack",
+            "effectID": "melvorF:Decay",
+            "chance": 15
+          },
+          {
+            "appliesWhen": "PostFirstAttack",
+            "effectID": "melvorD:Affliction",
+            "chance": 15,
+            "initialParams": [
+              {
+                "name": "stacks",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "appliesWhen": "PostFirstAttack",
+            "effectID": "expandedAreas:Blight",
+            "chance": 15,
+            "initialParams": [
+              {
+                "name": "stacks",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Flying",
+        "name": "Flying",
+        "customDescription": "+20% to Global Evasion and Accuracy Rating — Doubled if Target: does not have Flight and Attack Style is Melee",
+        "conditionalModifiers": [
+          {
+            "condition": {
+              "type": "Every",
+              "conditions": [
+                {
+                  "character": "Enemy",
+                  "targetAttackType": "melee",
+                  "thisAttackType": "any",
+                  "type": "CombatType"
+                },
+                {
+                  "character": "Enemy",
+                  "effectID": "expandedAreas:Flight",
+                  "inverted": true,
+                  "type": "CombatEffect"
+                }
+              ]
+            },
+            "modifiers": {
+              "evasion": 20,
+              "accuracyRating": 20
+            }
+          }
+        ],
+        "combatEffects": [
+          {
+            "appliesWhen": "StartOfFight",
+            "effectID": "expandedAreas:Flight"
+          }
+        ]
+      },
+      {
+        "id": "ImbuedAffliction",
+        "name": "Imbued Affliction",
+        "combatEffects": [
+          {
+            "appliesWhen": "PostFirstAttack",
+            "effectID": "melvorD:Affliction",
+            "targetOverride": "Self"
+          }
+        ],
+        "conditionalModifiers": [
+          {
+            "condition": {
+              "effectID": "melvorD:Affliction",
+              "character": "Enemy",
+              "type": "CombatEffect"
+            },
+            "modifiers": {
+              "rangedAccuracyRating": 50,
+              "rangedMinHitBasedOnMaxHit": 25
+            }
+          }
+        ]
+      },
+      {
+        "id": "AncientAffliction",
+        "name": "Ancient Affliction",
+        "customDescription": "+100% chance to apply a Random Curse, +75% chance to apply Wither, annd 50% chance to apply 3 stacks of Affliction when hitting with a Magic attack.",
+        "modifiers": {},
+        "combatEffects": [
+          {
+            "tableID": "melvorF:RandomCurse",
+            "chance": 100,
+            "condition": {
+              "character": "Player",
+              "type": "CombatType",
+              "thisAttackType": "magic",
+              "targetAttackType": "any"
+            },
+            "appliesWhen": "HitWithAttack"
+          },
+          {
+            "effectID": "expandedAreas:Wither",
+            "chance": 75,
+            "condition": {
+              "character": "Player",
+              "type": "CombatType",
+              "thisAttackType": "magic",
+              "targetAttackType": "any"
+            },
+            "appliesWhen": "HitWithAttack"
+          },
+          {
+            "effectID": "melvorD:Affliction",
+            "initialParams": [
+              {
+                "name": "stacksToAdd",
+                "value": 3
+              }
+            ],
+            "chance": 50,
+            "condition": {
+              "character": "Player",
+              "type": "CombatType",
+              "thisAttackType": "magic",
+              "targetAttackType": "any"
+            },
+            "appliesWhen": "PostFirstAttack"
+          }
+        ]
+      },
+      {
+        "id": "AncientSwords",
+        "name": "Ancient Swords",
+        "customDescription": "If the Enemy has 80% of its Hipoints or higher, it gains +20% Damage Dealt.",
+        "conditionalModifiers": [
+          {
+            "condition": {
+              "type": "Hitpoints",
+              "character": "Player",
+              "value": 80,
+              "operator": ">"
+            },
+            "modifiers": {
+              "damageDealt": 20
+            }
+          }
+        ]
+      },
+      {
+        "id": "LifeSap",
+        "name": "Life Sap",
         "customDescription": "+40% Lifesteal. +50% Chance to Apply 1 stack of Affliction and gain 1 stack of Constitution (+1% Max HP, up to 50 stacks) per attack.",
         "combatEffects": [
           {
@@ -1564,7 +1795,7 @@
       {
         "id": "ShadowTouchI",
         "name": "Shadow Touch I",
-        "customDescription": "All stats are weakened by 5% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
+        "customDescription": "All Enemy stats are weakened by 5% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
         "modifiers": {},
         "playerModifiers": {
           "attackInterval": 5,
@@ -1580,7 +1811,7 @@
       {
         "id": "ShadowTouchII",
         "name": "Shadow Touch II",
-        "customDescription": "All stats are weakened by 10% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
+        "customDescription": "All Enemy stats are weakened by 10% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
         "modifiers": {},
         "playerModifiers": {
           "attackInterval": 10,
@@ -1596,7 +1827,7 @@
       {
         "id": "ShadowTouchIII",
         "name": "Shadow Touch III",
-        "customDescription": "All stats are weakened by 15% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
+        "customDescription": "All Enemy stats are weakened by 15% (Attack Interval, Accuracy, Damage Dealt, Damage Taken, Global Evasion, Max HP, HP Regen, and Prayer Point Cost).",
         "modifiers": {},
         "playerModifiers": {
           "attackInterval": 15,
@@ -1818,6 +2049,636 @@
       }
     ],
     "items": [
+      {
+        "itemType": "Item",
+        "id": "Rusted_Ancient_Helmet",
+        "name": "Rusted Ancient Helmet",
+        "category": "Smithing",
+        "type": "Material",
+        "media": "assets/items/Item/Rusted_Ancient_Helmet.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Rusted_Ancient_Cuirass",
+        "name": "Rusted Ancient Cuirass",
+        "category": "Smithing",
+        "type": "Material",
+        "media": "assets/items/Item/Rusted_Ancient_Cuirass.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Rusted_Ancient_Greaves",
+        "name": "Rusted Ancient Greaves",
+        "category": "Smithing",
+        "type": "Material",
+        "media": "assets/items/Item/Rusted_Ancient_Greaves.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Rusted_Ancient_Boots",
+        "name": "Rusted Ancient Boots",
+        "category": "Smithing",
+        "type": "Material",
+        "media": "assets/items/Item/Rusted_Ancient_Boots.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Rusted_Ancient_Gauntlets",
+        "name": "Rusted Ancient Gauntlets",
+        "category": "Smithing",
+        "type": "Material",
+        "media": "assets/items/Item/Rusted_Ancient_Gauntlets.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Tattered_Ancient_Cap",
+        "name": "Tattered Ancient Cap",
+        "category": "Crafting",
+        "type": "Material",
+        "media": "assets/items/Item/Tattered_Ancient_Cap.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Tattered_Ancient_Jerkin",
+        "name": "Tattered Ancient Jerkin",
+        "category": "Crafting",
+        "type": "Material",
+        "media": "assets/items/Item/Tattered_Ancient_Jerkin.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Tattered_Ancient_Pants",
+        "name": "Tattered Ancient Pants",
+        "category": "Crafting",
+        "type": "Material",
+        "media": "assets/items/Item/Tattered_Ancient_Pants.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Tattered_Ancient_Treaders",
+        "name": "Tattered Ancient Treaders",
+        "category": "Crafting",
+        "type": "Material",
+        "media": "assets/items/Item/Tattered_Ancient_Treaders.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Tattered_Ancient_Bracers",
+        "name": "Tattered Ancient Bracers",
+        "category": "Crafting",
+        "type": "Material",
+        "media": "assets/items/Item/Tattered_Ancient_Bracers.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Wormeaten_Ancient_Hood",
+        "name": "Worm-eaten Ancient Hood",
+        "category": "Runecrafting",
+        "type": "Material",
+        "media": "assets/items/Item/Wormeaten_Ancient_Hood.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Wormeaten_Ancient_Robes",
+        "name": "Worm-eaten Ancient Robes",
+        "category": "Runecrafting",
+        "type": "Material",
+        "media": "assets/items/Item/Wormeaten_Ancient_Robes.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Wormeaten_Ancient_Pants",
+        "name": "Worm-eaten Ancient Pants",
+        "category": "Runecrafting",
+        "type": "Material",
+        "media": "assets/items/Item/Wormeaten_Ancient_Pants.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Wormeaten_Ancient_Gloves",
+        "name": "Worm-eaten Ancient Gloves",
+        "category": "Runecrafting",
+        "type": "Material",
+        "media": "assets/items/Item/Wormeaten_Ancient_Gloves.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Wormeaten_Ancient_Shoes",
+        "name": "Worm-eaten Ancient Shoes",
+        "category": "Runecrafting",
+        "type": "Material",
+        "media": "assets/items/Item/Wormeaten_Ancient_Shoes.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Brittle_Ancient_Warhorn",
+        "name": "Brittle Ancient Warhorn",
+        "category": "Fletching",
+        "type": "Material",
+        "media": "assets/items/Item/Brittle_Ancient_Warhorn.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Cracked_Ancient_Shield",
+        "name": "Cracked Ancient Shield",
+        "category": "Crafting",
+        "type": "Material",
+        "media": "assets/items/Item/Cracked_Ancient_Shield.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Warped_Ancient_Focus",
+        "name": "Warped Ancient Focus",
+        "category": "Runecrafting",
+        "type": "Material",
+        "media": "assets/items/Item/Warped_Ancient_Focus.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250000
+      },
+      {
+        "itemType": "Item",
+        "id": "Scrap_Metal",
+        "name": "Scrap Metal",
+        "category": "Smithing",
+        "type": "Material",
+        "media": "assets/items/Item/Scrap_Metal.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 25000
+      },
+      {
+        "itemType": "Item",
+        "id": "Torn_Cloth",
+        "name": "Torn Cloth",
+        "category": "Runecrafting",
+        "type": "Material",
+        "media": "assets/items/Item/Torn_Cloth.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 25000
+      },
+      {
+        "itemType": "Item",
+        "id": "Leather_Section",
+        "name": "Leather Section",
+        "category": "Crafting",
+        "type": "Material",
+        "media": "assets/items/Item/Leather_Section.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 25000
+      },
+      {
+        "id": "Afflicted_Bones",
+        "name": "Afflicted Bones",
+        "category": "Misc",
+        "type": "Bones",
+        "media": "assets/items/Bone/Afflicted_Bones.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 666,
+        "itemType": "Bone",
+        "prayerPoints": 13
+      },
+      {
+        "itemType": "Item",
+        "id": "Virulent_Stomach",
+        "name": "Virulent Stomach",
+        "category": "Herblore",
+        "type": "Material",
+        "media": "assets/items/Item/Virulent_Stomach.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 10000
+      },
+      {
+        "itemType": "Item",
+        "id": "Blightbird_Feather",
+        "name": "Blightbird Feather",
+        "category": "Fletching",
+        "type": "Material",
+        "media": "assets/items/Item/Blightbird_Feather.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 675
+      },
+      {
+        "itemType": "Item",
+        "id": "Blighted_Talon",
+        "name": "Blighted Talon",
+        "category": "Fletching",
+        "type": "Material",
+        "media": "assets/items/Item/Blighted_Talon.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 10000
+      },
+      {
+        "itemType": "Item",
+        "id": "Amber",
+        "name": "Amber",
+        "category": "Gemstone",
+        "type": "Gem",
+        "media": "assets/items/Gem/Amber.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 250,
+        "customDescription": "Standard Gem"
+      },
+      {
+        "itemType": "Item",
+        "id": "Amethyst",
+        "name": "Amethyst",
+        "category": "Gemstone",
+        "type": "Gem",
+        "media": "assets/items/Gem/Amethyst.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 375,
+        "customDescription": "Standard Gem"
+      },
+      {
+        "itemType": "Item",
+        "id": "Beryl",
+        "name": "Beryl",
+        "category": "Gemstone",
+        "type": "Gem",
+        "media": "assets/items/Gem/Beryl.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 565,
+        "customDescription": "Standard Gem"
+      },
+      {
+        "itemType": "Item",
+        "id": "Garnet",
+        "name": "Garnet",
+        "category": "Gemstone",
+        "type": "Gem",
+        "media": "assets/items/Gem/Garnet.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 850,
+        "customDescription": "Standard Gem"
+      },
+      {
+        "itemType": "Item",
+        "id": "Turquoise",
+        "name": "Turquoise",
+        "category": "Gemstone",
+        "type": "Gem",
+        "media": "assets/items/Gem/Turquoise.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 1275,
+        "customDescription": "Standard Gem"
+      },
+      {
+        "itemType": "Item",
+        "id": "Dragonstone",
+        "name": "Dragonstone",
+        "category": "Gemstone",
+        "type": "Gem",
+        "media": "assets/items/Gem/Dragonstone.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 6000,
+        "customDescription": "Special Gem"
+      },
+      {
+        "itemType": "Item",
+        "id": "Rusty_Key1",
+        "name": "Rusty Key",
+        "category": "Key",
+        "type": "Key",
+        "media": "assets/items/Item/Rusty_Key.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 1,
+        "customDescription": "I wonder what this opens..."
+      },
+      {
+        "itemType": "Item",
+        "id": "Rusty_Key2",
+        "name": "Rusty Key",
+        "category": "Key",
+        "type": "Key",
+        "media": "assets/items/Item/Rusty_Key.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 1,
+        "customDescription": "I wonder what this opens..."
+      },
+      {
+        "itemType": "Item",
+        "id": "Rusty_Key3",
+        "name": "Rusty Key",
+        "category": "Key",
+        "type": "Key",
+        "media": "assets/items/Item/Rusty_Key.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 1,
+        "customDescription": "I wonder what this opens..."
+      },
+      {
+        "id": "Unholy_Dust",
+        "name": "Unholy Dust",
+        "category": "Misc",
+        "type": "Bones",
+        "media": "assets/items/Bone/Unholy_Dust.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 45,
+        "itemType": "Bone",
+        "prayerPoints": 10
+      },
+      {
+        "id": "Unholy_Bones",
+        "name": "Unholy Bones",
+        "category": "Misc",
+        "type": "Bones",
+        "media": "assets/items/Bone/Unholy_Bones.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 555,
+        "itemType": "Bone",
+        "prayerPoints": 30
+      },
+      {
+        "itemType": "Openable",
+        "id": "Dusty_Sarcophagus",
+        "name": "Dusty Sarcophagus",
+        "category": "Loot",
+        "type": "Openable",
+        "media": "assets/items/Item/Dusty_Sarcophagus.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 5000,
+        "dropTable": [
+          {
+            "itemID": "expandedAreas:Rusty_Key1",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Bones",
+            "minQuantity": 1,
+            "maxQuantity": 206,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ruby",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Diamond",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Sapphire",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Emerald",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Topaz",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Amber",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Amethyst",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Beryl",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Garnet",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Turquoise",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorF:Jadestone",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Dragonstone",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "itemType": "Openable",
+        "id": "Ancient_Remains",
+        "name": "Ancient_Remains",
+        "category": "Loot",
+        "type": "Openable",
+        "media": "assets/items/Item/Ancient_Remains.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 5000,
+        "dropTable": [
+          {
+            "itemID": "melvorD:Bones",
+            "minQuantity": 47,
+            "maxQuantity": 509,
+            "weight": 60
+          },
+          {
+            "itemID": "melvorD:Big_Bones",
+            "minQuantity": 13,
+            "maxQuantity": 241,
+            "weight": 17
+          },
+          {
+            "itemID": "melvorD:Magic_Bones",
+            "minQuantity": 12,
+            "maxQuantity": 105,
+            "weight": 14
+          },
+          {
+            "itemID": "melvorF:Desecrated_Bones",
+            "minQuantity": 2,
+            "maxQuantity": 9,
+            "weight": 10
+          },
+          {
+            "itemID": "expandedAreas:Unholy_Bones",
+            "minQuantity": 1,
+            "maxQuantity": 3,
+            "weight": 5
+          },
+          {
+            "itemID": "expandedAreas:Rusty_Key2",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "itemType": "Openable",
+        "id": "Cracked_Vase",
+        "name": "Cracked Vase",
+        "category": "Loot",
+        "type": "Openable",
+        "media": "assets/items/Item/Cracked_Vase.png",
+        "ignoreCompletion": false,
+        "obtainFromItemLog": false,
+        "golbinRaidExclusive": false,
+        "sellsFor": 5000,
+        "dropTable": [
+          {
+            "itemID": "melvorF:Ash",
+            "minQuantity": 250,
+            "maxQuantity": 1000,
+            "weight": 60
+          },
+          {
+            "itemID": "melvorF:Holy_Dust",
+            "minQuantity": 200,
+            "maxQuantity": 500,
+            "weight": 17
+          },
+          {
+            "itemID": "expandedAreas:Unholy_Dust",
+            "minQuantity": 300,
+            "maxQuantity": 675,
+            "weight": 14
+          },
+          {
+            "itemID": "expandedAreas:Rusty_Key3",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ]
+      },
       {
         "id": "Holy_Blade_of_the_Dawnmartyr",
         "name": "Holy Blade of the Dawnmartyr",
@@ -5195,9 +6056,10 @@
         "equipmentStats": [],
         "combatEffects": [
           {
+            "chance": 50,
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
-            "customDescription": "Apply Stun for 1 turn when critically hitting with an attack.",
+            "customDescription": "50% Chance to apply Stun for 1 turn when critically hitting with an attack.",
             "initialParams": [
               {
                 "name": "turns",
@@ -5254,11 +6116,11 @@
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
-            "customDescription": "Apply Stun for 2 turns when critically hitting with an attack.",
+            "customDescription": "Apply Stun for 1 turn when critically hitting with an attack.",
             "initialParams": [
               {
                 "name": "turns",
-                "value": 2
+                "value": 1
               }
             ]
           }
@@ -5312,11 +6174,11 @@
           {
             "appliesWhen": "CritWithAttack",
             "effectID": "melvorD:Stun",
-            "customDescription": "Apply Stun for 3 turns when critically hitting with an attack.",
+            "customDescription": "Apply Stun for 2 turns when critically hitting with an attack.",
             "initialParams": [
               {
                 "name": "turns",
-                "value": 3
+                "value": 2
               }
             ]
           }
@@ -14090,7 +14952,7 @@
         "obtainFromItemLog": false,
         "golbinRaidExclusive": false,
         "sellsFor": 500,
-        "prayerPoints": 12
+        "prayerPoints": 25
       },
       {
         "id": "Baby_Dragon_Bones",
@@ -18653,6 +19515,164 @@
     ],
     "attacks": [
       {
+        "id": "DeathCaw",
+        "defaultChance": 15,
+        "damage": [],
+        "prehitEffects": [
+          {
+            "effectID": "expandedAreas:Paralyze"
+          }
+        ],
+        "onhitEffects": [],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "name": "Death Caw",
+        "description": "Emits a chilling caw that has a ${onHitEffect0chance}% to apply Paralyze. Deals no damage.",
+        "descriptionGenerator": "Perform <count> consecutive attacks.",
+        "usesRunesPerProc": false
+      },
+      {
+        "id": "BlightReap",
+        "defaultChance": 15,
+        "damage": [
+          {
+            "damageType": "Custom",
+            "character": "Attacker",
+            "maxRoll": "Fixed",
+            "maxPercent": 45,
+            "roll": false
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": false,
+        "attackCount": 5,
+        "attackInterval": 200,
+        "lifesteal": 100,
+        "name": "Blight Reap",
+        "description": "An avoidable attack that hits ${hitCount} times, plus an extra time per Blight stack applied to you. Deals ${attackDamageMaxValue0} damage each and heals the enemy for ${lifesteal}% of damage dealt. Removes all Blight stacks from you after attack.",
+        "descriptionGenerator": "An <avoidable> attack that hits <count> times, plus an extra time per Blight stack applied to <target>. Deals <damage> damage each and heals <attacker> for <lifesteal> of damage dealt. Removes all Blight stacks from <target> after attack.",
+        "usesRunesPerProc": false,
+        "consumesEffect": {
+          "effectID": "expandedAreas:Blight",
+          "paramName": "stacks"
+        }
+      },
+      {
+        "id": "DecayingShot",
+        "defaultChance": 25,
+        "damage": [
+          {
+            "damageType": "Custom",
+            "roll": false,
+            "maxRoll": "Fixed",
+            "maxPercent": 99,
+            "character": "Attacker"
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "melvorF:Decay"
+          },
+          {
+            "effectID": "expandedAreas:Wither"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "name": "Decaying Shot",
+        "description": "A withering bolt flies at you, dealing ${attackDamageMaxValue0} damage. On a hit, has a ${onHitEffect0chance}% to apply the Decay Curse for 3 turns, and a ${onHitEffect1chance}% to apply Wither for 45s.",
+        "descriptionGenerator": "A bolt that deals <damage> damage and applies <hitEffect> on hit.",
+        "usesRunesPerProc": false
+      },
+      {
+        "id": "SteadyShot",
+        "defaultChance": 25,
+        "damage": [
+          {
+            "damageType": "Custom",
+            "roll": false,
+            "maxRoll": "Fixed",
+            "maxPercent": 102,
+            "character": "Attacker"
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "minAccuracy": 20000,
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "name": "Steady Shot",
+        "description": "Steadily aimed, a bolt is launched at you, dealing ${attackDamageMaxValue0} damage. If the Enemy's Accuracy Rating is ${minAccuracy} or higher, this attack is unavoidable.",
+        "descriptionGenerator": "A bolt that deals <damage> damage <avoidable>.",
+        "usesRunesPerProc": false
+      },
+      {
+        "id": "SappingShot",
+        "defaultChance": 25,
+        "damage": [
+          {
+            "damageType": "Custom",
+            "roll": false,
+            "maxRoll": "Fixed",
+            "maxPercent": 93,
+            "character": "Attacker"
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "melvorD:Affliction",
+            "initialParams": [
+              {
+                "name": "stacksToAdd",
+                "value": 5
+              }
+            ]
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 100,
+        "name": "Sapping Shot",
+        "description": "A bolt imbued with necrotic energy fires, dealing ${attackDamageMaxValue0} damage. On hit, applies 5 stacks of Affliction.",
+        "descriptionGenerator": "A bolt that deals <damage> damage and <hitEffect>.",
+        "usesRunesPerProc": false
+      },
+      {
+        "id": "Stormsnap",
+        "defaultChance": 25,
+        "damage": [
+          {
+            "damageType": "Custom",
+            "roll": true,
+            "minRoll": "MagicScaling",
+            "maxRoll": "MagicScaling",
+            "minPercent": 20,
+            "maxPercent": 40,
+            "character": "Target"
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [],
+        "cantMiss": true,
+        "attackCount": 1,
+        "attackInterval": 50,
+        "lifesteal": 0,
+        "name": "Stormsnap",
+        "description": "Perform an unavoidable attack that deals damage equal to 200%-400% of the Enemy's Magic level + 1.",
+        "descriptionGenerator": "Perform an <avoidable> attack that deals <damage>.",
+        "usesRunesPerProc": false
+      },
+      {
         "id": "DualAttack",
         "defaultChance": 100,
         "damage": [
@@ -19719,16 +20739,365 @@
     ],
     "monsters": [
       {
+        "id": "Blightbird",
+        "name": "Blightbird",
+        "media": "assets/monsters/Blight_Eater.png",
+        "levels": {
+          "Hitpoints": 1000,
+          "Attack": 2000,
+          "Strength": 200,
+          "Defence": 200,
+          "Ranged": 1,
+          "Magic": 1
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 1600
+          }
+        ],
+        "ignoreCompletion": false,
+        "attackType": "melee",
+        "specialAttacks": [
+          "expandedAreas:DeathCaw",
+          "expandedAreas:BlightReap"
+        ],
+        "passives": [
+          "expandedAreas:Blighted",
+          "expandedAreas:BlightEater",
+          "expandedAreas:Flying",
+          "expandedAreas:MonsterTypeBeast",
+          "expandedAreas:MonsterTypeUndead"
+        ],
+        "lootChance": 70,
+        "lootTable": [
+          {
+            "itemID": "melvorD:Bones",
+            "minQuantity": 1,
+            "maxQuantity": 30,
+            "weight": 20
+          },
+          {
+            "itemID": "melvorD:Big_Bones",
+            "minQuantity": 1,
+            "maxQuantity": 30,
+            "weight": 16
+          },
+          {
+            "itemID": "melvorD:Magic_Bones",
+            "minQuantity": 1,
+            "maxQuantity": 30,
+            "weight": 12
+          },
+          {
+            "itemID": "expandedAreas:Afflicted_Bones",
+            "minQuantity": 1,
+            "maxQuantity": 30,
+            "weight": 8
+          },
+          {
+            "itemID": "melvorF:Desecrated_Bones",
+            "minQuantity": 1,
+            "maxQuantity": 10,
+            "weight": 4
+          },
+          {
+            "itemID": "expandedAreas:Scrap_Metal",
+            "minQuantity": 1,
+            "maxQuantity": 3,
+            "weight": 10
+          },
+          {
+            "itemID": "expandedAreas:Torn_Cloth",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "expandedAreas:Leather_Section",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 10
+          },
+          {
+            "itemID": "expandedAreas:Blightbird_Feather",
+            "minQuantity": 1,
+            "maxQuantity": 4,
+            "weight": 4
+          },
+          {
+            "itemID": "expandedAreas:Virulent_Stomach",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 2
+          },
+          {
+            "itemID": "expandedAreas:Blighted_Talon",
+            "minQuantity": 1,
+            "maxQuantity": 2,
+            "weight": 1
+          }
+        ],
+        "canSlayer": true,
+        "isBoss": false,
+        "selectedSpell": "melvorD:WindStrike",
+        "bones": {
+          "itemID": "expandedAreas:Afflicted_Bones",
+          "quantity": 1
+        },
+        "currencyDrops": [
+          {
+            "currencyID": "melvorD:GP",
+            "min": 5,
+            "max": 40
+          }
+        ]
+      },
+      {
+        "id": "Ancient_Marksman",
+        "name": "Ancient Marksman",
+        "media": "assets/monsters/Ancient_Marksman.png",
+        "levels": {
+          "Hitpoints": 1000,
+          "Attack": 1,
+          "Strength": 1,
+          "Defence": 500,
+          "Ranged": 500,
+          "Magic": 300
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 3200
+          },
+          {
+            "key": "damageReduction",
+            "value": 36
+          },
+          {
+            "key": "rangedAttackBonus",
+            "value": 196
+          },
+          {
+            "key": "magicAttackBonus",
+            "value": -65
+          },
+          {
+            "key": "rangedStrengthBonus",
+            "value": 154
+          },
+          {
+            "key": "meleeDefenceBonus",
+            "value": 147
+          },
+          {
+            "key": "rangedDefenceBonus",
+            "value": 198
+          },
+          {
+            "key": "magicDefenceBonus",
+            "value": 173
+          }
+        ],
+        "ignoreCompletion": false,
+        "attackType": "ranged",
+        "specialAttacks": [
+          "melvorF:ImpairingShot",
+          "expandedAreas:DecayingShot",
+          "expandedAreas:SteadyShot",
+          "expandedAreas:SappingShot"
+        ],
+        "passives": [
+          "expandedAreas:ImbuedAffliction",
+          "expandedAreas:MonsterTypeUndead"
+        ],
+        "lootChance": 5,
+        "lootTable": [
+          {
+            "itemID": "expandedAreas:Ancient_Dhide_Cowl",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorF:Ancient_Dhide_Body",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorF:Ancient_Dhide_Chaps",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorF:Ancient_Dhide_Shield",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorF:Ancient_Dhide_Vambraces",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Ancient_Dhide_Boots",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorF:Ancient_Crossbow",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ],
+        "canSlayer": true,
+        "isBoss": false,
+        "selectedSpell": "melvorD:FireWave",
+        "bones": {
+          "itemID": "melvorD:Bones",
+          "quantity": 1
+        },
+        "currencyDrops": [
+          {
+            "currencyID": "melvorD:GP",
+            "min": 25000,
+            "max": 45000
+          }
+        ]
+      },
+      {
+        "id": "Ancient_Magician",
+        "name": "Ancient Magician",
+        "media": "assets/monsters/Ancient_Magician.png",
+        "levels": {
+          "Hitpoints": 1000,
+          "Attack": 1,
+          "Strength": 1,
+          "Defence": 500,
+          "Ranged": 1,
+          "Magic": 500
+        },
+        "equipmentStats": [
+          {
+            "key": "attackSpeed",
+            "value": 3000
+          },
+          {
+            "key": "damageReduction",
+            "value": 25
+          },
+          {
+            "key": "magicAttackBonus",
+            "value": 103
+          },
+          {
+            "key": "magicDamageBonus",
+            "value": 55
+          },
+          {
+            "key": "meleeDefenceBonus",
+            "value": 155
+          },
+          {
+            "key": "magicDefenceBonus",
+            "value": 202
+          },
+          {
+            "key": "rangedDefenceBonus",
+            "value": -15
+          }
+        ],
+        "ignoreCompletion": false,
+        "attackType": "magic",
+        "specialAttacks": [
+          "melvorF:Incinerate",
+          "melvorF:Quake",
+          "melvorF:Frostbite",
+          "melvorF:Gust"
+        ],
+        "overrideSpecialChances": [
+          10,
+          10,
+          10,
+          10
+        ],
+        "passives": [
+          "expandedAreas:AncientAffliction",
+          "expandedAreas:MonsterTypeUndead",
+          "expandedAreas:ShadowTouchIII",
+          "expandedAreas:Shadowy"
+        ],
+        "lootChance": 5,
+        "lootTable": [
+          {
+            "itemID": "melvorD:Ancient_Wizard_Hat",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ancient_Wizard_Robes",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ancient_Wizard_Bottoms",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "melvorD:Ancient_Wizard_Boots",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Ancient_Wizard_Gloves",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          },
+          {
+            "itemID": "expandedAreas:Ancient_Staff",
+            "minQuantity": 1,
+            "maxQuantity": 1,
+            "weight": 1
+          }
+        ],
+        "canSlayer": true,
+        "isBoss": false,
+        "selectedSpell": "melvorD:FireWave",
+        "bones": {
+          "itemID": "melvorD:Bones",
+          "quantity": 1
+        },
+        "currencyDrops": [
+          {
+            "currencyID": "melvorD:GP",
+            "min": 20000,
+            "max": 30000
+          }
+        ]
+      },
+      {
         "id": "Ancient_Warrior",
         "name": "Ancient Warrior",
         "media": "assets/monsters/Ancient_Warrior.png",
         "levels": {
           "Hitpoints": 1000,
-          "Attack": 600,
-          "Strength": 600,
-          "Defence": 600,
+          "Attack": 500,
+          "Strength": 500,
+          "Defence": 500,
           "Ranged": 1,
-          "Magic": 400
+          "Magic": 200
         },
         "equipmentStats": [
           {
@@ -19766,7 +21135,7 @@
           "expandedAreas:DualAttack"
         ],
         "passives": [
-          "expandedAreas:AfflictedLifeAbsorbance",
+          "expandedAreas:LifeSap",
           "expandedAreas:AncientSwords",
           "expandedAreas:MonsterTypeUndead"
         ],
@@ -24721,18 +26090,19 @@
     ],
     "combatAreas": [
       {
-        "id": "Forgotten_Battlefield",
-        "name": "Forgotten Battlefield",
-        "media": "assets/combatAreas/Forgotten_Battlefield.png",
+        "id": "FieldOfDishonor",
+        "name": "The Field of Dishonor",
+        "media": "assets/combatAreas/ForgottenBattlefield.png",
         "difficulty": [
           5
         ],
         "monsterIDs": [
-          "expandedAreas:Ancient_Warrior"
+          "expandedAreas:Ancient_Warrior",
+          "expandedAreas:Ancient_Magician",
+          "expandedAreas:Ancient_Marksman",
+          "expandedAreas:Blightbird"
         ],
-        "entryRequirements": [
-
-        ]
+        "entryRequirements": []
       },
       {
         "id": "Low_Town",
@@ -25547,6 +26917,46 @@
       }
     ],
     "shopPurchases": [
+       {
+                "id": "Combat_Mastery_Tokens",
+                "media": "assets/items/Item/Combat_Mastery_Token.png",
+                "category": "melvorF:Slayer",
+                "contains": {
+                    "items": [
+                        {
+                            "id":"expandedAreas:Combat_Mastery_Token",
+                            "quantity": 1
+                        }
+                    ]
+                },
+                "cost": {
+                    "items": [],
+                    "currencies": [
+                        {
+                            "currency":"melvorD:GP",
+                            "initial": 500000,
+                            "scaling": 500000,
+                            "type": "Linear"
+                        },
+                        {
+                            "currency": "melvorD:SlayerCoins",
+                            "initial": 250000,
+                            "scaling": 250000,
+                            "type": "Linear"
+                            
+                        }
+                    ]
+                },
+                "allowQuantityPurchase": false,
+                "unlockRequirements": [],
+                "purchaseRequirements": [
+                    
+                ],
+                "defaultBuyLimit": 0,
+                "buyLimitOverrides": [],
+                "showBuyLimit": false,
+                "customName": "Combat Mastery Tokens"
+            },
       {
         "id": "Farmlands1000",
         "media": "assets/combatAreas/Farmlands.svg",
@@ -43669,7 +45079,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorD:Chicken_Coop",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -44103,7 +45513,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "expandedAreas:Golbin_Hideout",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -44537,7 +45947,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorD:Undead_Graveyard",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -44971,7 +46381,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorD:Bandit_Base",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -45405,7 +46815,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorD:Hall_of_Wizards",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -45839,7 +47249,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "expandedAreas:The_Barbarian_Trials",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -46273,7 +47683,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorD:Spider_Forest",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -46707,7 +48117,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorF:Miolite_Caves",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -47141,7 +48551,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorD:Deep_Sea_Ship",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -47575,7 +48985,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorD:Frozen_Cove",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -48009,7 +49419,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorF:Dragons_Den",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -48443,7 +49853,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "expandedAreas:Elemental_Sanctuary",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -48877,7 +50287,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorD:Volcanic_Cave",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -49311,7 +50721,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorF:Infernal_Stronghold",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -49745,7 +51155,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorF:Air_God_Dungeon",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -50179,7 +51589,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorF:Water_God_Dungeon",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -50613,7 +52023,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorF:Earth_God_Dungeon",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -51047,7 +52457,7 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorF:Fire_God_Dungeon",
-            "count": 90000
+            "count": 9000
           }
         ],
         "defaultBuyLimit": 1,
@@ -55141,6 +56551,13 @@
       }
     ],
     "shopDisplayOrder": [
+      {
+                "beforeID":"melvorF:Auto_Slayer",
+                "insertAt": "Before",
+                "ids": [
+                    "expandedAreas:Combat_Mastery_Tokens"
+                ]
+            },
       {
         "insertAt": "Before",
         "beforeID": "melvorD:Iron_Axe",
@@ -65155,142 +66572,172 @@
       }
     ],
     "items": [
-          {
-        "id":"melvorD:Iron_2H_Sword",
-        "conditionalModifiers":{
-            "add": [
-                    {
-                        "condition": {
-                            "character": "Enemy",
-                            "effectID": "expandedAreas:MonsterTypeFiend",
-                            "type": "CombatEffect"
-                        },
-                        "modifiers": {
-                            "meleeMaxHit": 300
-                        }
-                    }
-            ]
+      {
+        "id": "melvorF:Stormsnap",
+        "equipmentStats": {
+          "remove": [
+            "attackSpeed"
+          ],
+          "add": [
+            {
+              "key": "attackSpeed",
+              "value": 3600
+            },
+            {
+              "key": "rangedAttackBonus",
+              "value": 80
+            },
+            {
+              "key": "rangedStrengthBonus",
+              "value": 40
+            }
+          ]
+        },
+        "specialAttacks": {
+          "remove": [
+            "melvorF:Stormsnap"
+          ],
+          "add": [
+            "expandedAreas:Stormsnap"
+          ]
         }
-    },
-    {
+      },
+      {
+        "id": "melvorD:Iron_2H_Sword",
+        "conditionalModifiers": {
+          "add": [
+            {
+              "condition": {
+                "character": "Enemy",
+                "effectID": "expandedAreas:MonsterTypeFiend",
+                "type": "CombatEffect"
+              },
+              "modifiers": {
+                "meleeMaxHit": 300
+              }
+            }
+          ]
+        }
+      },
+      {
         "id": "melvorD:Iron_Battleaxe",
         "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "meleeMaxHit": 300
-                    }
-                }
-            ]
+          "add": [
+            {
+              "condition": {
+                "character": "Enemy",
+                "effectID": "expandedAreas:MonsterTypeFiend",
+                "type": "CombatEffect"
+              },
+              "modifiers": {
+                "meleeMaxHit": 300
+              }
+            }
+          ]
         }
-    },
-    {
+      },
+      {
         "id": "melvorD:Iron_Dagger",
         "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "meleeMaxHit": 300
-                    }
-                }
-            ]
+          "add": [
+            {
+              "condition": {
+                "character": "Enemy",
+                "effectID": "expandedAreas:MonsterTypeFiend",
+                "type": "CombatEffect"
+              },
+              "modifiers": {
+                "meleeMaxHit": 300
+              }
+            }
+          ]
         }
-    },
-    {
+      },
+      {
         "id": "melvorD:Iron_Scimitar",
         "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "meleeMaxHit": 300
-                    }
-                }
-            ]
+          "add": [
+            {
+              "condition": {
+                "character": "Enemy",
+                "effectID": "expandedAreas:MonsterTypeFiend",
+                "type": "CombatEffect"
+              },
+              "modifiers": {
+                "meleeMaxHit": 300
+              }
+            }
+          ]
         }
-    },
-    {
+      },
+      {
         "id": "melvorD:Iron_Sword",
         "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "meleeMaxHit": 300
-                    }
-                }
-            ]
+          "add": [
+            {
+              "condition": {
+                "character": "Enemy",
+                "effectID": "expandedAreas:MonsterTypeFiend",
+                "type": "CombatEffect"
+              },
+              "modifiers": {
+                "meleeMaxHit": 300
+              }
+            }
+          ]
         }
-    },
-    {
+      },
+      {
         "id": "melvorD:Iron_Throwing_Knife",
         "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "rangedMaxHit": 300
-                    }
-                }
-            ]
+          "add": [
+            {
+              "condition": {
+                "character": "Enemy",
+                "effectID": "expandedAreas:MonsterTypeFiend",
+                "type": "CombatEffect"
+              },
+              "modifiers": {
+                "rangedMaxHit": 300
+              }
+            }
+          ]
         }
-    },
-    {
+      },
+      {
         "id": "melvorF:Iron_Crossbow",
         "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "rangedMaxHit": 300
-                    }
-                }
-            ]
+          "add": [
+            {
+              "condition": {
+                "character": "Enemy",
+                "effectID": "expandedAreas:MonsterTypeFiend",
+                "type": "CombatEffect"
+              },
+              "modifiers": {
+                "rangedMaxHit": 300
+              }
+            }
+          ]
         }
-    },
-    {
+      },
+      {
         "id": "melvorF:Iron_Javelin",
         "conditionalModifiers": {
-            "add": [
-                {
-                    "condition": {
-                        "character": "Enemy",
-                        "effectID": "expandedAreas:MonsterTypeFiend",
-                        "type": "CombatEffect"
-                    },
-                    "modifiers": {
-                        "rangedMaxHit": 300
-                    }
-                }
-            ]
+          "add": [
+            {
+              "condition": {
+                "character": "Enemy",
+                "effectID": "expandedAreas:MonsterTypeFiend",
+                "type": "CombatEffect"
+              },
+              "modifiers": {
+                "rangedMaxHit": 300
+              }
+            }
+          ]
         }
-    },
+      },
       {
         "id": "melvorF:Aeris_God_Helmet",
         "equipmentStats": {
@@ -66796,7 +68243,7 @@
               "afterID": "melvorD:ElerineBattlegrounds",
               "ids": [
                 "expandedAreas:Secluded_Monastery",
-                "expandedAreas:Ancient_Ruined_City"
+                "expandedAreas:FieldOfDishonor"
               ]
             },
             {
