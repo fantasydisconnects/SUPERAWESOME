@@ -2,6 +2,36 @@
     "$schema": "https://melvoridle.com/assets/schema/gameData.json",
     "namespace": "expandedAreas",
     "data": {
+        "items": [
+            {
+                "itemType": "Equipment",
+                "id": "Helmet_of_Doom",
+                "name": "Helmet of DOOM!!!",
+                "category": "Combat",
+                "type": "Armour",
+                "media": "assets/items/Equipment/Helmet_of_Doom.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 666666,
+                "tier": "slayer",
+                "validSlots": [
+                    "Helmet",
+                    "Passive"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [
+                    
+                ],
+                "equipmentStats": [
+                    
+                ],
+                "modifiers": {
+                    "slayerTaskLength": 50,
+                    "doubleSlayerTaskKillChance": 50
+                }
+            }
+        ],
         "attacks": [
             {
                 "id": "DeathCaw",
@@ -131,7 +161,7 @@
                         "effectID": "expandedAreas:Blight",
                         "initialParams": [
                             {
-                                "name": "stacks",
+                                "name": "stacksToAdd",
                                 "value": 5
                             }
                         ]
@@ -159,7 +189,7 @@
                         "chance": 15,
                         "initialParams": [
                             {
-                                "name": "stacks",
+                                "name": "stacksToAdd",
                                 "value": 2
                             }
                         ]
@@ -170,7 +200,7 @@
                         "chance": 15,
                         "initialParams": [
                             {
-                                "name": "stacks",
+                                "name": "stacksToAdd",
                                 "value": 2
                             }
                         ]
@@ -372,10 +402,37 @@
                 "buyLimitOverrides": [],
                 "showBuyLimit": false,
                 "customName": "Combat Mastery Tokens"
+            },
+            {
+                "id": "Helmet_of_Doom",
+                "media": "assets/items/Equipment/Helmet_of_Doom.png",
+                "customDescription": "Slay them...must slay them all! ... Shred... And... Crush! The monsters...they are everywhere. Must...slay them all!",
+                "category": "melvorF:Slayer",
+                "contains": {
+                    "items": [
+                        {
+                            "id": "expandedAreas:Helmet_of_Doom",
+                            "quantity": 1
+                        }
+                    ]
+                },
+                "cost": {
+                    "items": [],
+                    "currencies": [
+                        {
+                            "currency": "melvorD:SlayerCoins",
+                            "cost": 5000000,
+                            "type": "Fixed"
+                        }
+                    ]
+                },
+                "allowQuantityPurchase": false,
+                "unlockRequirements": [],
+                "purchaseRequirements": [],
+                "defaultBuyLimit": 1,
+                "buyLimitOverrides": [],
+                "showBuyLimit": false
             }
-        ],
-        "shopDisplayOrder": [
-            
         ]
     },
     "modifications": {}

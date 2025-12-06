@@ -219,16 +219,12 @@
     ],
     "combatEffects": [
       {
-        "id": "Blight",
-        "templateID": "melvorD:StackingSelfCountingModifier",
-        "name": "Blight",
+        "id": "Deathblight",
+        "templateID": "melvorD:StackingNonCountingModifier",
+        "name": "Deathblight",
         "media": "assets/status/blight.png",
         "target": "Target",
         "parameters": [
-          {
-            "name": "turns",
-            "initialValue": 50
-          },
           {
             "name": "initialStacks",
             "initialValue": 1
@@ -1264,9 +1260,9 @@
     ],
     "combatPassives": [
       {
-        "id": "BlightEater",
-        "name": "Blight Eater",
-        "customDescription": "+100% Chance to apply 5 stacks of Blight On Hit if either the Enemy or Player has at least 1 stack of Affliction.",
+        "id": "DeathblightEater",
+        "name": "Deathblight Eater",
+        "customDescription": "+100% Chance to apply 3 stacks of Deathblight On Hit if either the Enemy or Player has at least 1 stack of Affliction.",
         "combatEffects": [
           {
             "condition": {
@@ -1285,24 +1281,29 @@
               ]
             },
             "appliesWhen": "PostFirstAttack",
-            "effectID": "expandedAreas:Blight",
+            "effectID": "expandedAreas:Deathblight",
             "initialParams": [
               {
-                "name": "stacks",
-                "value": 5
+                "name": "stacksToAdd",
+                "value": 3
               }
             ]
           }
         ]
       },
       {
-        "id": "Blighted",
-        "name": "Blighted",
-        "customDescription": "+15% Chance each to apply On Hit: Deadly Poison, the Decay Curse, 2 stacks of Affliction, or 2 stacks of Blight.",
+        "id": "Deathblighted",
+        "name": "Deathblighted",
+        "customDescription": "+15% Chance each to apply On Hit: Deadly Poison, the Decay Curse, Wither, 2 stacks of Affliction, or 2 stacks of Deathblight.",
         "combatEffects": [
           {
             "appliesWhen": "HitWithAttack",
             "effectID": "melvorD:DeadlyPoison",
+            "chance": 15
+          },
+          {
+            "appliesWhen": "HitWithAttack",
+            "effectID": "expandedAreas:Wither",
             "chance": 15
           },
           {
@@ -1316,19 +1317,19 @@
             "chance": 15,
             "initialParams": [
               {
-                "name": "stacks",
-                "value": 2
+                "name": "stacksToAdd",
+                "value": 1
               }
             ]
           },
           {
             "appliesWhen": "PostFirstAttack",
-            "effectID": "expandedAreas:Blight",
+            "effectID": "expandedAreas:Deathblight",
             "chance": 15,
             "initialParams": [
               {
-                "name": "stacks",
-                "value": 2
+                "name": "stacksToAdd",
+                "value": 1
               }
             ]
           }
@@ -2049,6 +2050,34 @@
       }
     ],
     "items": [
+      {
+                "itemType": "Equipment",
+                "id": "Helmet_of_Doom",
+                "name": "Helmet of DOOM!!!",
+                "category": "Combat",
+                "type": "Armour",
+                "media": "assets/items/Equipment/Helmet_of_Doom.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 666666,
+                "tier": "slayer",
+                "validSlots": [
+                    "Helmet",
+                    "Passive"
+                ],
+                "occupiesSlots": [],
+                "equipRequirements": [
+                    
+                ],
+                "equipmentStats": [
+                    
+                ],
+                "modifiers": {
+                    "slayerTaskLength": 50,
+                    "doubleSlayerTaskKillChance": 50
+                }
+            },
       {
         "itemType": "Item",
         "id": "Rusted_Ancient_Helmet",
@@ -19516,26 +19545,44 @@
     "attacks": [
       {
         "id": "DeathCaw",
-        "defaultChance": 15,
+        "defaultChance": 10,
         "damage": [],
         "prehitEffects": [
           {
-            "effectID": "expandedAreas:Paralyze"
+            "effectID": "expandedAreas:Paralyze",
+            "initialParams":
+            [
+              {
+                "name": "turns",
+                "value": 3
+              }
+            ]
           }
         ],
-        "onhitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "expandedAreas:Deathblight",
+            "initialParams":
+            [
+              {
+                "name": "stacksToAdd",
+                "value": 10
+              }
+            ]
+          }
+        ],
         "cantMiss": true,
         "attackCount": 1,
         "attackInterval": 50,
         "lifesteal": 0,
         "name": "Death Caw",
-        "description": "Emits a chilling caw that has a ${onHitEffect0chance}% to apply Paralyze. Deals no damage.",
-        "descriptionGenerator": "Perform <count> consecutive attacks.",
+        "description": "Emits a chilling caw that has a ${preHitEffect0chance}% to apply Paralyze for 3 turns. Applies 10 stacks of Deathblight On Hit. Deals no damage.",
+        "descriptionGenerator": "Applies Paralyze for 3 turns.",
         "usesRunesPerProc": false
       },
       {
-        "id": "BlightReap",
-        "defaultChance": 15,
+        "id": "RancorOfDeath",
+        "defaultChance": 25,
         "damage": [
           {
             "damageType": "Custom",
@@ -19546,19 +19593,57 @@
           }
         ],
         "prehitEffects": [],
-        "onhitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "expandedAreas:Deathblight",
+            "initialParams":
+            [
+              {
+                "name": "stacksToAdd",
+                "value": 2
+              }
+            ]
+          }
+        ],
         "cantMiss": false,
         "attackCount": 5,
         "attackInterval": 200,
         "lifesteal": 100,
-        "name": "Blight Reap",
-        "description": "An avoidable attack that hits ${hitCount} times, plus an extra time per Blight stack applied to you. Deals ${attackDamageMaxValue0} damage each and heals the enemy for ${lifesteal}% of damage dealt. Removes all Blight stacks from you after attack.",
-        "descriptionGenerator": "An <avoidable> attack that hits <count> times, plus an extra time per Blight stack applied to <target>. Deals <damage> damage each and heals <attacker> for <lifesteal> of damage dealt. Removes all Blight stacks from <target> after attack.",
-        "usesRunesPerProc": false,
-        "consumesEffect": {
-          "effectID": "expandedAreas:Blight",
-          "paramName": "stacks"
-        }
+        "name": "Rancor of Death",
+        "description": "An avoidable attack that hits ${hitCount} times, and applies 2 stacks of Deathblight per hit. Deals ${attackDamageMaxValue0} damage each and heals the enemy for ${lifesteal}% of damage dealt.",
+        "descriptionGenerator": "An <avoidable> attack that hits <count> times, and applies 2 stacks of Deathblight per hit. Deals <damage> damage each and heals <attacker> for <lifesteal> of damage dealt.",
+        "usesRunesPerProc": false
+      },
+      {
+        "id": "GhastlyBeak",
+        "defaultChance": 20,
+        "damage": [
+          {
+            "damageType": "Custom",
+            "character": "Attacker",
+            "maxRoll": "Fixed",
+            "maxPercent": 50,
+            "roll": false
+          }
+        ],
+        "prehitEffects": [],
+        "onhitEffects": [
+          {
+            "effectID": "melvorD:Bleed400"
+            
+          },
+          {
+            "effectID": "melvorD:DeadlyPoison"
+          }
+        ],
+        "cantMiss": false,
+        "attackCount": 1,
+        "attackInterval": 200,
+        "lifesteal": 100,
+        "name": "Ghastly Beak",
+        "description": "A powerful beak attack that deals ${attackDamageMaxValue0} damage each and applies a 400% Bleed and Deadly Poison on hit.",
+        "descriptionGenerator": "Deals <damage> damage each and <hitEffect>.",
+        "usesRunesPerProc": false
       },
       {
         "id": "DecayingShot",
@@ -20753,18 +20838,19 @@
         "equipmentStats": [
           {
             "key": "attackSpeed",
-            "value": 1600
+            "value": 1500
           }
         ],
         "ignoreCompletion": false,
         "attackType": "melee",
         "specialAttacks": [
           "expandedAreas:DeathCaw",
-          "expandedAreas:BlightReap"
+          "expandedAreas:GhastlyBeak",
+          "expandedAreas:RancorOfDeath"
         ],
         "passives": [
-          "expandedAreas:Blighted",
-          "expandedAreas:BlightEater",
+          "expandedAreas:Deathblighted",
+          "expandedAreas:DeathblightEater",
           "expandedAreas:Flying",
           "expandedAreas:MonsterTypeBeast",
           "expandedAreas:MonsterTypeUndead"
@@ -26091,7 +26177,7 @@
     "combatAreas": [
       {
         "id": "FieldOfDishonor",
-        "name": "The Field of Dishonor",
+        "name": "[BETA][TEST] The Fields of Dishonor",
         "media": "assets/combatAreas/ForgottenBattlefield.png",
         "difficulty": [
           5
@@ -26919,12 +27005,12 @@
     "shopPurchases": [
        {
                 "id": "Combat_Mastery_Tokens",
-                "media": "assets/items/Item/Combat_Mastery_Token.png",
+                "media": "assets/items/Item/Mastery_Token_Combat.png",
                 "category": "melvorF:Slayer",
                 "contains": {
                     "items": [
                         {
-                            "id":"expandedAreas:Combat_Mastery_Token",
+                            "id":"expandedAreas:Mastery_Token_Combat",
                             "quantity": 1
                         }
                     ]
@@ -26932,22 +27018,16 @@
                 "cost": {
                     "items": [],
                     "currencies": [
-                        {
-                            "currency":"melvorD:GP",
-                            "initial": 500000,
-                            "scaling": 500000,
-                            "type": "Linear"
-                        },
+                       
                         {
                             "currency": "melvorD:SlayerCoins",
-                            "initial": 250000,
-                            "scaling": 250000,
-                            "type": "Linear"
+                            "cost": 1000,
+                            "type": "Fixed"
                             
                         }
                     ]
                 },
-                "allowQuantityPurchase": false,
+                "allowQuantityPurchase": true,
                 "unlockRequirements": [],
                 "purchaseRequirements": [
                     
@@ -26956,6 +27036,36 @@
                 "buyLimitOverrides": [],
                 "showBuyLimit": false,
                 "customName": "Combat Mastery Tokens"
+            },
+            {
+                "id": "Helmet_of_Doom",
+                "media": "assets/items/Equipment/Helmet_of_Doom.png",
+                "customDescription": "Slay them...must slay them all! ... Shred... And... Crush! The monsters...they are everywhere. Must...slay them all!",
+                "category": "melvorF:Slayer",
+                "contains": {
+                    "items": [
+                        {
+                            "id": "expandedAreas:Helmet_of_Doom",
+                            "quantity": 1
+                        }
+                    ]
+                },
+                "cost": {
+                    "items": [],
+                    "currencies": [
+                        {
+                            "currency": "melvorD:SlayerCoins",
+                            "cost": 5000000,
+                            "type": "Fixed"
+                        }
+                    ]
+                },
+                "allowQuantityPurchase": false,
+                "unlockRequirements": [],
+                "purchaseRequirements": [],
+                "defaultBuyLimit": 1,
+                "buyLimitOverrides": [],
+                "showBuyLimit": false
             },
       {
         "id": "Farmlands1000",
@@ -50348,7 +50458,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50376,7 +50486,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver I",
-        "customDescription": "Delve Infernal Stronghold 1,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 1,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold2000",
@@ -50386,7 +50496,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50420,7 +50530,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver II",
-        "customDescription": "Delve Infernal Stronghold 2,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 2,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold3000",
@@ -50430,7 +50540,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50464,7 +50574,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver III",
-        "customDescription": "Delve Infernal Stronghold 3,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 3,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold4000",
@@ -50474,7 +50584,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50508,7 +50618,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver IV",
-        "customDescription": "Delve Infernal Stronghold 4,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 4,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold5000",
@@ -50518,7 +50628,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50552,7 +50662,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver V",
-        "customDescription": "Delve Infernal Stronghold 5,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 5,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold6000",
@@ -50562,7 +50672,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50596,7 +50706,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver VI",
-        "customDescription": "Delve Infernal Stronghold 6,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 6,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold7000",
@@ -50606,7 +50716,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50640,7 +50750,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver VII",
-        "customDescription": "Delve Infernal Stronghold 7,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 7,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold8000",
@@ -50650,7 +50760,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50684,7 +50794,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver VIII",
-        "customDescription": "Delve Infernal Stronghold 8,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 8,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold9000",
@@ -50694,7 +50804,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50728,7 +50838,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver IX",
-        "customDescription": "Delve Infernal Stronghold 9,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 9,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "InfernalStronghold10000",
@@ -50738,7 +50848,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 500
+              "quantity": 1000
             }
           ],
           "modifiers": {
@@ -50772,7 +50882,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Infernal Stronghold Delver X",
-        "customDescription": "Delve Infernal Stronghold 10,000 times. Gain 500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Infernal Stronghold 10,000 times. Gain 1000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon1000",
@@ -50782,7 +50892,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -50810,7 +50920,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver I",
-        "customDescription": "Delve Air God Dungeon 1,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 1,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon2000",
@@ -50820,7 +50930,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -50854,7 +50964,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver II",
-        "customDescription": "Delve Air God Dungeon 2,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 2,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon3000",
@@ -50864,7 +50974,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -50898,7 +51008,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver III",
-        "customDescription": "Delve Air God Dungeon 3,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 3,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon4000",
@@ -50908,7 +51018,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -50942,7 +51052,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver IV",
-        "customDescription": "Delve Air God Dungeon 4,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 4,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon5000",
@@ -50952,7 +51062,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -50986,7 +51096,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver V",
-        "customDescription": "Delve Air God Dungeon 5,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 5,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon6000",
@@ -50996,7 +51106,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -51030,7 +51140,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver VI",
-        "customDescription": "Delve Air God Dungeon 6,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 6,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon7000",
@@ -51040,7 +51150,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -51074,7 +51184,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver VII",
-        "customDescription": "Delve Air God Dungeon 7,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 7,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon8000",
@@ -51084,7 +51194,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -51118,7 +51228,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver VIII",
-        "customDescription": "Delve Air God Dungeon 8,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 8,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon9000",
@@ -51128,7 +51238,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -51162,7 +51272,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver IX",
-        "customDescription": "Delve Air God Dungeon 9,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 9,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "AirGodDungeon10000",
@@ -51172,7 +51282,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 750
+              "quantity": 1500
             }
           ],
           "modifiers": {
@@ -51206,7 +51316,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Air God Dungeon Delver X",
-        "customDescription": "Delve Air God Dungeon 10,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Air God Dungeon 10,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon1000",
@@ -51216,7 +51326,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51244,7 +51354,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver I",
-        "customDescription": "Delve Water God Dungeon 1,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 1,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon2000",
@@ -51254,7 +51364,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51288,7 +51398,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver II",
-        "customDescription": "Delve Water God Dungeon 2,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 2,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon3000",
@@ -51298,7 +51408,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51332,7 +51442,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver III",
-        "customDescription": "Delve Water God Dungeon 3,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 3,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon4000",
@@ -51342,7 +51452,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51376,7 +51486,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver IV",
-        "customDescription": "Delve Water God Dungeon 4,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 4,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon5000",
@@ -51386,7 +51496,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51420,7 +51530,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver V",
-        "customDescription": "Delve Water God Dungeon 5,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 5,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon6000",
@@ -51430,7 +51540,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51464,7 +51574,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver VI",
-        "customDescription": "Delve Water God Dungeon 6,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 6,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon7000",
@@ -51474,7 +51584,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51508,7 +51618,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver VII",
-        "customDescription": "Delve Water God Dungeon 7,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 7,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon8000",
@@ -51518,7 +51628,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51552,7 +51662,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver VIII",
-        "customDescription": "Delve Water God Dungeon 8,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 8,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon9000",
@@ -51562,7 +51672,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51596,7 +51706,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver IX",
-        "customDescription": "Delve Water God Dungeon 9,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 9,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "WaterGodDungeon10000",
@@ -51606,7 +51716,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 800
+              "quantity": 1750
             }
           ],
           "modifiers": {
@@ -51640,7 +51750,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Water God Dungeon Delver X",
-        "customDescription": "Delve Water God Dungeon 10,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Water God Dungeon 10,000 times. Gain 1750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon1000",
@@ -51650,7 +51760,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -51678,7 +51788,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver I",
-        "customDescription": "Delve Earth God Dungeon 1,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 1,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon2000",
@@ -51688,7 +51798,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -51722,7 +51832,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver II",
-        "customDescription": "Delve Earth God Dungeon 2,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 2,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon3000",
@@ -51732,7 +51842,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -51766,7 +51876,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver III",
-        "customDescription": "Delve Earth God Dungeon 3,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 3,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon4000",
@@ -51776,7 +51886,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -51810,7 +51920,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver IV",
-        "customDescription": "Delve Earth God Dungeon 4,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 4,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon5000",
@@ -51820,7 +51930,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -51854,7 +51964,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver V",
-        "customDescription": "Delve Earth God Dungeon 5,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 5,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon6000",
@@ -51864,7 +51974,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -51898,7 +52008,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver VI",
-        "customDescription": "Delve Earth God Dungeon 6,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 6,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon7000",
@@ -51908,7 +52018,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -51942,7 +52052,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver VII",
-        "customDescription": "Delve Earth God Dungeon 7,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 7,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon8000",
@@ -51952,7 +52062,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -51986,7 +52096,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver VIII",
-        "customDescription": "Delve Earth God Dungeon 8,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 8,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon9000",
@@ -51996,7 +52106,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -52030,7 +52140,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver IX",
-        "customDescription": "Delve Earth God Dungeon 9,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 9,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "EarthGodDungeon10000",
@@ -52040,7 +52150,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 850
+              "quantity": 2000
             }
           ],
           "modifiers": {
@@ -52074,7 +52184,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Earth God Dungeon Delver X",
-        "customDescription": "Delve Earth God Dungeon 10,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Earth God Dungeon 10,000 times. Gain 2000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon1000",
@@ -52084,7 +52194,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52112,7 +52222,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver I",
-        "customDescription": "Delve Fire God Dungeon 1,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 1,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon2000",
@@ -52122,7 +52232,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52156,7 +52266,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver II",
-        "customDescription": "Delve Fire God Dungeon 2,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 2,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon3000",
@@ -52166,7 +52276,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52200,7 +52310,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver III",
-        "customDescription": "Delve Fire God Dungeon 3,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 3,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon4000",
@@ -52210,7 +52320,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52244,7 +52354,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver IV",
-        "customDescription": "Delve Fire God Dungeon 4,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 4,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon5000",
@@ -52254,7 +52364,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52288,7 +52398,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver V",
-        "customDescription": "Delve Fire God Dungeon 5,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 5,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon6000",
@@ -52298,7 +52408,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52332,7 +52442,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver VI",
-        "customDescription": "Delve Fire God Dungeon 6,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 6,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon7000",
@@ -52342,7 +52452,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52376,7 +52486,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver VII",
-        "customDescription": "Delve Fire God Dungeon 7,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 7,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon8000",
@@ -52386,7 +52496,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52420,7 +52530,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver VIII",
-        "customDescription": "Delve Fire God Dungeon 8,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 8,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon9000",
@@ -52430,7 +52540,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52464,7 +52574,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver IX",
-        "customDescription": "Delve Fire God Dungeon 9,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 9,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "FireGodDungeon10000",
@@ -52474,7 +52584,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 900
+              "quantity": 2250
             }
           ],
           "modifiers": {
@@ -52508,7 +52618,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Fire God Dungeon Delver X",
-        "customDescription": "Delve Fire God Dungeon 10,000 times. Gain 750 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Fire God Dungeon 10,000 times. Gain 2250 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist100",
@@ -52518,7 +52628,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52546,7 +52656,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver I",
-        "customDescription": "Delve Into the Mist 100 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 100 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist200",
@@ -52556,7 +52666,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52590,7 +52700,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver II",
-        "customDescription": "Delve Into the Mist 200 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 200 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist300",
@@ -52600,7 +52710,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52634,7 +52744,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver III",
-        "customDescription": "Delve Into the Mist 300 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 300 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist400",
@@ -52644,7 +52754,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52678,7 +52788,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver IV",
-        "customDescription": "Delve Into the Mist 400 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 400 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist500",
@@ -52688,7 +52798,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52722,7 +52832,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver V",
-        "customDescription": "Delve Into the Mist 500 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 500 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist600",
@@ -52732,7 +52842,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52766,7 +52876,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver VI",
-        "customDescription": "Delve Into the Mist 600 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 600 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist700",
@@ -52776,7 +52886,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52810,7 +52920,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver VII",
-        "customDescription": "Delve Into the Mist 700 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 700 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist800",
@@ -52820,7 +52930,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52854,7 +52964,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver VIII",
-        "customDescription": "Delve Into the Mist 800 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 800 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist900",
@@ -52864,7 +52974,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52891,14 +53001,14 @@
           {
             "type": "DungeonCompletion",
             "dungeonID": "melvorF:Into_the_Mist",
-            "count": 9000
+            "count": 900
           }
         ],
         "defaultBuyLimit": 1,
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver IX",
-        "customDescription": "Delve Into the Mist 900 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 900 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "IntoTheMist1000",
@@ -52908,7 +53018,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1000
+              "quantity": 5000
             }
           ],
           "modifiers": {
@@ -52942,7 +53052,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Into the Mist Delver X",
-        "customDescription": "Delve Into the Mist 1,000 times. Gain 950 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Delve Into the Mist 1,000 times. Gain 5000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness100",
@@ -52952,7 +53062,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -52980,7 +53090,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master I",
-        "customDescription": "Complete the Impending Darkness Event 100 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness Event 100 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness200",
@@ -52990,7 +53100,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53024,7 +53134,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master II",
-        "customDescription": "Complete the Impending Darkness Event 100 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness Event 100 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness300",
@@ -53034,7 +53144,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53068,7 +53178,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master III",
-        "customDescription": "Complete the Impending Darkness event 300 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness event 300 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness400",
@@ -53078,7 +53188,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53112,7 +53222,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master IV",
-        "customDescription": "Complete the Impending Darkness event 400 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness event 400 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness500",
@@ -53122,7 +53232,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53156,7 +53266,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master V",
-        "customDescription": "Complete the Impending Darkness event 500 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness event 500 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness600",
@@ -53166,7 +53276,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53200,7 +53310,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master VI",
-        "customDescription": "Complete the Impending Darkness event 600 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness event 600 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness700",
@@ -53210,7 +53320,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53244,7 +53354,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master VII",
-        "customDescription": "Complete the Impending Darkness event 700 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness event 700 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness800",
@@ -53254,7 +53364,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53288,7 +53398,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master VIII",
-        "customDescription": "Complete the Impending Darkness event 800 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness event 800 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness900",
@@ -53298,7 +53408,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53332,7 +53442,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master IX",
-        "customDescription": "Complete the Impending Darkness event 900 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness event 900 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "ImpendingDarkness1000",
@@ -53342,7 +53452,7 @@
           "items": [
             {
               "id": "expandedAreas:Mastery_Token_Combat",
-              "quantity": 1500
+              "quantity": 10000
             }
           ],
           "modifiers": {
@@ -53376,7 +53486,7 @@
         "buyLimitOverrides": [],
         "showBuyLimit": false,
         "customName": "Dungeon Master X",
-        "customDescription": "Complete the Impending Darkness event 1,000 times. Gain 1500 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
+        "customDescription": "Complete the Impending Darkness event 1,000 times. Gain 10000 Combat Mastery Tokens to spend on Combat Mastery Upgrades and +0.01% Damage Dealt to Monsters in this area's category."
       },
       {
         "id": "Attack_Adept",
@@ -56555,7 +56665,8 @@
                 "beforeID":"melvorF:Auto_Slayer",
                 "insertAt": "Before",
                 "ids": [
-                    "expandedAreas:Combat_Mastery_Tokens"
+                    "expandedAreas:Combat_Mastery_Tokens",
+                    "expandedAreas:Helmet_of_Doom"
                 ]
             },
       {

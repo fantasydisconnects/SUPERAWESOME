@@ -17,3 +17,5 @@
 5i. Add Blightbird Deathmask
 6. Add new Damage Types - Holy and Unholy
 7. Add Mastery Tokens as purchasable item to Slayer Shop for 500K gp +500K per purchase and 250K Slayer Coins +250K per purchase
+8. Greatly increase (200% - 1000%) Combat Achievement rewards from Dungeon Delving tasks
+9. Add Helmet of DOOM!!!
