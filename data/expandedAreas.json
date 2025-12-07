@@ -21000,43 +21000,37 @@
         "lootChance": 5,
         "lootTable": [
           {
-            "itemID": "expandedAreas:Ancient_Dhide_Cowl",
+            "itemID": "expandedAreas:Tattered_Ancient_Bracers",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorF:Ancient_Dhide_Body",
+            "itemID": "expandedAreas:Tattered_Ancient_Treaders",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorF:Ancient_Dhide_Chaps",
+            "itemID": "expandedAreas:Tattered_Ancient_Cap",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorF:Ancient_Dhide_Shield",
+            "itemID": "expandedAreas:Tattered_Ancient_Pants",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorF:Ancient_Dhide_Vambraces",
+            "itemID": "expandedAreas:Tattered_Ancient_Jerkin",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "expandedAreas:Ancient_Dhide_Boots",
-            "minQuantity": 1,
-            "maxQuantity": 1,
-            "weight": 1
-          },
-          {
-            "itemID": "melvorF:Ancient_Crossbow",
+            "itemID": "expandedAreas:Cracked_Ancient_Shield",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
@@ -21122,37 +21116,37 @@
         "lootChance": 5,
         "lootTable": [
           {
-            "itemID": "melvorD:Ancient_Wizard_Hat",
+            "itemID": "expandedAreas:Wormeaten_Ancient_Gloves",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorD:Ancient_Wizard_Robes",
+            "itemID": "expandedAreas:Wormeaten_Ancient_Shoes",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorD:Ancient_Wizard_Bottoms",
+            "itemID": "expandedAreas:Wormeaten_Ancient_Robes",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorD:Ancient_Wizard_Boots",
+            "itemID": "expandedAreas:Wormeaten_Ancient_Hood",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "expandedAreas:Ancient_Wizard_Gloves",
+            "itemID": "expandedAreas:Wormeaten_Ancient_Pants",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "expandedAreas:Ancient_Staff",
+            "itemID": "expandedAreas:Warped_Ancient_Focus",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
@@ -21228,37 +21222,37 @@
         "lootChance": 5,
         "lootTable": [
           {
-            "itemID": "melvorD:Ancient_Helmet",
+            "itemID": "expandedAreas:Rusted_Ancient_Helmet",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorD:Ancient_Shield",
+            "itemID": "expandedAreas:Rusted_Ancient_Boots",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorD:Ancient_Sword",
+            "itemID": "expandedAreas:Rusted_Ancient_Gauntlets",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorD:Ancient_Sword",
+            "itemID": "expandedAreas:Rusted_Ancient_Greaves",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorD:Ancient_Platelegs",
+            "itemID": "expandedAreas:Rusted_Ancient_Cuirass",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
           },
           {
-            "itemID": "melvorD:Ancient_Platebody",
+            "itemID": "expandedAreas:Brittle_Ancient_Warhorn",
             "minQuantity": 1,
             "maxQuantity": 1,
             "weight": 1
@@ -68281,19 +68275,8 @@
             {
               "insertAt": 5,
               "monsterID": "expandedAreas:Novice_Necromancer"
-            },
-            {
-              "insertAt": 6,
-              "monsterID": "expandedAreas:Death_Knight"
-            },
-            {
-              "insertAt": 7,
-              "monsterID": "expandedAreas:Ghoul"
-            },
-            {
-              "insertAt": 8,
-              "monsterID": "expandedAreas:Ghoul_Horde"
             }
+            
           ]
         }
       },
