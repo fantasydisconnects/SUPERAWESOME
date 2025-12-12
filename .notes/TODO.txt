@@ -1,27 +1,5 @@
 11/30/25
 _________________________________
-1. Add remaining enemies and loot to Forgotten Battlefield
-- Ancient Warrior
- - Rusted Ancient Helm
- - Rusted Ancient Cuirass
- - Rusted Ancient Greaves
- - Rusted Ancient Gauntlets
- - Rusted Ancient Boots
- - Brittle Ancient Warhorn
-- Ancient Marksman
- - Worm-eaten Ancient Coif
- - Worm-eaten Ancient Jerkin
- - Worm-eaten Ancient Chaps
- - Worm-eaten Ancient Bracers
- - Worm-eaten Ancient Boots
- - Cracked Ancient Shield
-- Ancient Mage
- - Tattered Ancient Hat
- - Tattered Ancient Robe Top
- - Tattered Ancient Robe Bottoms
- - Tattered Ancient Gloves
- - Tattered Ancient Shoes
- - Warped Ancient Focus
 - Melvoria Bones
  - Drops junk, bones, gems, and generic artifacts
  - Drops map to the Tombs of the Forgotten

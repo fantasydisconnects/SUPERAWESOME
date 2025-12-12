@@ -4,6 +4,134 @@
     "data": {
         "items": [
             {
+                "itemType": "Openable",
+                "id": "Dusty_Sarcophagus",
+                "name": "Dusty Sarcophagus",
+                "category": "Loot",
+                "type": "Openable",
+                "media": "assets/items/Item/Dusty_Sarcophagus.png",
+                "ignoreCompletion": false,
+                "obtainFromItemLog": false,
+                "golbinRaidExclusive": false,
+                "sellsFor": 5000,
+                "dropTable": [
+                    {
+                        "itemID": "expandedAreas:Mysterious_Stone1",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "expandedAreas:Mysterious_Stone2",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "expandedAreas:Mysterious_Stone3",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorD:Crown_of_Rhaelyx",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorD:Charge_Stone_of_Rhaelyx",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 50
+                    },
+                    {
+                        "itemID": "melvorD:Mysterious_Stone",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorD:Bones",
+                        "minQuantity": 1,
+                        "maxQuantity": 206,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorD:Ruby",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorD:Diamond",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorD:Sapphire",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorD:Emerald",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorD:Topaz",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "expandedAreas:Amber",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "expandedAreas:Amethyst",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "expandedAreas:Beryl",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "expandedAreas:Garnet",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "expandedAreas:Turquoise",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "melvorF:Jadestone",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    },
+                    {
+                        "itemID": "expandedAreas:Dragonstone",
+                        "minQuantity": 1,
+                        "maxQuantity": 1,
+                        "weight": 1
+                    }
+                ]
+            },
+            {
                 "itemType": "Equipment",
                 "id": "Helmet_of_Doom",
                 "name": "Helmet of DOOM!!!",
@@ -33,219 +161,119 @@
             }
         ],
         "attacks": [
-            {
-                "id": "DeathCaw",
-                "defaultChance": 15,
-                "damage": [],
-                "prehitEffects": [
-                    {
-                        "effectID": "expandedAreas:Paralyze"
-                    }
-                ],
-                "onhitEffects": [],
-                "cantMiss": true,
-                "attackCount": 1,
-                "attackInterval": 50,
-                "lifesteal": 0,
-                "name": "Death Caw",
-                "description": "Emits a chilling caw that has a ${onHitEffect0chance}% to apply Paralyze. Deals no damage.",
-                "descriptionGenerator": "Perform <count> consecutive attacks.",
-                "usesRunesPerProc": false
-            },
-            {
-                "id": "BlightReap",
-                "defaultChance": 15,
-                "damage": [
-                    {
-                        "damageType": "Custom",
-                        "character": "Attacker",
-                        "maxRoll": "Fixed",
-                        "maxPercent": 45,
-                        "roll": false
-                    }
-                ],
-                "prehitEffects": [],
-                "onhitEffects": [],
-                "cantMiss": false,
-                "attackCount": 5,
-                "attackInterval": 200,
-                "lifesteal": 100,
-                "name": "Blight Reap",
-                "description": "An avoidable attack that hits ${hitCount} times, plus an extra time per Blight stack applied to you. Deals ${attackDamageMaxValue0} damage each and heals the enemy for ${lifesteal}% of damage dealt. Removes all Blight stacks from you after attack.",
-                "descriptionGenerator": "An <avoidable> attack that hits <count> times, plus an extra time per Blight stack applied to <target>. Deals <damage> damage each and heals <attacker> for <lifesteal> of damage dealt. Removes all Blight stacks from <target> after attack.",
-                "usesRunesPerProc": false,
-                "consumesEffect": {
-                    "effectID": "expandedAreas:Blight",
-                    "paramName": "stacks"
+           {
+            "id": "FireballTrap",
+            "defaultChance": 100,
+            "damage": [
+                {
+                    "damageType": "Custom",
+                    "character": "Attacker",
+                    "maxRoll": "Fixed",
+                    "maxPercent": 65,
+                    "roll": false
                 }
-            }
+            ],
+            "prehitEffects": [],
+            "onhitEffects": [
+                {
+                    "effectID": "melvorD:Burn",
+                    "chance": 100
+                }
+            ],
+            "cantMiss": false,
+            "attackCount": 1,
+            "attackInterval": 50,
+            "lifesteal": 0,
+            "name": "Fireball",
+            "description": "Launches an avoidable fireball that deals ${attackDamageMaxValue0} damage. On a hit, inflicts Burn that deals ${onHitEffect0DamageMaxValue0}% of your current hitpoints as damage over ${onHitEffect0duration}s.",
+            "descriptionGenerator": "Launch an <avoidable> fireball that deals <damage> damage. On a hit, <hitEffect>.",
+            "usesRunesPerProc": false
+        }
         ],
-        "combatEffects": [
-            {
-                "id": "Blight",
-                "templateID": "melvorD:StackingSelfCountingModifier",
-                "name": "Blight",
-                "media": "assets/status/blight.png",
-                "target": "Target",
-                "parameters": [
-                    {
-                        "name": "turns",
-                        "initialValue": 50
-                    },
-                    {
-                        "name": "initialStacks",
-                        "initialValue": 1
-                    },
-                    {
-                        "name": "stacksToAdd",
-                        "initialValue": 1
-                    },
-                    {
-                        "name": "maxStacks",
-                        "initialValue": 50
-                    }
-                ],
-                "statGroups": [
-                    {
-                        "name": "stacks",
-                        "modifiers": {
-                            "damageTaken": 1
-                        }
-                    }
-                ],
-                "effectGroups": [
-                    "melvorD:Debuff"
-                ]
-            },
-            {
-                "id": "Flight",
-                "templateID": "melvorD:StaticNonCountingModifier",
-                "name": "Flight",
-                "media": "assets/status/flight.png",
-                "target": "Self",
-                "parameters": [],
-                "statGroups": [
-                    {
-                        "name": "stacks",
-                        "modifiers":{
-                            "evasion": 20,
-                            "accuracyRating": 20
-                        }
-                    }
-                ]
-            }
-        ],
-        "combatPassives": [
-            {
-                "id": "BlightEater",
-                "name": "Blight Eater",
-                "customDescription": "+100% Chance to apply 5 stacks of Blight On Hit if either the Enemy or Player has at least 1 stack of Affliction.",
-                "combatEffects": [
-                    {
-                        "condition": {
-                            "type": "Some",
-                            "conditions": [
-                                {
-                                    "effectID": "melvorD:Affliction",
-                                    "character": "Enemy",
-                                    "type": "CombatEffect"
-                                },
-                                {
-                                    "effectID": "melvorD:Affliction",
-                                    "character": "Player",
-                                    "type": "CombatEffect"
-                                }
-                            ]
-                        },
-                        "appliesWhen": "PostFirstAttack",
-                        "effectID": "expandedAreas:Blight",
-                        "initialParams": [
-                            {
-                                "name": "stacksToAdd",
-                                "value": 5
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "Blighted",
-                "name": "Blighted",
-                "customDescription": "+15% Chance each to apply On Hit: Deadly Poison, the Decay Curse, 2 stacks of Affliction, or 2 stacks of Blight.",
-                "combatEffects": [
-                    {
-                        "appliesWhen": "HitWithAttack",
-                        "effectID": "melvorD:DeadlyPoison",
-                        "chance": 15
-                    },
-                    {
-                        "appliesWhen": "HitWithAttack",
-                        "effectID": "melvorF:Decay",
-                        "chance": 15
-                    },
-                    {
-                        "appliesWhen": "PostFirstAttack",
-                        "effectID": "melvorD:Affliction",
-                        "chance": 15,
-                        "initialParams": [
-                            {
-                                "name": "stacksToAdd",
-                                "value": 2
-                            }
-                        ]
-                    },
-                    {
-                        "appliesWhen": "PostFirstAttack",
-                        "effectID": "expandedAreas:Blight",
-                        "chance": 15,
-                        "initialParams": [
-                            {
-                                "name": "stacksToAdd",
-                                "value": 2
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "Flying",
-                "name": "Flying",
-                "customDescription": "+20% to Global Evasion and Accuracy Rating — Doubled if Target: does not have Flight and Attack Style is Melee",
-                "conditionalModifiers": [
-                    {
-                        "condition":{
-                            "type": "Every",
-                            "conditions": [
-                                {
-                                    "character": "Enemy",
-                                    "targetAttackType":"melee",
-                                    "thisAttackType":"any",
-                                    "type": "CombatType"
-                                },
-                                {
-                                    "character": "Enemy",
-                                    "effectID":"expandedAreas:Flight",
-                                    "inverted": true,
-                                    "type": "CombatEffect"
-                                }
-                            ]
-                        },
-                        "modifiers":{
-                            "evasion": 20,
-                            "accuracyRating": 20
-                        }
-                    }
-                    
-                ],
-                "combatEffects": [
-                    {
-                        "appliesWhen":"StartOfFight",
-                        "effectID":"expandedAreas:Flight"
-                    }
-                ]
-            }
-        ],
+
+"combatPassives": [
+    
+    {
+        "id": "MagicTrap",
+        "name": "Magic Trap",
+        "modifiers":{
+            "damageBasedOnMaxHitpointsSelf": 50,
+            "magicImmunity": 1,
+            "rangedImmunity": 1,
+            "meleeImmunity": 1,
+            "effectImmunity": [
+                {
+                    "effectGroupID":"melvorD:Buff",
+                    "value": 1
+                },
+                {
+                    "effectGroupID":"melvorD:Debuff",
+                    "value": 1
+                },
+                {
+                    "effectGroupID":"melvorD:DamageOverTime",
+                    "value": 1
+                }
+            ]
+        }
+        
+    }
+],
         "monsters": [
+            {
+                "id": "MagicTrap",
+                "name": "Magic Trap - Fire",
+                "media": "assets/monsters/Magic_Trap_Fire.png",
+                "ignoreCompletion": true,
+                "specialAttacks": [
+                    "expandedAreas:FireballTrap"
+                ],
+                "passives": [
+                    "expandedAreas:MagicTrap"
+                ],
+                "lootChance": 0,
+                "lootTable": [],
+                "selectedSpell": "melvorD:WindStrike",
+                "attackType":"magic",
+                "canSlayer": false,
+                "isBoss": false,
+                "levels": {
+                    "Hitpoints": 400,
+                    "Attack": 1,
+                    "Defence": 1,
+                    "Magic": 400,
+                    "Ranged": 1,
+                    "Strength": 1
+                },
+                "equipmentStats": [
+                    {
+                        "key":"attackSpeed",
+                        "value": 2400
+                    },
+                    
+                    {
+                        "key": "magicAttackBonus",
+                        "value": 100
+                    },
+                    {
+                        "key":"magicDamageBonus",
+                        "value": 50
+                    },
+                    {
+                        "key":"magicDefenceBonus",
+                        "value": 999999
+                    },
+                    {
+                        "key":"meleeDefenceBonus",
+                        "value": 999999
+                    },
+                    {
+                        "key":"rangedDefenceBonus",
+                        "value": 999999
+                    }
+                ]
+                
+            },
             {
                 "id": "Blightbird",
                 "name": "Blightbird",
